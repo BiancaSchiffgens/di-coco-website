@@ -1,0 +1,9 @@
+---
+import { getEntry } from "astro:content";
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+
+const entry = await getEntry("services", "corporate-influencer-programme");
+if (!entry) throw new Error("Service entry not found: corporate-influencer-programme");
+---
+
+<ServiceLayout entry={entry} />

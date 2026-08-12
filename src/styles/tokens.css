@@ -1,0 +1,94 @@
+/* Di-CoCo Design Tokens — Quelle: Design/2026_05_10_Di-CoCo_Brand_Design.pdf */
+
+@font-face {
+  font-family: "Miranda Sans";
+  src: url("/fonts/MirandaSans-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Miranda Sans";
+  src: url("/fonts/MirandaSans-Medium.woff2") format("woff2");
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Miranda Sans";
+  src: url("/fonts/MirandaSans-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Miranda Sans";
+  src: url("/fonts/MirandaSans-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Farben */
+  --color-black: #111219;
+  --color-white: #fdfdfd;
+  --color-blue: #0032ff;
+  --color-violet: #8f23f7;
+  --gradient-blue-orange: linear-gradient(90deg, #0032ff 0%, #0032ff 66%, #ff7a00 100%);
+
+  /* Typo */
+  --font-family: "Miranda Sans", system-ui, sans-serif;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* Zeilenabstand-Regeln lt. Brand Book: Headline x1.0, Copy x1.2, Highlight x0.6 */
+  --line-height-headline: 1;
+  --line-height-copy: 1.2;
+  --line-height-highlight: 0.6;
+
+  --max-width: 1200px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--color-white);
+  color: var(--color-black);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-regular);
+  line-height: var(--line-height-copy);
+}
+
+h1,
+h2,
+h3 {
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-headline);
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+img,
+svg {
+  max-width: 100%;
+  display: block;
+}

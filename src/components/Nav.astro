@@ -1,0 +1,193 @@
+---
+import { getCollection } from "astro:content";
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+const currentPath = Astro.url.pathname;
+---
+
+<header class="nav">
+  <div class="nav__inner">
+    <a href="/" class="nav__logo">
+      <img src="/assets/logo-wortmarke-black.png" alt="Di-CoCo" width="98" height="30" />
+    </a>
+
+    <input type="checkbox" id="nav-toggle" class="nav__toggle-input" />
+    <label for="nav-toggle" class="nav__toggle" aria-label="Menü öffnen">
+      <span></span><span></span><span></span>
+    </label>
+
+    <nav class="nav__menu" aria-label="Hauptnavigation">
+      <details class="nav__dropdown">
+        <summary>Leistungen</summary>
+        <ul>
+          {services.map((service) => (
+            <li>
+              <a href={`/${service.data.slug}`} aria-current={currentPath === `/${service.data.slug}` ? "page" : undefined}>
+                {service.data.navLabel}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </details>
+      <a href="/#ueber-uns">Über uns</a>
+      <a href="/#referenzen">Referenzen</a>
+      <a href="/#kontakt" class="nav__cta">Kontakt</a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: var(--color-white);
+    border-bottom: 1px solid rgba(17, 18, 25, 0.08);
+  }
+
+  .nav__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .nav__logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  .nav__logo img {
+    height: 24px;
+    width: auto;
+  }
+
+  .nav__toggle-input {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: none;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+    padding: 0.5rem;
+  }
+
+  .nav__toggle span {
+    width: 22px;
+    height: 2px;
+    background: var(--color-black);
+  }
+
+  .nav__menu {
+    display: flex;
+    align-items: center;
+    gap: 1.75rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .nav__menu a {
+    text-decoration: none;
+    color: var(--color-black);
+  }
+
+  .nav__cta {
+    background: #ff7a00;
+    color: var(--color-white) !important;
+    padding: 0.6rem 1.25rem;
+    border-radius: 999px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .nav__dropdown {
+    position: relative;
+  }
+
+  .nav__dropdown summary {
+    list-style: none;
+    cursor: pointer;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .nav__dropdown summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .nav__dropdown summary::after {
+    content: " ▾";
+  }
+
+  .nav__dropdown ul {
+    position: absolute;
+    top: calc(100% + 0.75rem);
+    left: 0;
+    background: var(--color-white);
+    border: 1px solid rgba(17, 18, 25, 0.08);
+    border-radius: 0.75rem;
+    box-shadow: 0 12px 24px rgba(17, 18, 25, 0.08);
+    padding: 0.5rem;
+    margin: 0;
+    list-style: none;
+    min-width: 260px;
+  }
+
+  .nav__dropdown li a {
+    display: block;
+    padding: 0.6rem 0.75rem;
+    border-radius: 0.5rem;
+    white-space: nowrap;
+  }
+
+  .nav__dropdown li a:hover,
+  .nav__dropdown li a[aria-current="page"] {
+    background: rgba(17, 18, 25, 0.05);
+  }
+
+  @media (max-width: 860px) {
+    .nav__toggle {
+      display: flex;
+    }
+
+    .nav__menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0;
+      background: var(--color-white);
+      border-bottom: 1px solid rgba(17, 18, 25, 0.08);
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.25s ease;
+    }
+
+    .nav__toggle-input:checked ~ .nav__menu {
+      max-height: 500px;
+    }
+
+    .nav__menu a,
+    .nav__dropdown {
+      width: 100%;
+      padding: 0.9rem 1.5rem;
+      border-top: 1px solid rgba(17, 18, 25, 0.06);
+    }
+
+    .nav__dropdown ul {
+      position: static;
+      box-shadow: none;
+      border: none;
+      padding: 0 0 0 1rem;
+    }
+
+    .nav__cta {
+      margin: 0.9rem 1.5rem;
+      display: inline-block;
+    }
+  }
+</style>

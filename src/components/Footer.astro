@@ -1,0 +1,137 @@
+---
+import { getCollection } from "astro:content";
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <div class="footer__inner">
+    <div class="footer__col">
+      <img class="footer__logo" src="/assets/logo-wortmarke-black.png" alt="Di-CoCo" width="130" height="40" />
+      <p class="footer__tagline">Visibility drives business.</p>
+    </div>
+
+    <div class="footer__col">
+      <h3>Leistungen</h3>
+      <ul>
+        {services.map((service) => (
+          <li><a href={`/${service.data.slug}`}>{service.data.navLabel}</a></li>
+        ))}
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3>Unternehmen</h3>
+      <ul>
+        <li><a href="/#ueber-uns">Über uns</a></li>
+        <li><a href="/#referenzen">Referenzen</a></li>
+        <li><a href="/#presse">Presse</a></li>
+        <li><a href="/#kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+
+    <div class="footer__col">
+      <h3>Kontakt</h3>
+      <ul>
+        <li><a href="mailto:kontakt@di-coco.de">kontakt@di-coco.de</a></li>
+        <li><a href="https://www.linkedin.com/company/di-coco" target="_blank" rel="noopener">Di-CoCo auf LinkedIn</a></li>
+        <li><a href="https://www.linkedin.com/in/biancaschiffgens" target="_blank" rel="noopener">Bianca Schiffgens auf LinkedIn</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <p>
+      © {year} Di-CoCo – Digital Corporate Communications · Bianca Schiffgens ·
+      <a href="/impressum">Impressum</a> ·
+      <a href="/datenschutz">Datenschutz</a> ·
+      <a href="/agb">AGB</a>
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .footer__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 4rem 1.5rem 2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .footer__logo {
+    height: 28px;
+    width: auto;
+    margin: 0 0 0.75rem;
+    filter: invert(1);
+  }
+
+  .footer__tagline {
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .footer h3 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    opacity: 0.6;
+    margin: 0 0 1rem;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .footer ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .footer a {
+    text-decoration: none;
+    color: var(--color-white);
+    opacity: 0.85;
+  }
+
+  .footer a:hover {
+    opacity: 1;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid rgba(253, 253, 253, 0.12);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .footer__bottom p {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    font-size: 0.85rem;
+    opacity: 0.6;
+  }
+
+  .footer__bottom a {
+    opacity: 1;
+    text-decoration: underline;
+  }
+
+  @media (max-width: 860px) {
+    .footer__inner {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 560px) {
+    .footer__inner {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

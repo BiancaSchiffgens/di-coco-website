@@ -1,0 +1,205 @@
+---
+import { render } from "astro:content";
+import Layout from "./Layout.astro";
+
+const { entry } = Astro.props;
+const { data } = entry;
+const { Content } = await render(entry);
+
+const colorMap: Record<string, string> = {
+  orange: "#ff7a00",
+  blau: "var(--color-blue)",
+  violett: "var(--color-violet)",
+  schwarz: "var(--color-black)",
+};
+const accent = colorMap[data.color];
+
+const serviceSchema = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  serviceType: data.title,
+  name: data.title,
+  description: data.metaDescription,
+  provider: { "@type": "Organization", name: "Di-CoCo" },
+  areaServed: "DACH",
+};
+
+const breadcrumb = [
+  { name: "Startseite", url: "/" },
+  { name: data.title, url: `/${data.slug}` },
+];
+---
+
+<Layout title={`${data.pageTitle}`} description={data.metaDescription} breadcrumb={breadcrumb}>
+  <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} slot="head" />
+
+  <section class="hero" style={`--accent: ${accent}`}>
+    <div class="hero__inner">
+      <p class="hero__eyebrow">{data.ueberzeile}</p>
+      <h1>{data.heroHeadline}</h1>
+      <p class="hero__subline">{data.heroSubline}</p>
+      <a href="/#kontakt" class="button">{data.ctaButtonLabel}</a>
+    </div>
+  </section>
+
+  <section class="content">
+    <div class="content__inner">
+      <Content />
+    </div>
+  </section>
+
+  {data.referenz && (
+    <section class="quote" style={`--accent: ${accent}`}>
+      <div class="quote__inner">
+        <blockquote>„{data.referenz.zitat}"</blockquote>
+        <p class="quote__attribution">{data.referenz.name}, {data.referenz.rolle}</p>
+      </div>
+    </section>
+  )}
+
+  <section class="cta" style={`--accent: ${accent}`}>
+    <div class="cta__inner">
+      <h2>{data.ctaHeadline}</h2>
+      <p>{data.ctaText}</p>
+      <a href="/#kontakt" class="button button--light">{data.ctaButtonLabel}</a>
+      <a href="/" class="button button--ghost">Zurück zur Startseite</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .hero {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 6rem 1.5rem 4rem;
+  }
+
+  .hero__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .hero__eyebrow {
+    color: var(--accent);
+    font-weight: var(--font-weight-semibold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.9rem;
+    margin: 0 0 1rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2rem, 4.5vw, 3.25rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .hero__subline {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    margin: 0 0 2rem;
+    max-width: 640px;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--accent);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .button--light {
+    background: var(--color-white);
+    color: var(--color-black);
+    margin-right: 1rem;
+  }
+
+  .button--ghost {
+    background: transparent;
+    border: 1px solid currentColor;
+  }
+
+  .content {
+    padding: 4.5rem 1.5rem;
+  }
+
+  .content__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .content__inner :global(h2) {
+    font-size: 1.75rem;
+    margin: 3rem 0 1rem;
+  }
+
+  .content__inner :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .content__inner :global(p) {
+    margin: 0 0 1rem;
+  }
+
+  .content__inner :global(ul) {
+    padding-left: 1.25rem;
+  }
+
+  .content__inner :global(li) {
+    margin-bottom: 0.5rem;
+  }
+
+  .content__inner :global(blockquote) {
+    border-left: 3px solid var(--color-blue);
+    margin: 2rem 0;
+    padding-left: 1.25rem;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .quote {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 4rem 1.5rem;
+  }
+
+  .quote__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .quote blockquote {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .quote__attribution {
+    color: var(--accent);
+    margin: 0;
+  }
+
+  .cta {
+    background: var(--accent);
+    color: var(--color-white);
+    padding: 4.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .cta__inner {
+    max-width: 640px;
+    margin: 0 auto;
+  }
+
+  .cta h2 {
+    font-size: 2rem;
+    margin: 0 0 1rem;
+  }
+
+  .cta p {
+    margin: 0 0 2rem;
+    opacity: 0.9;
+  }
+</style>

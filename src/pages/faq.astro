@@ -1,0 +1,142 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const faqs = [
+  {
+    frage: "Was ist ein Corporate Influencer Programm genau?",
+    antwort:
+      "Ein Corporate Influencer Programm ist ein strategisches Kommunikationsprogramm, bei dem Mitarbeitende eines Unternehmens ihre eigene Stimme auf digitalen Plattformen – vor allem LinkedIn – entwickeln und als glaubwürdige Botschafter ihrer Organisation auftreten. Im Unterschied zu klassischer Unternehmenskommunikation oder Werbung wirkt diese Form der Kommunikation, weil sie von echten Menschen kommt, die ihren Berufsalltag, ihre Expertise und ihre Haltung sichtbar machen. Di-CoCo entwickelt, installiert und begleitet diese Programme vom strategischen Konzept bis zur nachhaltigen Verankerung in der Unternehmenskultur.",
+  },
+  {
+    frage: "Was unterscheidet Di-CoCo von anderen Agenturen?",
+    antwort:
+      "Di-CoCo begleitet Corporate Influencer Programme ausschließlich, wenn die Führungsebene aktiv mitmacht und selbst sichtbar wird. Das ist keine Einschränkung, das ist Qualitätssicherung. Programme ohne Führungsbeteiligung werden zur Pflichtveranstaltung und bringen keine authentischen Stimmen hervor. Darüber hinaus arbeitet Di-CoCo mit einem klaren Blick auf den internen Effekt von Kommunikation: Sichtbarkeit nach außen verändert Kultur nach innen. Di-CoCo begleitet Unternehmen branchenübergreifend im deutschsprachigen Raum – manche Kundenbeziehungen seit fast fünf Jahren.",
+  },
+  {
+    frage: "Für welche Unternehmensgröße ist ein Corporate Influencer Programm geeignet?",
+    antwort:
+      "Corporate Influencer Programme funktionieren ab einer Unternehmensgröße von etwa 20 Mitarbeitenden und sind nach oben offen. Entscheidend ist nicht die Größe, sondern die Bereitschaft der Führungsebene mitzumachen. Di-CoCo arbeitet mit mittelständischen Unternehmen genauso wie mit größeren Organisationen – branchenübergreifend, von Glasfaser-Infrastruktur bis Spitzensport. Das Programm-Design wird immer an die tatsächliche Unternehmensgröße und Kultur angepasst.",
+  },
+  {
+    frage: "Wie lange dauert ein Corporate Influencer Programm?",
+    antwort:
+      "Ein realistischer Zeitraum für spürbare Wirkung sind sechs bis zwölf Monate. In den ersten zwei bis drei Monaten liegt der Fokus auf Strategie, Workshops und dem Aufbau einer persönlichen Positionierung für jeden Teilnehmenden. Ab Monat drei bis vier entsteht regelmäßiger Content und erste Ergebnisse werden sichtbar. Die Monate sechs bis zwölf festigen den Ansatz und bauen nachhaltige Kommunikationsstrukturen auf.",
+  },
+  {
+    frage: "Wie schnell sehen wir Ergebnisse?",
+    antwort:
+      "Das hängt vom Ausgangspunkt und der Konsequenz ab. Aus unserer Praxis mit Kunden: Ein E-Commerce-Unternehmen, das wir von Grund auf aufgebaut haben, hatte nach fünf Monaten 220.000 Impressionen und über 10.000 Follower. Eine Corporate Influencerin, die wir begleitet haben, stand nach dem Programm bei über 8.000 qualifizierten Followern in ihrer Zielgruppe – von Null. Erste sichtbare Ergebnisse entstehen typischerweise nach vier bis acht Wochen. Nachhaltige Wirkung entwickelt sich über sechs bis zwölf Monate.",
+  },
+  {
+    frage: "Was kostet ein Corporate Influencer Programm?",
+    antwort:
+      "Die Kosten hängen vom Umfang, der Teilnehmerzahl und der Laufzeit ab. Di-CoCo entwickelt keine Einheitslösungen – jedes Programm wird auf das Unternehmen zugeschnitten. Im kostenlosen Erstgespräch besprechen wir deine Ziele und geben eine ehrliche Einschätzung, was ein Programm für euch kosten würde.",
+  },
+  {
+    frage: "Wie viel Zeit müssen unsere Mitarbeitenden investieren?",
+    antwort:
+      "Das hängt vom Programm-Design ab und ist ein zentraler Punkt in der Planung. Faustregel: ein bis zwei Stunden pro Woche für Content-Erstellung und Community-Pflege, plus monatliche Austausch-Termine. Der initiale Workshop-Block zu Beginn ist zeitintensiver – das wird im Vorfeld transparent kommuniziert und gemeinsam geplant.",
+  },
+  {
+    frage: "Welche Plattformen werden eingesetzt?",
+    antwort:
+      "Der Schwerpunkt liegt auf LinkedIn, weil die Plattform im B2B-Bereich die höchste Relevanz für Führungskräfte und Mitarbeitende bietet. Je nach Unternehmenskontext und Zielgruppe können weitere Plattformen eingebunden werden. Entscheidend ist immer: nicht möglichst viele Plattformen, sondern die richtigen konsequent bespielen.",
+  },
+  {
+    frage: "Was passiert, wenn Mitarbeitende etwas Unpassendes veröffentlichen?",
+    antwort:
+      "Di-CoCo entwickelt zu Beginn jedes Programms klare Content-Frameworks und Guidelines, die Leitplanken setzen ohne die Authentizität einzuschränken. Mitarbeitende lernen im Rahmen der Workshops, was kommuniziert werden darf und wo Rücksprache sinnvoll ist. In der Praxis passieren Fehltritte selten, weil gut vorbereitete Kommunikation bedacht ist – nicht impulsiv.",
+  },
+  {
+    frage: "Wie messen wir den Erfolg?",
+    antwort:
+      "Di-CoCo misst auf drei Ebenen: erstens quantitative LinkedIn-Metriken wie Impressionen, Reichweite, Engagement-Rate und Follower-Wachstum. Zweitens qualitative Indikatoren wie erhöhte Sichtbarkeit auf Messen oder mehr Anfragen über LinkedIn. Drittens interne Indikatoren wie verändertes Kommunikationsverhalten und erhöhte Mitarbeiterzufriedenheit. Monatliche Reports halten alle Ebenen transparent.",
+  },
+  {
+    frage: "Können wir das Programm intern weiterführen, wenn die Zusammenarbeit endet?",
+    antwort:
+      "Das ist ausdrücklich das Ziel. Di-CoCo baut Programme so auf, dass sie nachhaltig im Unternehmen verankert werden – nicht so, dass eine dauerhafte Abhängigkeit von externen Dienstleistern entsteht. Dazu gehören klare Prozesse, dokumentierte Frameworks und Wissenstransfer an interne Ansprechpartner.",
+  },
+  {
+    frage: "Arbeitet Di-CoCo nur regional?",
+    antwort:
+      "Nein. Di-CoCo begleitet Unternehmen und Führungskräfte im gesamten deutschsprachigen Raum. Die Zusammenarbeit findet überwiegend remote statt – Workshops, Meetings und Begleitung sind vollständig digital möglich. Wo persönliche Präsenz sinnvoll ist, ist Di-CoCo vor Ort erreichbar.",
+  },
+  {
+    frage: "Wir haben noch nie etwas mit Corporate Influencern gemacht. Ist das ein Problem?",
+    antwort:
+      "Nein – im Gegenteil. Die Unternehmen, die am stärksten vom Programm profitieren, sind genau die, die noch nicht systematisch über Corporate Influencer nachgedacht haben. Di-CoCo begleitet den gesamten Prozess vom Erstkontakt bis zur Verankerung – inklusive der Mitarbeitenden, die am Anfang skeptisch sind. Das gehört dazu.",
+  },
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: faqs.map((f) => ({
+    "@type": "Question",
+    name: f.frage,
+    acceptedAnswer: { "@type": "Answer", text: f.antwort },
+  })),
+};
+
+const breadcrumb = [
+  { name: "Startseite", url: "/" },
+  { name: "FAQ", url: "/faq" },
+];
+---
+
+<Layout
+  title="Häufige Fragen zu Corporate Influencer Programmen | Di-CoCo"
+  description="Antworten auf die häufigsten Fragen zu Corporate Influencer Programmen: Dauer, Kosten, Aufwand, Ergebnisse und Voraussetzungen."
+  breadcrumb={breadcrumb}
+>
+  <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
+
+  <section class="faq">
+    <div class="faq__inner">
+      <h1>Häufige Fragen zu Corporate Influencer Programmen</h1>
+      {faqs.map((f) => (
+        <details class="faq__item">
+          <summary>{f.frage}</summary>
+          <p>{f.antwort}</p>
+        </details>
+      ))}
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .faq {
+    padding: 5rem 1.5rem;
+  }
+
+  .faq__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .faq h1 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 2.5rem;
+  }
+
+  .faq__item {
+    border-bottom: 1px solid rgba(17, 18, 25, 0.1);
+    padding: 1.25rem 0;
+  }
+
+  .faq__item summary {
+    cursor: pointer;
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.05rem;
+  }
+
+  .faq__item summary::-webkit-details-marker {
+    color: var(--color-blue);
+  }
+
+  .faq__item p {
+    margin: 1rem 0 0;
+    opacity: 0.85;
+  }
+</style>

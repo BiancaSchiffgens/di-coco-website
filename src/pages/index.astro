@@ -1,0 +1,646 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../layouts/Layout.astro";
+import ContactSection from "../components/ContactSection.astro";
+
+const services = (await getCollection("services")).sort((a, b) => a.data.order - b.data.order);
+
+const colorMap: Record<string, string> = {
+  orange: "#ff7a00",
+  blau: "var(--color-blue)",
+  violett: "var(--color-violet)",
+  schwarz: "var(--color-black)",
+};
+
+const ergebnisse = [
+  { zahl: "8.000+", label: "Follower in der Zielgruppe", kontext: "Corporate Influencerin aufgebaut – von Null" },
+  { zahl: "220.000", label: "Impressionen in 5 Monaten", kontext: "E-Commerce-Unternehmen – von Null aufgebaut" },
+  { zahl: "10.000+", label: "Follower", kontext: "E-Commerce-Unternehmen nach 5 Monaten Begleitung" },
+  { zahl: "5 Jahre", label: "Längste aktive Kundenbeziehung", kontext: "im laufenden Account Management" },
+  { zahl: "1.000+", label: "Zuhörer", kontext: "Keynote zu Corporate Communication und digitaler Sichtbarkeit" },
+];
+
+const referenzen = [
+  {
+    zitat: "Das Corporate Influencer Programm hat unsere Markenbekanntheit deutlich gesteigert. Die professionelle Begleitung hat nicht nur unsere Online-Präsenz optimiert, sondern auch intern eine neue Dynamik geschaffen.",
+    name: "W. Weigel",
+    rolle: "Geschäftsführer, Filoform GmbH · Glasfaser & Infrastruktur",
+  },
+  {
+    zitat: "Bianca hat es geschafft, meine Werte und Ziele authentisch zu transportieren und eine nachhaltige Verbindung zu meiner Zielgruppe aufzubauen. Von der Skeptikerin zur überzeugten LinkedIn-Nutzerin.",
+    name: "H. Henkel",
+    rolle: "Olympiasiegerin, Keynote-Speakerin & Autorin",
+  },
+  {
+    zitat: "Biancas lockere und mitreißende Art gibt dem sehr professionellen Rahmen die besondere Note. Eines unserer Highlights im Jahr 2024.",
+    name: "J. Mina-Knopp",
+    rolle: "Geschäftsführerin, Mariposa GmbH",
+  },
+];
+
+const branchen = ["Industrie", "Technologie", "Beratung", "Finanzdienstleistung", "Energie", "Spitzensport", "E-Commerce"];
+
+const presse = [
+  { quelle: "BILD / BILD Online / BILD.de", kontext: "Bianca Schiffgens als Expertin zur Social-Media-Kommunikation in Insolvenzsituationen" },
+  { quelle: "Gründermagazin", kontext: "Corporate Influencer Programme und digitale Sichtbarkeit im Mittelstand" },
+  { quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
+  { quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
+];
+---
+
+<Layout
+  title="Di-CoCo – Corporate Influencer Programme und LinkedIn-Strategie für Führungskräfte"
+  description="Di-CoCo entwickelt Corporate Influencer Programme und LinkedIn-Strategien für Führungskräfte im deutschsprachigen Raum. Strategisch. Messbar. Mit echtem Kulturwandel."
+>
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__eyebrow">Corporate Visibility Strategist</p>
+      <h1><span class="hero__white">Sichtbar werden.</span><br /><span class="hero__orange">Etwas bewegen.</span></h1>
+      <p class="hero__subline">
+        Di-CoCo begleitet Führungspersönlichkeiten und Unternehmen im deutschsprachigen Raum,
+        die wissen, dass Kommunikation mehr kann als Reichweite zu erzeugen. Mit der
+        richtigen Strategie verändert Sichtbarkeit nicht nur, wie ein Unternehmen
+        wahrgenommen wird – sie verändert, wie es sich selbst versteht.
+      </p>
+      <p class="hero__tagline">Visibility drives business.</p>
+      <div class="hero__actions">
+        <a href="#kontakt" class="button">Lass uns sprechen</a>
+        <a href="#leistungen" class="button button--ghost">Was wir tun</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bekannt-aus">
+    <p class="bekannt-aus__label">Bekannt aus</p>
+    <div class="bekannt-aus__logos">
+      <span>BILD</span><span>Gründermagazin</span><span>Rheinzeiger</span><span>DJV NRW Journal</span><span>Springer Gabler</span>
+    </div>
+    <p class="bekannt-aus__badge">Favikon Top 10 Communications Experts Germany 2025</p>
+  </section>
+
+  <section class="ergebnisse">
+    <p class="ergebnisse__label">Was wir für unsere Kunden erreichen</p>
+    <div class="ergebnisse__grid">
+      {ergebnisse.map((e) => (
+        <div class="ergebnisse__item">
+          <p class="ergebnisse__zahl">{e.zahl}</p>
+          <p class="ergebnisse__item-label">{e.label}</p>
+          <p class="ergebnisse__kontext">{e.kontext}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="wirkung">
+    <div class="wirkung__inner">
+      <p class="wirkung__eyebrow">Was wirklich passiert, wenn Kommunikation funktioniert</p>
+      <h2>Die meisten Unternehmen unterschätzen, was Sichtbarkeit auslösen kann.</h2>
+      <p>
+        Nicht weil sie es nicht wissen wollen. Sondern weil Kommunikation in vielen
+        Organisationen noch immer als Aufgabe einer Abteilung gilt – und nicht als
+        strategisches Instrument das auf Führungsebene angesiedelt sein muss.
+      </p>
+      <p>
+        Menschen vertrauen heute nicht mehr Logos. Sie vertrauen Menschen. Wenn
+        Führungskräfte und Mitarbeitende eine echte Stimme entwickeln, verändert sich mehr
+        als die Außenwirkung. Es entsteht Vertrauen – im Markt, im Netzwerk und in der
+        Organisation selbst.
+      </p>
+      <p>
+        Und hier passiert etwas, das wir immer wieder erleben und das unsere Kunden
+        regelmäßig überrascht: Wenn ein Corporate Influencer Programm gut angelegt ist,
+        bricht es Silos auf. Menschen aus verschiedenen Abteilungen lernen voneinander.
+        Interne Netzwerke entstehen neu. Mitarbeitende fühlen sich gesehen, weil ihre
+        Expertise plötzlich nach außen zählt. Was als Kommunikationsprojekt beginnt, wird zu
+        echtem Kulturwandel.
+      </p>
+      <blockquote>Die größte ungenutzte Ressource eines Unternehmens sind seine eigenen Menschen.</blockquote>
+      <p>
+        Di-CoCo begleitet diesen Prozess. Strategisch, persönlich und mit dem Wissen, was
+        funktioniert – und was nicht.
+      </p>
+      <a href="#leistungen" class="link-arrow">Was wir konkret tun →</a>
+    </div>
+  </section>
+
+  <section class="leistungen" id="leistungen">
+    <p class="leistungen__eyebrow">Was Di-CoCo macht</p>
+    <h2>Kommunikation, die nach außen wirkt. Weil sie innen verankert ist.</h2>
+    <div class="leistungen__grid">
+      {services.map((service, i) => (
+        <article class="leistung-card" style={`--accent: ${colorMap[service.data.color]}`}>
+          <p class="leistung-card__nr">{String(i + 1).padStart(2, "0")}</p>
+          <h3>{service.data.heroHeadline}</h3>
+          <p>{service.data.heroSubline}</p>
+          <div class="leistung-card__actions">
+            <a href="#kontakt" class="button button--small">{service.data.ctaButtonLabel}</a>
+            <a href={`/${service.data.slug}`} class="link-arrow">Mehr erfahren →</a>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+
+  <section class="ueber-uns" id="ueber-uns">
+    <div class="ueber-uns__inner">
+      <div class="ueber-uns__photo" aria-hidden="true"></div>
+      <div class="ueber-uns__text">
+        <p class="ueber-uns__eyebrow">Wer hinter Di-CoCo steckt</p>
+        <h2>Mehr als zwanzig Jahre Kommunikation. Kein einziger Tag davon war langweilig.</h2>
+        <p>
+          Bianca Schiffgens hat Kommunikation von Grund auf gelernt – in der TV-Produktion in
+          Köln, wo jede Geschichte in Sekunden überzeugen muss. In der Agentur im Bereich
+          Corporate Communication, wo sie verstanden hat, wie Unternehmen innen ticken und
+          wie wenig das oft nach außen sichtbar wird. Als zertifizierter Business-Coach und
+          seit 2016 als Gründerin von Di-CoCo, die genau diesen Widerspruch auflöst.
+        </p>
+        <p>
+          Schon lange bevor Corporate Influencing in aller Munde war, hat Bianca mit
+          Führungspersönlichkeiten und Teams daran gearbeitet, sichtbar zu werden. Nicht mit
+          Hochglanz sondern durch echte Kommunikation. Di-CoCo arbeitet so, wie gute
+          Kommunikation funktioniert: direkt, mit Haltung und immer mit dem Verständnis, dass
+          Sichtbarkeit mehr verändert als Reichweite.
+        </p>
+        <p>
+          Di-CoCo begleitet Unternehmen im deutschsprachigen Raum branchenübergreifend – von
+          Glasfaser-Infrastruktur über E-Commerce bis Spitzensport. Was alle verbindet: der
+          Wunsch nach einer Kommunikation die wirkt, weil sie echt ist.
+        </p>
+        <blockquote>
+          Corporate Influencer Programme installieren wir nur, wenn die Führung mitmacht und
+          vorangeht. Nicht weil wir das so wollen. Sondern weil so am besten funktioniert.
+        </blockquote>
+        <ul class="ueber-uns__credentials">
+          <li>Certified LinkedIn Marketing Insider</li>
+          <li>Favikon Top 10 Communications Experts Germany 2025</li>
+          <li>Autorin Springer Gabler Verlag</li>
+          <li>ca. 24.000 LinkedIn-Follower</li>
+          <li>Co-Organisatorin LinkedIn Local Cologne</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="referenzen" id="referenzen">
+    <h2>Was sich verändert, wenn Di-CoCo dabei ist.</h2>
+    <div class="referenzen__grid">
+      {referenzen.map((r) => (
+        <blockquote class="referenz-card">
+          <p>„{r.zitat}"</p>
+          <cite>{r.name}, {r.rolle}</cite>
+        </blockquote>
+      ))}
+    </div>
+    <div class="referenzen__badges">
+      {branchen.map((b) => <span class="pill">{b}</span>)}
+    </div>
+  </section>
+
+  <section class="presse" id="presse">
+    <h2>Di-CoCo in den Medien.</h2>
+    <ul class="presse__list">
+      {presse.map((p) => (
+        <li><strong>{p.quelle}</strong> – {p.kontext}</li>
+      ))}
+    </ul>
+    <blockquote class="presse__pullquote">
+      „Wer nicht mitmacht, macht den Weg frei für Mitbewerber."
+      <cite>Bianca Schiffgens, Gründerin Di-CoCo</cite>
+    </blockquote>
+    <div class="presse__buch">
+      <p class="presse__buch-label">Autorin · Führung im Wandel · Springer Gabler Verlag</p>
+      <p>Bianca Schiffgens hat einen Beitrag zu Leadership-Kommunikation und digitaler Sichtbarkeit in diesem Fachband veröffentlicht.</p>
+    </div>
+  </section>
+
+  <ContactSection />
+</Layout>
+
+<style>
+  .hero {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 7rem 1.5rem 5rem;
+    text-align: center;
+  }
+
+  .hero__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .hero__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.5rem, 6vw, 4.5rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .hero__orange {
+    color: #ff7a00;
+  }
+
+  .hero__subline {
+    font-size: 1.15rem;
+    opacity: 0.85;
+    max-width: 620px;
+    margin: 0 auto 2rem;
+  }
+
+  .hero__tagline {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 2.5rem;
+  }
+
+  .hero__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-block;
+    background: #ff7a00;
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .button--ghost {
+    background: transparent;
+    border: 1px solid rgba(253, 253, 253, 0.5);
+  }
+
+  .button--small {
+    padding: 0.6rem 1.25rem;
+    font-size: 0.9rem;
+  }
+
+  .link-arrow {
+    color: var(--color-blue);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .bekannt-aus {
+    background: #f5f5f5;
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+  }
+
+  .bekannt-aus__label {
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    opacity: 0.6;
+    margin: 0 0 1.25rem;
+  }
+
+  .bekannt-aus__logos {
+    display: flex;
+    gap: 2.5rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-weight: var(--font-weight-semibold);
+    opacity: 0.55;
+    margin: 0 0 1.25rem;
+  }
+
+  .bekannt-aus__badge {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+
+  .ergebnisse {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 4rem 1.5rem;
+  }
+
+  .ergebnisse__label {
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0 0 2.5rem;
+  }
+
+  .ergebnisse__grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 2rem;
+    text-align: center;
+  }
+
+  .ergebnisse__zahl {
+    color: #ff7a00;
+    font-size: 2.25rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 0.5rem;
+  }
+
+  .ergebnisse__item-label {
+    margin: 0 0 0.4rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .ergebnisse__kontext {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin: 0;
+  }
+
+  .wirkung {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 5rem 1.5rem;
+  }
+
+  .wirkung__inner {
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .wirkung__eyebrow {
+    color: #ff7a00;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+  }
+
+  .wirkung h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .wirkung p {
+    opacity: 0.85;
+    margin: 0 0 1.25rem;
+  }
+
+  .wirkung blockquote {
+    border-left: 3px solid var(--color-blue);
+    padding-left: 1.25rem;
+    font-size: 1.3rem;
+    font-weight: var(--font-weight-medium);
+    margin: 2rem 0;
+  }
+
+  .leistungen {
+    padding: 5rem 1.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .leistungen__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0 0 1rem;
+  }
+
+  .leistungen h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 2.5rem;
+    max-width: 640px;
+  }
+
+  .leistungen__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+  }
+
+  .leistung-card {
+    border: 1px solid rgba(17, 18, 25, 0.1);
+    border-radius: 1rem;
+    padding: 2rem;
+  }
+
+  .leistung-card__nr {
+    color: var(--accent);
+    font-weight: var(--font-weight-bold);
+    font-size: 1.1rem;
+    margin: 0 0 1rem;
+  }
+
+  .leistung-card h3 {
+    font-size: 1.25rem;
+    margin: 0 0 0.75rem;
+  }
+
+  .leistung-card p {
+    opacity: 0.75;
+    margin: 0 0 1.5rem;
+  }
+
+  .leistung-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    flex-wrap: wrap;
+  }
+
+  .leistung-card .button--small {
+    background: var(--accent);
+  }
+
+  .ueber-uns {
+    background: #f5f5f5;
+    padding: 5rem 1.5rem;
+  }
+
+  .ueber-uns__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 340px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+
+  .ueber-uns__photo {
+    aspect-ratio: 3 / 4;
+    background: linear-gradient(160deg, var(--color-blue), #ff7a00);
+    border-radius: 1rem;
+  }
+
+  .ueber-uns__eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    opacity: 0.6;
+    margin: 0 0 1rem;
+  }
+
+  .ueber-uns h2 {
+    font-size: clamp(1.75rem, 4vw, 2.25rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .ueber-uns p {
+    margin: 0 0 1.1rem;
+  }
+
+  .ueber-uns blockquote {
+    border-left: 3px solid var(--color-violet);
+    padding-left: 1.25rem;
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+
+  .ueber-uns__credentials {
+    list-style: none;
+    padding: 0;
+    margin: 1.5rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .ueber-uns__credentials li {
+    background: var(--color-white);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-medium);
+  }
+
+  .referenzen {
+    background: var(--color-black);
+    color: var(--color-white);
+    padding: 5rem 1.5rem;
+  }
+
+  .referenzen h2 {
+    max-width: var(--max-width);
+    margin: 0 auto 2.5rem;
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .referenzen__grid {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .referenz-card {
+    margin: 0;
+    background: rgba(253, 253, 253, 0.06);
+    border-radius: 1rem;
+    padding: 1.75rem;
+  }
+
+  .referenz-card p {
+    margin: 0 0 1rem;
+  }
+
+  .referenz-card cite {
+    font-style: normal;
+    opacity: 0.7;
+    font-size: 0.9rem;
+  }
+
+  .referenzen__badges {
+    max-width: var(--max-width);
+    margin: 2.5rem auto 0;
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .pill {
+    border: 1px solid rgba(253, 253, 253, 0.3);
+    border-radius: 999px;
+    padding: 0.4rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .presse {
+    padding: 5rem 1.5rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+  }
+
+  .presse h2 {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 2rem;
+  }
+
+  .presse__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+  }
+
+  .presse__pullquote {
+    font-size: 1.4rem;
+    font-weight: var(--font-weight-medium);
+    border-left: 3px solid #ff7a00;
+    padding-left: 1.25rem;
+    margin: 0 0 2.5rem;
+  }
+
+  .presse__pullquote cite {
+    display: block;
+    font-style: normal;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-top: 0.75rem;
+  }
+
+  .presse__buch {
+    background: #f5f5f5;
+    border-radius: 1rem;
+    padding: 1.75rem;
+  }
+
+  .presse__buch-label {
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 0.5rem;
+  }
+
+  .presse__buch p:last-child {
+    margin: 0;
+    opacity: 0.75;
+  }
+
+  @media (max-width: 900px) {
+    .ergebnisse__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .leistungen__grid {
+      grid-template-columns: 1fr;
+    }
+
+    .ueber-uns__inner {
+      grid-template-columns: 1fr;
+    }
+
+    .referenzen__grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

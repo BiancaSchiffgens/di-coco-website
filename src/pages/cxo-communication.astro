@@ -1,0 +1,9 @@
+---
+import { getEntry } from "astro:content";
+import ServiceLayout from "../layouts/ServiceLayout.astro";
+
+const entry = await getEntry("services", "cxo-communication");
+if (!entry) throw new Error("Service entry not found: cxo-communication");
+---
+
+<ServiceLayout entry={entry} />
