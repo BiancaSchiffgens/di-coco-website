@@ -87,16 +87,19 @@ const credentials = [
           richtigen Strategie verändert Sichtbarkeit nicht nur, wie ein Unternehmen
           wahrgenommen wird – sie verändert, wie es sich selbst versteht.
         </p>
-        <p class="hero__tagline gradient-text gradient-text--script">Visibility drives business.</p>
-        <div class="hero__actions">
-          <a href="#kontakt" class="button">Lass uns sprechen</a>
-          <a href="#leistungen" class="button button--ghost">Was wir tun</a>
-        </div>
       </div>
       <div class="hero__visual" aria-hidden="true">
         <img class="hero__ribbon" src="/assets/decor/hero-ribbon.png" alt="" />
         <img class="hero__badge" src="/assets/badges/favikon-top10-white.png" alt="" />
       </div>
+    </div>
+  </section>
+
+  <section class="claim">
+    <p class="claim__text gradient-text gradient-text--script">Visibility drives business.</p>
+    <div class="claim__actions">
+      <a href="#kontakt" class="button">Lass uns sprechen</a>
+      <a href="#leistungen" class="button button--outline">Was wir tun</a>
     </div>
   </section>
 
@@ -349,18 +352,27 @@ const credentials = [
     font-size: 1.15rem;
     opacity: 0.85;
     max-width: 560px;
-    margin: 0 0 2rem;
+    margin: 0;
   }
 
-  .hero__tagline {
-    font-size: 2.5rem;
-    margin: 0 0 2.5rem;
+  .claim {
+    background: var(--color-white);
+    padding: 4.5rem 1.5rem 5rem;
+    text-align: center;
   }
 
-  .hero__actions {
+  .claim__text {
+    font-size: clamp(3rem, 11vw, 9rem);
+    line-height: 0.95;
+    max-width: 1080px;
+    margin: 0 0 3rem;
+  }
+
+  .claim__actions {
     display: flex;
     gap: 1rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .button {
@@ -376,9 +388,10 @@ const credentials = [
     font-size: 1rem;
   }
 
-  .button--ghost {
-    background: transparent;
-    border: 1px solid rgba(253, 253, 253, 0.5);
+  .button--outline {
+    background: var(--color-white);
+    color: var(--color-black);
+    border: 1px solid rgba(17, 18, 25, 0.25);
   }
 
   .link-arrow {
@@ -514,8 +527,9 @@ const credentials = [
   }
 
   .wirkung__label {
-    font-size: 2.5rem;
-    margin-top: 2rem;
+    font-size: clamp(3rem, 7vw, 5.5rem);
+    line-height: 0.85;
+    margin-top: 3rem;
   }
 
   .quote-band {
@@ -814,9 +828,9 @@ const credentials = [
   }
 
   .presse__pullquote {
-    font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+    font-size: clamp(2.25rem, 7vw, 5rem);
     margin: 0 0 3rem;
-    line-height: 1.3;
+    line-height: 1;
   }
 
   .presse__pullquote cite {
@@ -825,7 +839,7 @@ const credentials = [
     font-style: normal;
     font-size: 0.9rem;
     opacity: 0.6;
-    margin-top: 1rem;
+    margin-top: 2rem;
   }
 
   .presse__buch {
