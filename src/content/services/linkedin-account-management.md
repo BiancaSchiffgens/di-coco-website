@@ -2,7 +2,7 @@
 order: 3
 title: "LinkedIn Account Management"
 slug: "linkedin-account-management"
-color: "violett"
+color: "blau"
 navLabel: "LinkedIn Account Management"
 pageTitle: "LinkedIn Account Management für Unternehmen und Führungskräfte – Di-CoCo"
 metaDescription: "Di-CoCo übernimmt das vollständige strategische LinkedIn Account Management für Führungspersönlichkeiten und Unternehmen. Redaktion, Community, Reporting – alles aus einer Hand."

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="Ebene_1" data-name="Ebene 1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 669.92 672">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: url(#Unbenannter_Verlauf_22-2);
+      }
+
+      .cls-2 {
+        fill: url(#Unbenannter_Verlauf_22-3);
+      }
+
+      .cls-3 {
+        fill: url(#Unbenannter_Verlauf_22);
+      }
+    </style>
+    <linearGradient id="Unbenannter_Verlauf_22" data-name="Unbenannter Verlauf 22" x1="109.92" y1="384.52" x2="262.05" y2="384.52" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ff4b00"/>
+      <stop offset=".1" stop-color="#f94a05"/>
+      <stop offset=".22" stop-color="#ea4814"/>
+      <stop offset=".36" stop-color="#d0462e"/>
+      <stop offset=".51" stop-color="#ac4252"/>
+      <stop offset=".66" stop-color="#7e3e80"/>
+      <stop offset=".82" stop-color="#4638b8"/>
+      <stop offset=".99" stop-color="#0532f9"/>
+      <stop offset="1" stop-color="#0032ff"/>
+    </linearGradient>
+    <linearGradient id="Unbenannter_Verlauf_22-2" data-name="Unbenannter Verlauf 22" x1="279.72" y1="219.44" x2="555.9" y2="219.44" xlink:href="#Unbenannter_Verlauf_22"/>
+    <linearGradient id="Unbenannter_Verlauf_22-3" data-name="Unbenannter Verlauf 22" x1="388.59" y1="425.86" x2="433.92" y2="425.86" xlink:href="#Unbenannter_Verlauf_22"/>
+  </defs>
+  <g>
+    <path class="cls-3" d="M211.03,255.25l51.02-16.59-24.9-24.37-52.11,17.15c8.33,48.89,44.19,80.88,44.19,80.88-154.76,77.43-114.62,219.03-114.62,219.03l24.13,23.4s0-.06,0-.09c-1.12-4.5-34.39-144.16,116.29-218.82.18-.12.29-.18.29-.18-.03-.03-.07-.07-.1-.1-2.33-2.2-36.35-34.91-43.95-79.09-.15-.77-.21-1.18-.22-1.21,0,0,0,0,0,0h0Z"/>
+    <path class="cls-1" d="M555.9,141.7l-25.16-24.47-52.26,17.77s17.9,67.66-38.14,122.52c-56.03,54.85-125.88,45.25-160.62,23.07,57.54,71.3,231.68,61.31,224.43-122.89l51.75-15.99Z"/>
+    <path class="cls-2" d="M388.59,392.96c12.75,11.55,19.4,40.76,19.4,40.76l25.93,25.05s0,0,0,0c-3.96-29.08-21.43-51.52-45.33-65.81Z"/>
+  </g>
+  <path d="M262.05,238.66c12.2,111.72,250.56,133.89,242.1-80.97l51.75-15.99s37.55,140.51-116.66,218.71c0,0,34.82,30.42,46.69,81.36l-52,17c-16.16-118.6-256.87-126.93-242.93,79.03l-52.23,16.97s-36.95-143.24,116.58-219.09c0,0-36.88-34.05-44.31-80.43l51.02-16.59Z"/>
+</svg>

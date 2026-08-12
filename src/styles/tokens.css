@@ -32,6 +32,14 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Soge";
+  src: url("/fonts/Soge-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   /* Farben */
   --color-black: #111219;
@@ -42,6 +50,7 @@
 
   /* Typo */
   --font-family: "Miranda Sans", system-ui, sans-serif;
+  --font-family-script: "Soge", cursive;
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
@@ -91,4 +100,17 @@ img,
 svg {
   max-width: 100%;
   display: block;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-violet) 50%, #ff7a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.gradient-text--script {
+  font-family: var(--font-family-script);
+  font-weight: 400;
 }

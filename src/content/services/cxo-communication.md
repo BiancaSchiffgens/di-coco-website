@@ -2,7 +2,7 @@
 order: 2
 title: "CXO Communication"
 slug: "cxo-communication"
-color: "blau"
+color: "violett"
 navLabel: "CXO Communication"
 pageTitle: "CXO Communication – LinkedIn-Strategie für Führungskräfte | Di-CoCo"
 metaDescription: "Di-CoCo entwickelt LinkedIn-Strategien und Content für Führungskräfte und Geschäftsführer. Positionierung, Messaging und redaktionelle Begleitung – damit Ihre Stimme wirkt."
