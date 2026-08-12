@@ -46,6 +46,14 @@ const presse = [
   { quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
   { quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
 ];
+
+const bekanntAusLogos = [
+  { src: "/assets/press/bild.png", alt: "BILD", width: 92 },
+  { src: "/assets/press/gruendermagazin.png", alt: "Gründermagazin", width: 186 },
+  { src: "/assets/press/rheinzeiger.png", alt: "Rheinzeiger", width: 84 },
+  { src: "/assets/press/djv-nrw-journal.png", alt: "DJV NRW Journal", width: 220 },
+  { src: "/assets/press/springer-gabler.png", alt: "Springer Gabler", width: 174 },
+];
 ---
 
 <Layout
@@ -73,7 +81,9 @@ const presse = [
   <section class="bekannt-aus">
     <p class="bekannt-aus__label">Bekannt aus</p>
     <div class="bekannt-aus__logos">
-      <span>BILD</span><span>Gründermagazin</span><span>Rheinzeiger</span><span>DJV NRW Journal</span><span>Springer Gabler</span>
+      {bekanntAusLogos.map((logo) => (
+        <img src={logo.src} alt={logo.alt} style={`width: ${logo.width}px`} loading="lazy" />
+      ))}
     </div>
     <p class="bekannt-aus__badge">Favikon Top 10 Communications Experts Germany 2025</p>
   </section>
@@ -308,12 +318,18 @@ const presse = [
 
   .bekannt-aus__logos {
     display: flex;
-    gap: 2.5rem;
+    align-items: center;
+    gap: 3rem;
     justify-content: center;
     flex-wrap: wrap;
-    font-weight: var(--font-weight-semibold);
-    opacity: 0.55;
     margin: 0 0 1.25rem;
+  }
+
+  .bekannt-aus__logos img {
+    height: auto;
+    max-height: 42px;
+    opacity: 0.65;
+    filter: grayscale(1);
   }
 
   .bekannt-aus__badge {
