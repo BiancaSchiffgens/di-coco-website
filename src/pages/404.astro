@@ -1,0 +1,84 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="404 – Diese Seite hat sich unsichtbar gemacht | Di-CoCo"
+  description="Diese Seite wurde nicht gefunden. Zurück zur Startseite von Di-CoCo."
+>
+  <meta name="robots" content="noindex" slot="head" />
+
+  <section class="notfound">
+    <div class="notfound__inner">
+      <p class="notfound__code">404</p>
+      <h1 class="gradient-text gradient-text--script">Unsichtbar geworden.</h1>
+      <p class="notfound__text">
+        Ausgerechnet diese Seite hat es mit der Sichtbarkeitsstrategie nicht so genau genommen.
+        Entweder gab es sie nie, oder sie ist umgezogen, ohne Bescheid zu sagen – auch Kommunikationsprofis
+        können sich nicht um jede einzelne URL persönlich kümmern.
+      </p>
+      <div class="notfound__actions">
+        <a href="/" class="button">Zurück zur Startseite</a>
+        <a href="/#kontakt" class="button button--ghost">Kontakt aufnehmen</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .notfound {
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 5rem 1.5rem;
+  }
+
+  .notfound__inner {
+    max-width: 640px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .notfound__code {
+    font-size: 1rem;
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    opacity: 0.5;
+    margin: 0 0 1rem;
+  }
+
+  .notfound h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .notfound__text {
+    opacity: 0.85;
+    margin: 0 0 2.5rem;
+    line-height: 1.6;
+  }
+
+  .notfound__actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .button {
+    display: inline-block;
+    background: var(--color-orange);
+    color: var(--color-white);
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 999px;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .button--ghost {
+    background: transparent;
+    color: var(--color-black);
+    border: 1px solid currentColor;
+  }
+</style>
