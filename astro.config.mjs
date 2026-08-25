@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://di-coco.de',
+  site: 'https://di-coco.com',
   trailingSlash: 'always',
   integrations: [sitemap()],
 });

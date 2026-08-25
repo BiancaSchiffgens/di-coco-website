@@ -1,7 +1,5 @@
 ---
-// TODO vor Go-live: Formspree-Account anlegen (formspree.io) und die eigene
-// Form-ID unten eintragen, damit Formular-Zustellung an kontakt@di-coco.de funktioniert.
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/DEINE_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
 ---
 
 <section class="kontakt" id="kontakt">
@@ -16,7 +14,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/DEINE_FORM_ID";
 
     <form class="kontakt__form" action={FORMSPREE_ENDPOINT} method="POST" data-kontakt-form>
       <input type="text" name="_gotcha" class="kontakt__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
-      <input type="hidden" name="_subject" value="Neue Anfrage über di-coco.de" />
+      <input type="hidden" name="_subject" value="Neue Anfrage über di-coco.com" />
       <div class="kontakt__row">
         <label>
           Name
