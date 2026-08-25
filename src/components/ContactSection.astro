@@ -14,7 +14,9 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/DEINE_FORM_ID";
       erste Gespräch ist kostenlos, unverbindlich und ohne Pitch.
     </p>
 
-    <form class="kontakt__form" action={FORMSPREE_ENDPOINT} method="POST">
+    <form class="kontakt__form" action={FORMSPREE_ENDPOINT} method="POST" data-kontakt-form>
+      <input type="text" name="_gotcha" class="kontakt__honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+      <input type="hidden" name="_subject" value="Neue Anfrage über di-coco.de" />
       <div class="kontakt__row">
         <label>
           Name
@@ -31,11 +33,49 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/DEINE_FORM_ID";
       </label>
       <button type="submit" class="button button--light">Kostenloses Erstgespräch vereinbaren</button>
       <p class="kontakt__hint">30 Minuten · kostenlos · ohne Verpflichtung · Antwort innerhalb von 24 Stunden</p>
+      <p class="kontakt__status" role="status" aria-live="polite"></p>
     </form>
 
     <a href="mailto:kontakt@di-coco.de" class="kontakt__mailto">Oder direkt per E-Mail: kontakt@di-coco.de</a>
   </div>
 </section>
+
+<script>
+  const form = document.querySelector<HTMLFormElement>("[data-kontakt-form]");
+
+  form?.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const statusEl = form.querySelector<HTMLParagraphElement>(".kontakt__status");
+    const submitBtn = form.querySelector<HTMLButtonElement>("button[type=submit]");
+    if (!statusEl || !submitBtn) return;
+
+    submitBtn.disabled = true;
+    statusEl.textContent = "Wird gesendet …";
+    statusEl.classList.remove("kontakt__status--error", "kontakt__status--success");
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: { Accept: "application/json" },
+      });
+
+      if (response.ok) {
+        form.reset();
+        statusEl.textContent = "Danke! Deine Nachricht ist angekommen – wir melden uns innerhalb von 24 Stunden.";
+        statusEl.classList.add("kontakt__status--success");
+      } else {
+        throw new Error("submit failed");
+      }
+    } catch {
+      statusEl.textContent = "Da ist leider etwas schiefgelaufen. Schreib uns gern direkt an kontakt@di-coco.de.";
+      statusEl.classList.add("kontakt__status--error");
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .kontakt {
@@ -113,6 +153,30 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/DEINE_FORM_ID";
     font-size: 0.85rem;
     opacity: 0.85;
     margin: 0;
+  }
+
+  .kontakt__honeypot {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  .kontakt__status {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+    min-height: 1.2em;
+  }
+
+  .kontakt__status--success {
+    color: var(--color-white);
+  }
+
+  .kontakt__status--error {
+    color: var(--color-black);
   }
 
   .kontakt__mailto {

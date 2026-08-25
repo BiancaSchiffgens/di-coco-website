@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
         <ul>
           {services.map((service) => (
             <li>
-              <a href={`/${service.data.slug}`} aria-current={currentPath === `/${service.data.slug}` ? "page" : undefined}>
+              <a href={`/${service.data.slug}/`} aria-current={currentPath === `/${service.data.slug}/` ? "page" : undefined}>
                 {service.data.navLabel}
               </a>
             </li>

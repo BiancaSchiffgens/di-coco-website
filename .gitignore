@@ -22,3 +22,8 @@ pnpm-debug.log*
 
 # jetbrains setting folder
 .idea/
+
+# internal design source files and planning docs — kept locally only,
+# not published to this now-public GitHub repo
+/Design/
+/docs/
