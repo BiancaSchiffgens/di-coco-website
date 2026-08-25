@@ -1,82 +1,264 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const faqs = [
+const categories = [
   {
-    frage: "Was ist ein Corporate Influencer Programm genau?",
-    antwort:
-      "Ein Corporate Influencer Programm ist ein strategisches Kommunikationsprogramm, bei dem Mitarbeitende eines Unternehmens ihre eigene Stimme auf digitalen Plattformen – vor allem LinkedIn – entwickeln und als glaubwürdige Botschafter ihrer Organisation auftreten. Im Unterschied zu klassischer Unternehmenskommunikation oder Werbung wirkt diese Form der Kommunikation, weil sie von echten Menschen kommt, die ihren Berufsalltag, ihre Expertise und ihre Haltung sichtbar machen. Di-CoCo entwickelt, installiert und begleitet diese Programme vom strategischen Konzept bis zur nachhaltigen Verankerung in der Unternehmenskultur.",
+    "title": "Grundlagen",
+    "tagline": "Was ist ein Corporate Influencer Programm?",
+    "qa": [
+      {
+        "frage": "Was ist ein Corporate Influencer Programm?",
+        "antwort": "Ein Corporate Influencer Programm ist ein strategisches Kommunikationsprogramm, bei dem Mitarbeitende eines Unternehmens ihre persönliche Stimme auf digitalen Plattformen – vor allem LinkedIn – entwickeln und authentisch als Botschafter ihrer Organisation auftreten. Anders als klassische Unternehmenskommunikation, Werbung oder PR funktioniert diese Form der Kommunikation, weil echte Menschen sprechen: mit ihrer eigenen Expertise, ihren persönlichen Erfahrungen und ihrer individuellen Perspektive. Das erzeugt Vertrauen, das kein Corporate Account und keine Anzeige ersetzen kann.  Di-CoCo entwickelt, installiert und begleitet Corporate Influencer Programme – von der strategischen Konzeption über die Auswahl und Begleitung der Teilnehmenden bis zur nachhaltigen Verankerung in der Unternehmenskultur."
+      },
+      {
+        "frage": "Was ist der Unterschied zwischen Corporate Influencer und Personal Branding?",
+        "antwort": "Personal Branding ist die strategische Entwicklung der persönlichen Marke einer Einzelperson – unabhängig von einem Unternehmen oder Arbeitgeber. Das Ziel ist, als Experte wahrgenommen zu werden und eine eigene Sichtbarkeit und Reputation aufzubauen.  Ein Corporate Influencer ist eine Person, die ihre persönliche Stimme und Expertise in den Dienst eines Unternehmens stellt – authentisch, aber mit dem Ziel, auch die Arbeitgebermarke, die Unternehmensreputation oder die Ziele des Unternehmens zu stärken. Corporate Influencer haben eine eigene Positionierung, aber sie kommunizieren auch als Teil des Unternehmens.  Di-CoCo begleitet beides: die persönliche Positionierung von Führungskräften (CXO Communication) und den strukturierten Aufbau von Corporate Influencer Programmen für Teams und Abteilungen."
+      },
+      {
+        "frage": "Was ist der Unterschied zwischen Corporate Influencer Programm und Employee Advocacy?",
+        "antwort": "Employee Advocacy und Corporate Influencer Programme werden häufig synonym verwendet – es gibt aber einen wichtigen Unterschied in Tiefe und Ansatz.  Employee Advocacy bezeichnet in der Regel alle Maßnahmen, bei denen Mitarbeitende Inhalte des Unternehmens teilen oder weiterverbreiten. Das kann sehr einfach sein: Mitarbeitende teilen einen LinkedIn-Post des Unternehmens. Die Authentizität und der persönliche Mehrwert sind oft begrenzt.  Corporate Influencer Programme gehen weiter. Hier entwickeln Mitarbeitende eine eigene Stimme, eigene Perspektiven und eigene Inhalte. Sie werden zu echten Kommunikatorinnen und Kommunikatoren – nicht zu Verteilerinnen und Verteilern von Unternehmens-Content. Der Unterschied in der Wirkung ist erheblich: Authentische Stimmen erzeugen Vertrauen, geteilte Corporate-Posts werden ignoriert.  Di-CoCo installiert Corporate Influencer Programme – keine Employee-Advocacy-Kampagnen."
+      },
+      {
+        "frage": "Was ist Social Selling und wie hängt es mit Corporate Influencern zusammen?",
+        "antwort": "Social Selling beschreibt den Einsatz sozialer Netzwerke – vor allem LinkedIn – um Kundenbeziehungen aufzubauen, Vertrauen zu schaffen und letztlich den Vertrieb zu unterstützen. Anstatt auf Kaltakquise zu setzen, werden potenzielle Kunden durch hilfreiche Inhalte und sichtbare Expertise angesprochen.  Corporate Influencer sind oft auch Social Seller – ohne es explizit so zu nennen. Wenn ein Vertriebsmitarbeitender auf LinkedIn regelmäßig Einblicke in die Branche teilt und sich als Experte positioniert, ist das Social Selling durch Corporate Influencing. Di-CoCo integriert Social-Selling-Strategien in die Programme – für Unternehmen die LinkedIn nicht nur als Sichtbarkeits-Kanal, sondern auch als Vertriebskanal nutzen wollen."
+      },
+      {
+        "frage": "Was ist Thought Leadership und was hat es mit Corporate Influencer Programmen zu tun?",
+        "antwort": "Thought Leadership beschreibt die Position eines Unternehmens oder einer Person als anerkannte Vordenkerin in einem bestimmten Themenbereich. Thought Leader werden nicht nur als Experten wahrgenommen, sondern als Menschen die Entwicklungen antizipieren, Debatten prägen und anderen Orientierung geben.  Corporate Influencer Programme sind ein effektiver Weg, um Thought Leadership aufzubauen – sowohl auf Unternehmensebene als auch auf persönlicher Ebene der Teilnehmenden. Di-CoCo entwickelt Themenarchitekturen und Content-Strategien, die gezielt auf Thought Leadership einzahlen: Welche Themen will das Unternehmen besetzen? Welche Personen sind die glaubwürdigsten Stimmen dafür?"
+      }
+    ],
+    "slug": "grundlagen"
   },
   {
-    frage: "Was unterscheidet Di-CoCo von anderen Agenturen?",
-    antwort:
-      "Di-CoCo begleitet Corporate Influencer Programme ausschließlich, wenn die Führungsebene aktiv mitmacht und selbst sichtbar wird. Das ist keine Einschränkung, das ist Qualitätssicherung. Programme ohne Führungsbeteiligung werden zur Pflichtveranstaltung und bringen keine authentischen Stimmen hervor. Darüber hinaus arbeitet Di-CoCo mit einem klaren Blick auf den internen Effekt von Kommunikation: Sichtbarkeit nach außen verändert Kultur nach innen. Di-CoCo begleitet Unternehmen branchenübergreifend im deutschsprachigen Raum – manche Kundenbeziehungen seit fast fünf Jahren.",
+    "title": "Ablauf und Prozess",
+    "tagline": "Wie läuft die Zusammenarbeit ab?",
+    "qa": [
+      {
+        "frage": "Wie läuft ein Erstgespräch mit Di-CoCo ab?",
+        "antwort": "Das Erstgespräch dauert 30 Minuten und ist kostenlos. Es gibt keine Präsentation, keinen Pitch und kein Angebot. Wir sprechen darüber: was euer Unternehmen macht und wo ihr kommunikativ steht, was ihr mit einem Programm erreichen wollt, ob die Voraussetzungen für ein Corporate Influencer Programm gegeben sind – insbesondere die Bereitschaft der Führungsebene mitzumachen. Am Ende des Gesprachs weiß ihr, ob und wie wir zusammenarbeiten können. Wenn es passt, machen wir einen konkreten nächsten Schritt. Wenn nicht, bekommt ihr trotzdem ehrliches Feedback und konkrete Empfehlungen. Anfragen werden innerhalb von 24 Stunden beantwortet."
+      },
+      {
+        "frage": "Wie lange dauert der Aufbau eines Corporate Influencer Programms?",
+        "antwort": "Ein realistischer Zeitraum für spürbare und nachhaltige Wirkung sind sechs bis zwölf Monate. Die Phase gliedert sich typischerweise so:  Monate 1-2: Strategie-Setup, Programm-Design, Teilnehmerauswahl, erster Workshop-Block. Die Teilnehmenden lernen LinkedIn, entwickeln ihre persönliche Positionierung und schreiben erste Inhalte.  Monate 3-4: Erster regelmäßiger Content geht live. Erste Ergebnisse werden sichtbar. Individuelle Begleitung und Feedback-Schleifen stabilisieren die Qualität.  Monate 5-8: Die Routine entsteht. Reichweite und Netzwerk wachsen. Interne Effekte werden spürbar: Mitarbeitende tauschen sich abteilungsübergreifend aus, das Programm bekommt im Unternehmen Sichtbarkeit.  Monate 9-12: Vertiefung, Weiterentwicklung, Messung der Gesamtwirkung. Vorbereitung der internen Verankerung."
+      },
+      {
+        "frage": "Wie viel Zeit müssen unsere Mitarbeitenden investieren?",
+        "antwort": "Das hängt vom Programm-Design ab und ist einer der ersten Punkte die wir gemeinsam klären. Di-CoCo entwickelt Programme so, dass der Zeitaufwand realistisch und in den Berufsalltag integrierbar ist. Wer ein Programm mit zu hohem Zeitdruck aufbaut, bekommt keine authentischen Inhalte – sondern erschöpfte Mitarbeitende die schnell wieder aufhören.  Faustregel für die laufende Phase: ein bis zwei Stunden pro Woche für Content-Erstellung, Community-Pflege und Netzwerkpflege. Dazu kommen monatliche Austausch-Termine von 60-90 Minuten.  Der initiale Workshop-Block zu Beginn ist zeitintensiver: typischerweise ein halber bis ganzer Tag, manchmal aufgeteilt auf mehrere Termine. Das wird im Vorfeld transparent kommuniziert und gemeinsam in den Kalender geplant. Niemand wird mit einem Programm überrumpelt."
+      },
+      {
+        "frage": "Wie läuft das Content-Feedback und die Freigabe ab?",
+        "antwort": "Di-CoCo entwickelt gemeinsam mit den Teilnehmenden einen Content-Prozess, der zu ihrer Arbeitsweise passt. In der Praxis bedeutet das: Die Teilnehmenden entwickeln ihre Inhalte mit Unterstützung von Di-CoCo. Es gibt klare Feedback-Schleifen – entweder direkt im Gespräch oder asynchron per Kommentar. Eine formale Freigabe durch das Unternehmen ist möglich und in manchen Organisationen sinnvoll, wird aber bewusst schlank gehalten. Zu viel Kontrolle tötet Authentizität. Zu wenig Orientierung führt zu Fehlern. Di-CoCo findet den richtigen Mittelweg für jede Organisation."
+      }
+    ],
+    "slug": "ablauf-und-prozess"
   },
   {
-    frage: "Für welche Unternehmensgröße ist ein Corporate Influencer Programm geeignet?",
-    antwort:
-      "Corporate Influencer Programme funktionieren ab einer Unternehmensgröße von etwa 20 Mitarbeitenden und sind nach oben offen. Entscheidend ist nicht die Größe, sondern die Bereitschaft der Führungsebene mitzumachen. Di-CoCo arbeitet mit mittelständischen Unternehmen genauso wie mit größeren Organisationen – branchenübergreifend, von Glasfaser-Infrastruktur bis Spitzensport. Das Programm-Design wird immer an die tatsächliche Unternehmensgröße und Kultur angepasst.",
+    "title": "Kosten und Konditionen",
+    "tagline": "Was kostet es, wie ist der Vertrag?",
+    "qa": [
+      {
+        "frage": "Was kostet ein Corporate Influencer Programm?",
+        "antwort": "Die Kosten hängen vom Umfang, der Anzahl der Teilnehmenden und der Laufzeit des Programms ab. Di-CoCo entwickelt keine Einheitslösungen und nennt deshalb keine Pauschalpreise – weil ein Programm für fünf Teilnehmende in einem KMU ein anderes Budget braucht als ein Programm für zwanzig Teilnehmende in einer größeren Organisation.  Was wir sagen können: Di-CoCo arbeitet fair, marktgemäß und mit dem Anspruch auf echte Wirkung. Billige Programme die nicht funktionieren sind die teuersten. Im kostenlosen Erstgespräch besprechen wir eure Ziele und geben eine ehrliche Einschätzung, was ein Programm für euch kosten würde – transparent und ohne versteckte Kosten.  Die Ergebnisse die wir für unsere Kunden erzielen, zeigen den Wert: von 0 auf 220.000 Impressionen in fünf Monaten, von 0 auf 8.000 qualifizierte Follower in der Zielgruppe."
+      },
+      {
+        "frage": "Gibt es einen Vertrag und welche Laufzeit hat er?",
+        "antwort": "Ja, die Zusammenarbeit wird vertraglich geregelt – das ist im beiderseitigen Interesse. Die Laufzeit hängt vom Programmformat ab. Für einen vollständigen Corporate Influencer Programmaufbau empfehlen wir eine Mindestlaufzeit von sechs Monaten, weil nachhaltige Kommunikationsveränderung Zeit braucht. Programme die nach drei Monaten abgebrochen werden, zeigen keine belastbaren Ergebnisse.  Für das LinkedIn Account Management gibt es typischerweise einen Mindestrahmen von drei Monaten, danach monatliche Verlängerung. Die genauen Konditionen – Laufzeit, Kündigungsfristen, Leistungsumfang – werden im Angebotsprozess transparent festgelegt. Nichts im Kleingedruckten."
+      },
+      {
+        "frage": "Können wir die Zusammenarbeit vorzeitig beenden?",
+        "antwort": "Ja, mit den vertraglich vereinbarten Kündigungsfristen. Di-CoCo setzt bewusst keine überlangen Bindungsfristen ein – wer gehen will, soll gehen können. In der Praxis erleben wir aber das Gegenteil: Unsere längsten Kundenbeziehungen laufen seit fast fünf Jahren, weil die Zusammenarbeit Wirkung zeigt und sich der Weitermachen lohnt. Wer Zweifel hat, ob ein Programm zu seinem Unternehmen passt, sollte das im Erstgespräch ansprechen – dann finden wir gemeinsam heraus ob und in welchem Format eine Zusammenarbeit sinnvoll ist."
+      },
+      {
+        "frage": "Bietet Di-CoCo auch Einzelleistungen ohne langfristige Zusammenarbeit an?",
+        "antwort": "Ja. Di-CoCo bietet neben den vollständigen Programmen auch fokussierte Einzelleistungen an: LinkedIn-Profiloptimierung für Führungskräfte, einmalige Strategie-Sessions, Keynotes und Workshops zu Corporate Communication und LinkedIn-Strategie, sowie Schulungen für Programmverantwortliche. Für Unternehmen die noch nicht sicher sind ob ein vollständiges Programm das Richtige ist, kann ein Workshop oder eine Strategie-Session ein guter erster Schritt sein. Einfach im Erstgespräch ansprechen."
+      }
+    ],
+    "slug": "kosten-und-konditionen"
   },
   {
-    frage: "Wie lange dauert ein Corporate Influencer Programm?",
-    antwort:
-      "Ein realistischer Zeitraum für spürbare Wirkung sind sechs bis zwölf Monate. In den ersten zwei bis drei Monaten liegt der Fokus auf Strategie, Workshops und dem Aufbau einer persönlichen Positionierung für jeden Teilnehmenden. Ab Monat drei bis vier entsteht regelmäßiger Content und erste Ergebnisse werden sichtbar. Die Monate sechs bis zwölf festigen den Ansatz und bauen nachhaltige Kommunikationsstrukturen auf.",
+    "title": "Ergebnisse und Erfolg",
+    "tagline": "Was können wir erwarten?",
+    "qa": [
+      {
+        "frage": "Welche Ergebnisse hat Di-CoCo für Kunden erzielt?",
+        "antwort": "Aus unseren Kundenprojekten:  Corporate Influencerin aufgebaut – von 0 auf über 8.000 qualifizierte Follower in der Zielgruppe. Für ein E-Commerce-Unternehmen haben wir die LinkedIn-Präsenz von Grund auf aufgebaut: 220.000 Impressionen und über 10.000 Follower in fünf Monaten. Unsere längste Account-Management-Kundenbeziehung läuft seit fast fünf Jahren mit 100-prozentiger Verlängerungsrate.  Nicht alle Ergebnisse sind in Zahlen messbar – und die wichtigsten oft gar nicht. W. Weigel, Geschäftsführer der Filoform GmbH, hat es so beschrieben: Das Programm hat nicht nur die Online-Präsenz optimiert, sondern intern eine neue Dynamik geschaffen. Das ist die Wirkung für die wir arbeiten."
+      },
+      {
+        "frage": "Wie schnell sehen wir erste Ergebnisse?",
+        "antwort": "Erste messbare LinkedIn-Ergebnisse – steigende Impressionen, wachsendes Netzwerk, erste Kommentare und Reaktionen – entstehen typischerweise nach vier bis acht Wochen regelmäßiger Aktivität. Der entscheidende Faktor ist Regelmäßigkeit: Wer drei Posts macht und dann aufhört, sieht keine Ergebnisse.  Substanzielle Ergebnisse – veränderte Wahrnehmung im Markt, eingehende Anfragen über LinkedIn, Verbesserung der Arbeitgebermarke, interner Kulturwandel – entwickeln sich über sechs bis zwölf Monate. Das klingt lang, ist aber realistisch. Kommunikation die sich in Monaten aufbaut, hält dafür Jahre. Schnelle Hacks halten Wochen."
+      },
+      {
+        "frage": "Wie wird der Erfolg gemessen?",
+        "antwort": "Di-CoCo misst Erfolg auf drei Ebenen gleichzeitig:  Quantitative LinkedIn-Metriken: Impressionen, Reichweite, Engagement-Rate (Likes, Kommentare, Shares), Profilaufrufe, Follower-Wachstum, Verbindungsanfragen. Diese Zahlen liefert LinkedIn Analytics und werden monatlich ausgewertet.  Qualitative Indikatoren: Wie wird das Unternehmen auf Messen wahrgenommen? Kommen Anfragen über LinkedIn? Erkennen potenzielle Bewerberinnen und Bewerber die Unternehmensmarke? Wie hat sich die Wahrnehmung im Netzwerk verändert?  Interne Indikatoren: Haben Abteilungssilos sich verändert? Sprechen Mitarbeitende abteilungsübergreifend miteinander? Wie hat sich die Mitarbeiterzufriedenheit entwickelt? Diese Dimension ist die schwierigste zu messen – aber oft die wirkungsreichste.  Alle Ergebnisse werden in monatlichen Reports dokumentiert und transparent kommuniziert."
+      },
+      {
+        "frage": "Was wenn die Ergebnisse nicht unseren Erwartungen entsprechen?",
+        "antwort": "Das sprechen wir dann direkt an – frühzeitig, nicht erst am Ende der Laufzeit. Di-CoCo arbeitet mit monatlichen Reportings und regelmäßigen Strategie-Reviews, damit wir nicht monatelang in die falsche Richtung arbeiten. Wenn etwas nicht funktioniert, passen wir die Strategie an. Wenn die Ursache strukturell ist – zum Beispiel zu wenig Führungsbeteiligung oder zu wenig Engagement der Teilnehmenden – sprechen wir das klar an. Gute Kommunikation mit dem Kunden ist für Di-CoCo genauso wichtig wie gute Kommunikation nach außen."
+      }
+    ],
+    "slug": "ergebnisse-und-erfolg"
   },
   {
-    frage: "Wie schnell sehen wir Ergebnisse?",
-    antwort:
-      "Das hängt vom Ausgangspunkt und der Konsequenz ab. Aus unserer Praxis mit Kunden: Ein E-Commerce-Unternehmen, das wir von Grund auf aufgebaut haben, hatte nach fünf Monaten 220.000 Impressionen und über 10.000 Follower. Eine Corporate Influencerin, die wir begleitet haben, stand nach dem Programm bei über 8.000 qualifizierten Followern in ihrer Zielgruppe – von Null. Erste sichtbare Ergebnisse entstehen typischerweise nach vier bis acht Wochen. Nachhaltige Wirkung entwickelt sich über sechs bis zwölf Monate.",
+    "title": "Zielgruppe und Voraussetzungen",
+    "tagline": "Passt das zu uns?",
+    "qa": [
+      {
+        "frage": "Für welche Unternehmensgröße ist ein Corporate Influencer Programm geeignet?",
+        "antwort": "Corporate Influencer Programme funktionieren ab einer Unternehmensgröße von etwa 20 Mitarbeitenden und sind nach oben offen. Entscheidend ist nicht die Größe, sondern die Bereitschaft der Führungsebene mitzumachen und eine klare Kommunikationsstrategie als Grundlage.  Di-CoCo arbeitet branchenübergreifend mit mittelständischen Unternehmen und größeren Organisationen im deutschsprachigen Raum – von Glasfaser-Infrastruktur über Kreditversicherung bis Spitzensport. Das Programm-Design wird immer an die Unternehmensgröße, die interne Kommunikationskultur und die verfügbaren Ressourcen angepasst.  Kleine Unternehmen brauchen kein aufwendiges Programm – manchmal reicht es, ein bis zwei Schlüssel-Personen strategisch aufzubauen. Auch das begleitet Di-CoCo."
+      },
+      {
+        "frage": "Für welche Branchen macht ein Corporate Influencer Programm Sinn?",
+        "antwort": "Im Prinzip für jede Branche in der Menschen Vertrauen zu anderen Menschen aufbauen – also für fast alle. Di-CoCo begleitet Unternehmen aus Industrie, Technologie, Beratung, Finanzdienstleistung, E-Commerce, Energie, Recht, Gesundheitswesen und Spitzensport.  Besonders stark ist die Wirkung in B2B-Branchen, in denen Kaufentscheidungen auf Vertrauen und Expertise basieren: Wer den CEO oder die Expertin eines Unternehmens auf LinkedIn kennt und schätzt, kauft lieber und empfiehlt weiter. Auch für Arbeitgebermarken in Branchen mit Fachkräftemangel ist ein Programm ein direkter Hebel: Mitarbeitende die authentisch über ihre Arbeit sprechen, ziehen genau die Bewerberinnen und Bewerber an, die zu diesem Unternehmen passen."
+      },
+      {
+        "frage": "Müssen unsere Mitarbeitenden schon LinkedIn-Erfahrung haben?",
+        "antwort": "Nein. Die meisten Teilnehmenden in Di-CoCo-Programmen starten mit einem unvollständigen Profil, wenig Netzwerk und dem Gefühl, LinkedIn nicht wirklich zu verstehen. Das ist der Normalfall, kein Problem.  Di-CoCo begleitet Teilnehmende von Grund auf: LinkedIn-Grundlagen, Profil-Optimierung, erstes Content-Erstellen, Netzwerkaufbau. Wer schon aktiv auf LinkedIn ist, profitiert von der strategischen Weiterentwicklung. Wer noch nie gepostet hat, lernt es strukturiert und ohne Druck.  Was viel entscheidender ist als LinkedIn-Erfahrung: die Bereitschaft, über die eigene Arbeit zu sprechen und offen für einen neuen Kommunikationsansatz zu sein."
+      },
+      {
+        "frage": "Was wenn unsere Mitarbeitenden kein Interesse haben?",
+        "antwort": "Das ist eine der wichtigsten Fragen – und ein häufiges Problem bei schlecht aufgesetzten Programmen. Di-CoCo baut Programme bewusst so, dass Mitarbeitende freiwillig und mit echter Ueberzeugung mitmachen. Das beginnt bei der Teilnehmerauswahl: Wir empfehlen, mit Menschen zu starten die intrinsisch motiviert sind und Lust haben sichtbar zu werden. Wer zum Mitmachen gedrängt wird, liefert keine authentischen Inhalte.  Die Führungsbeteiligung ist dabei entscheidend: Wenn die Führungskraft selbst postet und zeigt dass Sichtbarkeit erwünscht und wertgeschätzt wird, ist die interne Hemmschwelle erheblich niedriger. Wir erleben in Programmen immer wieder, dass skeptische Mitarbeitende zu überzeugte Botschafterinnen werden – sobald sie merken wie positiv die Reaktionen sind."
+      },
+      {
+        "frage": "Müssen wir als Unternehmen eine eigene LinkedIn-Unternehmensseite haben?",
+        "antwort": "Eine LinkedIn-Unternehmensseite ist sinnvoll und empfehlenswert, ist aber keine Voraussetzung für ein Corporate Influencer Programm. Der größte Teil der Wirkung entsteht über die persönlichen Profile der Teilnehmenden – nicht über den Corporate Account. Di-CoCo unterstützt bei der Abstimmung zwischen persönlichen Profilen und Unternehmensseite und entwickelt wenn nötig eine integrierte Strategie für beides."
+      },
+      {
+        "frage": "Arbeitet Di-CoCo auch mit Einzelpersonen oder nur mit Unternehmen?",
+        "antwort": "Beides. Di-CoCo begleitet sowohl einzelne Führungskräfte und Unternehmerinnen im Rahmen der CXO Communication als auch ganze Teams und Unternehmen im Rahmen von Corporate Influencer Programmen. Für Einzelpersonen – Geschäftsführerinnen, Führungskräfte, Selbstständige – entwickelt Di-CoCo eine persönliche LinkedIn-Strategie, Positionierung und begleitet den Aufbau der digitalen Sichtbarkeit. Für Unternehmen kommen Programm-Design, Workshopformate und die Begleitung mehrerer Teilnehmender hinzu."
+      }
+    ],
+    "slug": "zielgruppe-und-voraussetzungen"
   },
   {
-    frage: "Was kostet ein Corporate Influencer Programm?",
-    antwort:
-      "Die Kosten hängen vom Umfang, der Teilnehmerzahl und der Laufzeit ab. Di-CoCo entwickelt keine Einheitslösungen – jedes Programm wird auf das Unternehmen zugeschnitten. Im kostenlosen Erstgespräch besprechen wir deine Ziele und geben eine ehrliche Einschätzung, was ein Programm für euch kosten würde.",
+    "title": "Abgrenzung und Unterschiede",
+    "tagline": "Was ist der Unterschied zu X?",
+    "qa": [
+      {
+        "frage": "Was ist der Unterschied zwischen einem Corporate Influencer Programm und klassischem Marketing?",
+        "antwort": "Klassisches Marketing kommuniziert im Namen eines Unternehmens, einer Marke oder eines Produkts. Es ist per Definition werblich – und wird von den Empfängern auch so wahrgenommen. Corporate Influencer Programme kommunizieren durch Menschen: authentisch, persönlich, aus der Praxis.  Der entscheidende Unterschied ist Vertrauen. Nielsen zufolge vertrauen 92 Prozent der Menschen Empfehlungen von Einzelpersonen mehr als jeder anderen Form von Werbung. Wenn eine Mitarbeitende oder ein Mitarbeiter über ihre Arbeit spricht, ist das keine Werbung – das ist eine echte Empfehlung von einer echten Person. Das lässt sich mit keinem Media-Budget kaufen.  Corporate Influencer Programme ersetzen kein Marketing – sie ergänzen es auf eine Weise, die Marketing allein nicht kann."
+      },
+      {
+        "frage": "Was ist der Unterschied zwischen Corporate Influencer und einem PR-Agentur?",
+        "antwort": "Eine klassische PR-Agentur platziert Unternehmensthemen in externen Medien: Pressemitteilungen, Journalist*innenkontakte, Medienarbeit. Die Kontrolle über die Botschaft liegt bei der Agentur und dem Medium.  Corporate Influencer Programme spielen auf einer anderen Ebene: Sie entwickeln interne Stimmen, die direkt mit der Zielgruppe kommunizieren – ohne Medienvermittler, ohne Redaktion, ohne Abhängigkeit von einem Artikel der vielleicht erscheint oder auch nicht. Di-CoCo baut diesen direkten Kommunikationskanal auf und macht ihn nachhaltig. Das ist kein Ersatz für PR, aber ein erheblicher Hebel zusätzlich dazu."
+      },
+      {
+        "frage": "Was ist der Unterschied zwischen einer Social-Media-Agentur und Di-CoCo?",
+        "antwort": "Eine klassische Social-Media-Agentur erstellt Content für Unternehmensaccounts: Posts, Grafiken, Videos für Instagram, LinkedIn, Facebook. Der Account spricht als Unternehmen.  Di-CoCo entwickelt persönliche Kommunikation: Führungskräfte und Mitarbeitende entwickeln eine eigene Stimme, eigene Inhalte und eine eigene Positionierung. Das klingt anders, wirkt anders und erzeugt anderes Vertrauen. Di-CoCo arbeitet nicht für den Corporate Account – sondern mit den Menschen dahinter."
+      }
+    ],
+    "slug": "abgrenzung-und-unterschiede"
   },
   {
-    frage: "Wie viel Zeit müssen unsere Mitarbeitenden investieren?",
-    antwort:
-      "Das hängt vom Programm-Design ab und ist ein zentraler Punkt in der Planung. Faustregel: ein bis zwei Stunden pro Woche für Content-Erstellung und Community-Pflege, plus monatliche Austausch-Termine. Der initiale Workshop-Block zu Beginn ist zeitintensiver – das wird im Vorfeld transparent kommuniziert und gemeinsam geplant.",
+    "title": "Warum Di-CoCo?",
+    "tagline": "Was unterscheidet Di-CoCo?",
+    "qa": [
+      {
+        "frage": "Warum sollten wir mit Di-CoCo arbeiten und nicht mit einer anderen Agentur?",
+        "antwort": "Drei Dinge unterscheiden Di-CoCo fundamental:  Erstens: Das Führungs-Prinzip. Di-CoCo installiert Corporate Influencer Programme ausschließlich, wenn die Führungsebene aktiv mitmacht und vorangeht. Das klingt wie eine Einschränkung – ist aber Qualitätssicherung. Programme ohne Führungsbeteiligung funktionieren nicht nachhaltig. Wir sagen das klar, auch wenn es manchmal bedeutet, einen Auftrag nicht anzunehmen.  Zweitens: Der interne Blick. Di-CoCo denkt Kommunikation von innen nach außen – nicht umgekehrt. Was ein Programm intern bewegt, ist oft wichtiger als was es nach außen zeigt. Silos aufbrechen, interne Netzwerke stärken, Wertschätzung für Mitarbeitende steigern: das sind Nebeneffekte die für viele Unternehmen wertvoller sind als mehr LinkedIn-Follower.  Drittens: Bianca Schiffgens selbst. Wer Di-CoCo bucht, bekommt nicht ein Junior-Team das den Auftrag abarbeitet. Bianca begleitet die Zusammenarbeit persönlich – mit über zwanzig Jahren Kommunikationserfahrung, aus TV-Produktion, Agentur und zehn Jahren eigener Praxis."
+      },
+      {
+        "frage": "Wie lange ist Bianca Schiffgens schon in diesem Bereich tätig?",
+        "antwort": "Bianca Schiffgens arbeitet seit über zwanzig Jahren in der Kommunikation. Den Grundstein hat sie in der TV-Produktion in Köln gelegt – ein Umfeld, in dem Geschichten in Sekunden überzeugen müssen. Danach folgten Jahre in der Agentur im Bereich Corporate Communication. Seit 2016 ist sie Gründerin von Di-CoCo. Schon lange bevor Corporate Influencer zum Buzzword wurde, hat Bianca mit Führungspersönlichkeiten und Teams daran gearbeitet, sichtbar zu werden. Di-CoCo ist das Ergebnis dieser Praxis."
+      },
+      {
+        "frage": "In welchen Medien war Di-CoCo vertreten?",
+        "antwort": "Bianca Schiffgens und Di-CoCo waren unter anderem in BILD, BILD Online und BILD.de zum Thema Social-Media-Kommunikation in Krisensituationen vertreten, im Gründermagazin zu Corporate Influencer Programmen und digitaler Sichtbarkeit, im Rheinzeiger und im Deutschen Journalisten Verband NRW Journal. Bianca Schiffgens ist außerdem Autorin beim Springer Gabler Verlag und wurde vom Fachmagazin Favikon unter den Top 10 Communications Experts Germany 2025 gerankt."
+      },
+      {
+        "frage": "Arbeitet Di-CoCo nur in Köln oder bundesweit?",
+        "antwort": "Di-CoCo begleitet Unternehmen und Führungskräfte im gesamten deutschsprachigen Raum – Deutschland, Oesterreich, Schweiz. Die Zusammenarbeit findet überwiegend remote statt: Workshops, Meetings, Sparring und Begleitung sind vollständig digital möglich und werden von Kunden aus Hamburg bis Wien gleichermaßen genutzt. Wo persönliche Präsenz sinnvoll oder gewünscht ist, kommt Di-CoCo vor Ort."
+      }
+    ],
+    "slug": "warum-di-coco"
   },
   {
-    frage: "Welche Plattformen werden eingesetzt?",
-    antwort:
-      "Der Schwerpunkt liegt auf LinkedIn, weil die Plattform im B2B-Bereich die höchste Relevanz für Führungskräfte und Mitarbeitende bietet. Je nach Unternehmenskontext und Zielgruppe können weitere Plattformen eingebunden werden. Entscheidend ist immer: nicht möglichst viele Plattformen, sondern die richtigen konsequent bespielen.",
+    "title": "CXO Communication und Account Management",
+    "tagline": "Fragen zu den Leistungen für Führungskräfte",
+    "qa": [
+      {
+        "frage": "Was genau ist CXO Communication?",
+        "antwort": "CXO Communication ist die strategische LinkedIn-Kommunikation für Führungskräfte – CEO, CFO, CMO, Geschäftsführerinnen und alle, die auf Entscheider-Ebene sichtbar sein wollen. Di-CoCo entwickelt die Grundlagen dafür: persönliche Positionierung (wofür stehst du?), Themenarchitektur (welche Inhalte zahlen auf deine Ziele ein?), Messaging (wie klingt deine Stimme?) und die redaktionelle Begleitung, die sicherstellt dass der Content auch wirklich entsteht.  Der entscheidende Unterschied zu einem normalen Social-Media-Auftrag: Di-CoCo schreibt keine generischen Posts. Alles klingt nach der Führungskraft selbst – nicht nach Agentur. Das ist technisch aufwendiger, aber der einzige Ansatz der langfristig funktioniert."
+      },
+      {
+        "frage": "Was ist der Unterschied zwischen CXO Communication und LinkedIn Account Management?",
+        "antwort": "CXO Communication ist ein strategisches Entwicklungs- und Begleitungsformat: Positionierung, Themenarchitektur, Messaging, Content-Entwicklung mit starkem Sparring-Anteil. Die Führungskraft ist aktiv involviert und bringt eigene Perspektiven und Erlebnisse ein. Ghostwriting ist möglich, aber der Eigenanteil ist bewusst höher.  LinkedIn Account Management ist stärker operativ: Di-CoCo übernimmt das vollständige Management des Accounts – Redaktionsplanung, Content-Produktion, Publishing, Community Management, Reporting. Der Zeitaufwand für den Kunden ist minimal. Das ist die richtige Wahl für Menschen, die sichtbar sein wollen ohne sich täglich damit zu beschäftigen.  Beide Formate können kombiniert werden und entwickeln sich oft im Laufe der Zeit: aus einem strategischen CXO-Prozess wird ein dauerhaftes Account Management."
+      },
+      {
+        "frage": "Schreibt Di-CoCo meine LinkedIn-Posts für mich?",
+        "antwort": "Ja, Ghostwriting ist Bestandteil beider Formate – CXO Communication und LinkedIn Account Management. Di-CoCo entwickelt Posts im Stil und in der Sprache der jeweiligen Person: auf Basis von Briefings, Gesprächen, geteilten Erlebnissen und dem Verständnis für die Persönlichkeit und die Themen der Führungskraft. Das Ziel ist immer dasselbe: Es klingt nach dir, nicht nach Agentur.  In der Praxis arbeiten wir mit unterschiedlichen Eigenanteilen – manche Kunden liefern Rohideen und kurze Sprachnachrichten, aus denen wir Posts entwickeln. Andere kommen mit fertigen Gedanken und wollen nur redaktionellen Schliff. Wieder andere geben komplett ab und bekommen fertige Posts zur Freigabe. Alle Varianten funktionieren, wenn die Grundlage stimmt: eine klare Positionierung und ein gutes gegenseitiges Verständnis."
+      }
+    ],
+    "slug": "cxo-communication-und-account-management"
   },
   {
-    frage: "Was passiert, wenn Mitarbeitende etwas Unpassendes veröffentlichen?",
-    antwort:
-      "Di-CoCo entwickelt zu Beginn jedes Programms klare Content-Frameworks und Guidelines, die Leitplanken setzen ohne die Authentizität einzuschränken. Mitarbeitende lernen im Rahmen der Workshops, was kommuniziert werden darf und wo Rücksprache sinnvoll ist. In der Praxis passieren Fehltritte selten, weil gut vorbereitete Kommunikation bedacht ist – nicht impulsiv.",
-  },
-  {
-    frage: "Wie messen wir den Erfolg?",
-    antwort:
-      "Di-CoCo misst auf drei Ebenen: erstens quantitative LinkedIn-Metriken wie Impressionen, Reichweite, Engagement-Rate und Follower-Wachstum. Zweitens qualitative Indikatoren wie erhöhte Sichtbarkeit auf Messen oder mehr Anfragen über LinkedIn. Drittens interne Indikatoren wie verändertes Kommunikationsverhalten und erhöhte Mitarbeiterzufriedenheit. Monatliche Reports halten alle Ebenen transparent.",
-  },
-  {
-    frage: "Können wir das Programm intern weiterführen, wenn die Zusammenarbeit endet?",
-    antwort:
-      "Das ist ausdrücklich das Ziel. Di-CoCo baut Programme so auf, dass sie nachhaltig im Unternehmen verankert werden – nicht so, dass eine dauerhafte Abhängigkeit von externen Dienstleistern entsteht. Dazu gehören klare Prozesse, dokumentierte Frameworks und Wissenstransfer an interne Ansprechpartner.",
-  },
-  {
-    frage: "Arbeitet Di-CoCo nur regional?",
-    antwort:
-      "Nein. Di-CoCo begleitet Unternehmen und Führungskräfte im gesamten deutschsprachigen Raum. Die Zusammenarbeit findet überwiegend remote statt – Workshops, Meetings und Begleitung sind vollständig digital möglich. Wo persönliche Präsenz sinnvoll ist, ist Di-CoCo vor Ort erreichbar.",
-  },
-  {
-    frage: "Wir haben noch nie etwas mit Corporate Influencern gemacht. Ist das ein Problem?",
-    antwort:
-      "Nein – im Gegenteil. Die Unternehmen, die am stärksten vom Programm profitieren, sind genau die, die noch nicht systematisch über Corporate Influencer nachgedacht haben. Di-CoCo begleitet den gesamten Prozess vom Erstkontakt bis zur Verankerung – inklusive der Mitarbeitenden, die am Anfang skeptisch sind. Das gehört dazu.",
-  },
+    "title": "Keynotes und Schulungen",
+    "tagline": "Fragen zu Keynotes, Workshops und Schulungen",
+    "qa": [
+      {
+        "frage": "Zu welchen Themen hält Bianca Schiffgens Keynotes?",
+        "antwort": "Bianca Schiffgens hält Keynotes und Vorträge zu vier Kernthemen aus ihrer täglichen Praxis:  Sichtbarkeit als Führungsaufgabe: Warum CEO-Kommunikation heute entscheidend ist und Verstecken keine Option mehr ist.  Corporate Influencer Programme als Kulturwandel: Was wirklich passiert wenn Mitarbeitende anfangen zu sprechen – jenseits von Reichweite und Followerzahlen.  Kommunikation die wirkt – intern wie extern: Was sich verändert wenn Unternehmen authentisch kommunizieren. Innen- und Außenperspektive verbunden.  LinkedIn für Führungskräfte – Strategie statt Zufallsposts: Was wirklich funktioniert auf LinkedIn und warum die meisten Führungskräfte das Potenzial nicht ausschöpfen.  Alle Formate sind flexibel: Impuls-Keynote (20-30 Min.), Keynote mit Q&A (45-60 Min.), Workshop-Format (halbtägig oder ganztägig), Online-Format."
+      },
+      {
+        "frage": "Für wen sind die Schulungen für Programmverantwortliche gedacht?",
+        "antwort": "Die Schulungen richten sich an Menschen, die intern die Verantwortung für ein Corporate Influencer Programm tragen oder tragen werden: Kommunikationsverantwortliche, HR-Manager, Social-Media-Manager, interne Projektleiterinnen. Auch für Führungskräfte sinnvoll, die ein Programm intern steuern wollen ohne externe dauerhafte Begleitung.  Di-CoCo bietet Schulungen als Ergänzung zum Programmaufbau an – für Unternehmen die nach dem Setup-Jahr die Begleitung internalisieren wollen. Oder als eigenständige Schulung für Organisationen, die ein Programm intern aufbauen wollen und das Handwerkszeug dafür benötigen."
+      },
+      {
+        "frage": "Kann Di-CoCo auch intern im Unternehmen vor Ort schulen?",
+        "antwort": "Ja. Di-CoCo führt Workshops und Schulungen sowohl remote als auch vor Ort durch. Für größere Workshop-Formate oder Kick-off-Veranstaltungen, bei denen die Gruppe-Dynamik und der persönliche Kontakt wichtig sind, empfehlen wir Präsenz. Für regelmäßige Begleitformate und Follow-up-Sessions hat sich Remote bewehrt. Die genaue Formatwahl wird im Vorfeld gemeinsam abgestimmt."
+      }
+    ],
+    "slug": "keynotes-und-schulungen"
+  }
 ];
+
+const linkMap = [
+  { phrase: "Corporate Influencer Programm", href: "/corporate-influencer-programme" },
+  { phrase: "CXO Communication", href: "/cxo-communication" },
+  { phrase: "LinkedIn Account Management", href: "/linkedin-account-management" },
+  { phrase: "Keynotes", href: "/keynotes" },
+  { phrase: "Schulungen", href: "/schulungen" },
+  { phrase: "Bianca Schiffgens", href: "/#ueber-uns" },
+];
+
+function escapeHtml(str: string) {
+  return str
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;");
+}
+
+const usedLinks = new Set<string>();
+
+function linkify(text: string) {
+  let html = escapeHtml(text);
+  for (const { phrase, href } of linkMap) {
+    if (usedLinks.has(phrase)) continue;
+    if (html.includes(phrase)) {
+      html = html.replace(phrase, `<a href="${href}">${phrase}</a>`);
+      usedLinks.add(phrase);
+    }
+  }
+  return html;
+}
+
+const categoriesWithHtml = categories.map((cat) => ({
+  ...cat,
+  qa: cat.qa.map((item) => ({
+    ...item,
+    antwortHtml: linkify(item.antwort),
+  })),
+}));
 
 const faqSchema = {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  mainEntity: faqs.map((f) => ({
-    "@type": "Question",
-    name: f.frage,
-    acceptedAnswer: { "@type": "Answer", text: f.antwort },
-  })),
+  mainEntity: categories.flatMap((cat) =>
+    cat.qa.map((f) => ({
+      "@type": "Question",
+      name: f.frage,
+      acceptedAnswer: { "@type": "Answer", text: f.antwort },
+    }))
+  ),
 };
 
 const breadcrumb = [
@@ -87,7 +269,7 @@ const breadcrumb = [
 
 <Layout
   title="Häufige Fragen zu Corporate Influencer Programmen | Di-CoCo"
-  description="Antworten auf die häufigsten Fragen zu Corporate Influencer Programmen: Dauer, Kosten, Aufwand, Ergebnisse und Voraussetzungen."
+  description="Antworten auf die häufigsten Fragen zu Corporate Influencer Programmen: Ablauf, Kosten, Ergebnisse, Voraussetzungen, CXO Communication, Keynotes und Schulungen."
   breadcrumb={breadcrumb}
 >
   <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} slot="head" />
@@ -95,11 +277,28 @@ const breadcrumb = [
   <section class="faq">
     <div class="faq__inner">
       <h1>Häufige Fragen zu Corporate Influencer Programmen</h1>
-      {faqs.map((f) => (
-        <details class="faq__item">
-          <summary>{f.frage}</summary>
-          <p>{f.antwort}</p>
-        </details>
+      <p class="faq__intro">
+        Antworten auf die Fragen, die uns Unternehmen und Führungskräfte am häufigsten stellen – von den
+        Grundlagen über Ablauf und Kosten bis zu Ergebnissen, CXO Communication und Keynotes.
+      </p>
+
+      <nav class="faq__nav" aria-label="Kategorien">
+        {categories.map((cat) => (
+          <a href={`#${cat.slug}`}>{cat.title}</a>
+        ))}
+      </nav>
+
+      {categoriesWithHtml.map((cat) => (
+        <div class="faq__category" id={cat.slug}>
+          <h2>{cat.title}</h2>
+          <p class="faq__category-tagline">{cat.tagline}</p>
+          {cat.qa.map((f) => (
+            <details class="faq__item">
+              <summary><h3>{f.frage}</h3></summary>
+              <p set:html={f.antwortHtml} />
+            </details>
+          ))}
+        </div>
       ))}
     </div>
   </section>
@@ -117,7 +316,53 @@ const breadcrumb = [
 
   .faq h1 {
     font-size: clamp(1.75rem, 4vw, 2.5rem);
+    margin: 0 0 1rem;
+  }
+
+  .faq__intro {
+    opacity: 0.85;
+    font-size: 1.05rem;
+    max-width: 620px;
     margin: 0 0 2.5rem;
+  }
+
+  .faq__nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 0.75rem;
+    margin: 0 0 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(17, 18, 25, 0.1);
+  }
+
+  .faq__nav a {
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-blue);
+    text-decoration: none;
+    padding: 0.4rem 0.85rem;
+    border: 1px solid rgba(17, 18, 25, 0.15);
+    border-radius: 999px;
+  }
+
+  .faq__nav a:hover {
+    background: rgba(17, 18, 25, 0.05);
+  }
+
+  .faq__category {
+    margin: 0 0 3.5rem;
+    scroll-margin-top: 2rem;
+  }
+
+  .faq__category h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    margin: 0 0 0.35rem;
+  }
+
+  .faq__category-tagline {
+    opacity: 0.7;
+    margin: 0 0 1.5rem;
+    font-size: 0.95rem;
   }
 
   .faq__item {
@@ -127,16 +372,39 @@ const breadcrumb = [
 
   .faq__item summary {
     cursor: pointer;
-    font-weight: var(--font-weight-semibold);
-    font-size: 1.05rem;
+    list-style: none;
   }
 
   .faq__item summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .faq__item summary h3 {
+    display: inline;
+    font-weight: var(--font-weight-semibold);
+    font-size: 1.05rem;
+    margin: 0;
+  }
+
+  .faq__item summary::before {
+    content: "+";
+    display: inline-block;
+    width: 1.1rem;
     color: var(--color-blue);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .faq__item[open] summary::before {
+    content: "–";
   }
 
   .faq__item p {
     margin: 1rem 0 0;
     opacity: 0.85;
+  }
+
+  .faq__item p :global(a) {
+    color: var(--color-blue);
+    text-decoration: underline;
   }
 </style>
