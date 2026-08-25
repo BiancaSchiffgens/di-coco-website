@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://di-coco.de/sitemap-index.xml
+Sitemap: https://di-coco.com/sitemap-index.xml
