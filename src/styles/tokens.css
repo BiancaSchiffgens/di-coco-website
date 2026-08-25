@@ -46,7 +46,8 @@
   --color-white: #fdfdfd;
   --color-blue: #0032ff;
   --color-violet: #8f23f7;
-  --gradient-blue-orange: linear-gradient(90deg, #0032ff 0%, #0032ff 66%, #ff7a00 100%);
+  --color-orange: #ff4b00;
+  --gradient-blue-orange: linear-gradient(90deg, #0032ff 0%, #0032ff 66%, #ff4b00 100%);
 
   /* Typo */
   --font-family: "Miranda Sans", system-ui, sans-serif;
@@ -103,7 +104,7 @@ svg {
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-violet) 50%, #ff7a00 100%);
+  background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-violet) 50%, var(--color-orange) 100%);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;

@@ -15,7 +15,7 @@ const cardOrder = [
 const cards = cardOrder.map((slug) => services.find((s) => s.data.slug === slug)!);
 
 const colorMap: Record<string, string> = {
-  orange: "#ff7a00",
+  orange: "var(--color-orange)",
   blau: "var(--color-blue)",
   violett: "var(--color-violet)",
   schwarz: "var(--color-black)",
@@ -332,10 +332,11 @@ const credentials = [
   }
 
   .hero__eyebrow {
+    color: var(--color-orange);
     text-transform: uppercase;
     letter-spacing: 0.08em;
     font-size: 0.85rem;
-    opacity: 0.7;
+    font-weight: var(--font-weight-semibold);
     margin: 0 0 1.5rem;
   }
 
@@ -345,7 +346,7 @@ const credentials = [
   }
 
   .hero__orange {
-    color: #ff7a00;
+    color: var(--color-orange);
   }
 
   .hero__subline {
@@ -377,7 +378,7 @@ const credentials = [
 
   .button {
     display: inline-block;
-    background: #ff7a00;
+    background: var(--color-orange);
     color: var(--color-white);
     text-decoration: none;
     padding: 0.9rem 1.75rem;
@@ -461,7 +462,7 @@ const credentials = [
   }
 
   .ergebnisse__zahl {
-    color: #ff7a00;
+    color: var(--color-orange);
     font-size: 2.25rem;
     font-weight: var(--font-weight-bold);
     margin: 0 0 0.5rem;
@@ -490,7 +491,7 @@ const credentials = [
   }
 
   .wirkung__eyebrow {
-    color: #ff7a00;
+    color: var(--color-orange);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-size: 0.85rem;
@@ -513,7 +514,7 @@ const credentials = [
     height: 2px;
     width: 100%;
     margin: 0 0 1.5rem;
-    background: linear-gradient(90deg, #ff7a00, var(--color-violet), var(--color-blue));
+    background: linear-gradient(90deg, var(--color-orange), var(--color-violet), var(--color-blue));
   }
 
   .wirkung p {
@@ -522,7 +523,7 @@ const credentials = [
   }
 
   .wirkung .hl {
-    color: #ff7a00;
+    color: var(--color-orange);
     opacity: 1;
   }
 
@@ -733,7 +734,7 @@ const credentials = [
   .referenzen__eyebrow {
     max-width: var(--max-width);
     margin: 0 auto;
-    color: #ff7a00;
+    color: var(--color-orange);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-size: 0.85rem;
