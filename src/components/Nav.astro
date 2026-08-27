@@ -185,9 +185,13 @@ const currentPath = Astro.url.pathname;
       padding: 0 0 0 1rem;
     }
 
-    .nav__cta {
+    /* .nav__menu a setzt width:100%; der Selektor hier muss mindestens
+       gleich spezifisch sein, sonst ragt der Button mit seinen Rändern
+       über den Viewport hinaus. */
+    .nav__menu a.nav__cta {
       margin: 0.9rem 1.5rem;
       display: inline-block;
+      width: auto;
     }
   }
 </style>

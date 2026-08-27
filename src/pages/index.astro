@@ -50,25 +50,25 @@ const referenzen = [
 const branchen = ["Industrie", "Technologie", "Beratung", "Finanzdienstleistung", "Energie", "Spitzensport", "E-Commerce"];
 
 const presse = [
-  { src: "/assets/press/bild.webp", quelle: "BILD / BILD Online / BILD.de", kontext: "Bianca Schiffgens als Expertin zur Social-Media-Kommunikation in Insolvenzsituationen" },
-  { src: "/assets/press/gruendermagazin.webp", quelle: "Gründermagazin", kontext: "Corporate Influencer Programme und digitale Sichtbarkeit im Mittelstand" },
-  { src: "/assets/press/rheinzeiger.webp", quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
-  { src: "/assets/press/djv-nrw-journal.webp", quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
+  { src: "/assets/press/bild.webp", w: 306, h: 305, quelle: "BILD / BILD Online / BILD.de", kontext: "Bianca Schiffgens als Expertin zur Social-Media-Kommunikation in Insolvenzsituationen" },
+  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, quelle: "Gründermagazin", kontext: "Corporate Influencer Programme und digitale Sichtbarkeit im Mittelstand" },
+  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
+  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
 ];
 
 const bekanntAusLogos = [
-  { src: "/assets/press/bild.webp", alt: "BILD" },
-  { src: "/assets/press/gruendermagazin.webp", alt: "Gründermagazin" },
-  { src: "/assets/press/rheinzeiger.webp", alt: "Rheinzeiger" },
-  { src: "/assets/press/djv-nrw-journal.webp", alt: "DJV NRW Journal" },
-  { src: "/assets/press/springer-gabler.webp", alt: "Springer Gabler" },
+  { src: "/assets/press/bild.webp", w: 306, h: 305, alt: "BILD" },
+  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, alt: "Gründermagazin" },
+  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, alt: "Rheinzeiger" },
+  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, alt: "DJV NRW Journal" },
+  { src: "/assets/press/springer-gabler.webp", w: 584, h: 135, alt: "Springer Gabler" },
 ];
 
 const credentials = [
-  { img: "/assets/badges/certified-linkedin-insider.webp", label: "Certified LinkedIn Marketing Insider" },
-  { img: "/assets/badges/favikon-top10-black.webp", label: "Favikon Top 10 Communications Experts Germany 2025" },
-  { img: "/assets/badges/buch-fuehrung-im-wandel.webp", label: "Autorin Springer Gabler Verlag" },
-  { img: "/assets/badges/icon-linkedin.webp", label: "ca. 24.000 LinkedIn-Follower" },
+  { img: "/assets/badges/certified-linkedin-insider.webp", w: 459, h: 359, label: "Certified LinkedIn Marketing Insider" },
+  { img: "/assets/badges/favikon-top10-black.webp", w: 369, h: 365, label: "Favikon Top 10 Communications Experts Germany 2025" },
+  { img: "/assets/badges/buch-fuehrung-im-wandel.webp", w: 262, h: 367, label: "Autorin Springer Gabler Verlag" },
+  { img: "/assets/badges/icon-linkedin.webp", w: 340, h: 346, label: "ca. 24.000 LinkedIn-Follower" },
 ];
 ---
 
@@ -89,8 +89,8 @@ const credentials = [
         </p>
       </div>
       <div class="hero__visual" aria-hidden="true">
-        <img class="hero__ribbon" src="/assets/decor/hero-ribbon.webp" alt="" />
-        <img class="hero__badge" src="/assets/badges/favikon-top10-white.webp" alt="" />
+        <img class="hero__ribbon" src="/assets/decor/hero-ribbon.webp" alt="" width="1390" height="1150" />
+        <img class="hero__badge" src="/assets/badges/favikon-top10-white.webp" alt="" width="690" height="576" />
       </div>
     </div>
   </section>
@@ -107,7 +107,7 @@ const credentials = [
     <p class="bekannt-aus__label">Bekannt aus</p>
     <div class="bekannt-aus__logos">
       {bekanntAusLogos.map((logo) => (
-        <img src={logo.src} alt={logo.alt} loading="lazy" />
+        <img src={logo.src} alt={logo.alt} width={logo.w} height={logo.h} loading="lazy" />
       ))}
     </div>
     <p class="bekannt-aus__badge">Favikon Top 10 Communications Experts Germany 2025</p>
@@ -118,7 +118,7 @@ const credentials = [
     <div class="ergebnisse__grid">
       {ergebnisse.map((e) => (
         <div class="ergebnisse__item">
-          <p class="ergebnisse__zahl">{e.zahl}</p>
+          <p class="ergebnisse__zahl gradient-text">{e.zahl}</p>
           <p class="ergebnisse__item-label">{e.label}</p>
           <p class="ergebnisse__kontext">{e.kontext}</p>
         </div>
@@ -192,7 +192,7 @@ const credentials = [
           Di-CoCo begleitet Unternehmen dabei, ihre Kommunikation neu zu denken und in die
           digitale Sichtbarkeit zu führen.
         </p>
-        <img src="/assets/logo/Di-CoCo_Bildmarke_3D_B_Gr.svg" alt="" aria-hidden="true" />
+        <img src="/assets/logo/Di-CoCo_Bildmarke_3D_B_Gr.svg" alt="" aria-hidden="true" width="670" height="672" />
       </div>
     </div>
   </section>
@@ -225,7 +225,7 @@ const credentials = [
         <div class="ueber-uns__credentials">
           {credentials.map((c) => (
             <div class="credential">
-              <img src={c.img} alt="" aria-hidden="true" />
+              <img src={c.img} alt="" aria-hidden="true" width={c.w} height={c.h} />
               <span>{c.label}</span>
             </div>
           ))}
@@ -263,7 +263,7 @@ const credentials = [
     <div class="presse__grid">
       {presse.map((p) => (
         <div class="presse__item">
-          <img src={p.src} alt={p.quelle} loading="lazy" />
+          <img src={p.src} alt={p.quelle} width={p.w} height={p.h} loading="lazy" />
           <p>{p.kontext}</p>
         </div>
       ))}
@@ -438,45 +438,62 @@ const credentials = [
   }
 
   .ergebnisse {
-    background: var(--color-black);
-    color: var(--color-white);
-    padding: 4rem 1.5rem;
+    background: #fff;
+    color: var(--color-black);
+    padding: 4.5rem 1.5rem 5.5rem;
   }
 
   .ergebnisse__label {
     text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
-    opacity: 0.6;
-    margin: 0 0 2.5rem;
+    color: var(--color-orange);
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-bold);
+    margin: 0 0 3.5rem;
   }
 
+  /* 6 Spalten, damit Reihe 1 drei Items (je 2 Spalten) trägt und Reihe 2
+     zwei Items mittig sitzen (Versatz um eine Spalte). */
   .ergebnisse__grid {
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 2rem;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 3.5rem 2rem;
     text-align: center;
   }
 
+  .ergebnisse__item {
+    grid-column: span 2;
+  }
+
+  .ergebnisse__item:nth-child(4) {
+    grid-column: 2 / span 2;
+  }
+
   .ergebnisse__zahl {
-    color: var(--color-orange);
-    font-size: 2.25rem;
+    font-size: clamp(2.25rem, 7vw, 4rem);
     font-weight: var(--font-weight-bold);
-    margin: 0 0 0.5rem;
+    line-height: var(--line-height-headline);
+    margin: 0 0 2rem;
+  }
+
+  /* Textmaß schmaler als die Spalte, damit die Zeilen wie im Design umbrechen */
+  .ergebnisse__item-label,
+  .ergebnisse__kontext {
+    max-width: 21rem;
+    margin-inline: auto;
+    font-size: 1.25rem;
+    line-height: var(--line-height-copy);
+    text-wrap: balance;
   }
 
   .ergebnisse__item-label {
-    margin: 0 0 0.4rem;
-    font-weight: var(--font-weight-medium);
+    font-weight: var(--font-weight-bold);
+    margin-block: 0;
   }
 
   .ergebnisse__kontext {
-    font-size: 0.8rem;
-    opacity: 0.6;
-    margin: 0;
+    margin-block: 0;
   }
 
   .wirkung {
@@ -594,6 +611,17 @@ const credentials = [
     padding: 2.5rem;
     display: flex;
     flex-direction: column;
+    /* Grid-Items haben min-width:auto, d.h. sie schrumpfen nicht unter ihre
+       min-content-Breite. Lange Komposita wie "Programmverantwortliche"
+       machten das Raster dadurch breiter als den Viewport. */
+    min-width: 0;
+  }
+
+  .leistung-card h3,
+  .leistung-card p,
+  .leistung-statement p {
+    hyphens: auto;
+    overflow-wrap: break-word;
   }
 
   .leistung-card h3 {
@@ -645,6 +673,7 @@ const credentials = [
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    min-width: 0;
   }
 
   .leistung-statement p {
@@ -816,9 +845,23 @@ const credentials = [
     margin: 0 0 4rem;
   }
 
+  .presse__item {
+    min-width: 0;
+  }
+
+  /* lange Komposita ("Social-Media-Kommunikation") sprengen sonst die schmale
+     Spalte auf dem Handy */
+  .presse__item p {
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
   .presse__item img {
     height: 44px;
     width: auto;
+    /* breite Logos dürfen ihre Spalte nicht sprengen */
+    max-width: 100%;
+    object-fit: contain;
     margin: 0 auto 1rem;
   }
 
@@ -885,6 +928,16 @@ const credentials = [
 
     .ergebnisse__grid {
       grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem 1.5rem;
+    }
+
+    .ergebnisse__item,
+    .ergebnisse__item:nth-child(4) {
+      grid-column: auto;
+    }
+
+    .ergebnisse__item:last-child {
+      grid-column: 1 / -1;
     }
 
     .wirkung__grid {
@@ -918,6 +971,20 @@ const credentials = [
 
     .presse__buch img {
       margin: 0 auto;
+    }
+  }
+  /* Auf schmalen Screens einspaltig: die Zahlen sind inline-block und können
+     nicht umbrechen, zwei Spalten würden das Grid breiter als den Viewport machen. */
+  @media (max-width: 600px) {
+    .ergebnisse__grid {
+      grid-template-columns: 1fr;
+      gap: 2.5rem;
+    }
+
+    .ergebnisse__item,
+    .ergebnisse__item:nth-child(4),
+    .ergebnisse__item:last-child {
+      grid-column: auto;
     }
   }
 </style>
