@@ -34,7 +34,8 @@
 
 @font-face {
   font-family: "Soge";
-  src: url("/fonts/Soge-Regular.woff") format("woff");
+  src: url("/fonts/Soge-Regular.woff2") format("woff2"),
+       url("/fonts/Soge-Regular.woff") format("woff");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -101,6 +102,13 @@ img,
 svg {
   max-width: 100%;
   display: block;
+}
+
+/* Bilder tragen width/height als Attribut, damit der Browser das Seitenverhältnis
+   vor dem Laden kennt (kein Layout-Sprung). height:auto lässt weiterhin das CSS
+   die dargestellte Größe bestimmen – ohne das würde das Attribut die Höhe erzwingen. */
+img {
+  height: auto;
 }
 
 .gradient-text {
