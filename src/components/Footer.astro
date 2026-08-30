@@ -15,12 +15,18 @@ const year = new Date().getFullYear();
         </span>
         <span class="footer__tagline">Visibility Drives Business</span>
       </a>
-      <div class="footer__rating" aria-label="ProvenExpert-Bewertung: 4,93 von 5, sehr gut, 9 Bewertungen">
+      <a
+        class="footer__rating"
+        href="https://www.provenexpert.com/de-de/dein-bizz/"
+        target="_blank"
+        rel="noopener"
+        aria-label="ProvenExpert-Bewertung: 4,93 von 5, sehr gut, 9 Bewertungen – zum Profil"
+      >
         <p class="footer__rating-score">4,93 von 5</p>
         <p class="footer__rating-stars" aria-hidden="true">★★★★★</p>
         <p class="footer__rating-label">SEHR GUT</p>
         <p class="footer__rating-count">9 Bewertungen</p>
-      </div>
+      </a>
     </div>
 
     <div class="footer__col">
@@ -128,11 +134,18 @@ const year = new Date().getFullYear();
   }
 
   .footer__rating {
+    display: block;
     background: var(--color-white);
     color: var(--color-black);
     border-radius: 0.5rem;
     padding: 1rem 1.25rem;
     width: fit-content;
+    opacity: 1;
+    transition: opacity 0.15s ease;
+  }
+
+  .footer__rating:hover {
+    opacity: 0.85;
   }
 
   .footer__rating p {
@@ -153,10 +166,12 @@ const year = new Date().getFullYear();
   }
 
   .footer__rating-label {
+    color: var(--color-black);
     font-weight: var(--font-weight-bold);
   }
 
   .footer__rating-count {
+    color: var(--color-black);
     font-size: 0.8rem;
     opacity: 0.6;
   }
