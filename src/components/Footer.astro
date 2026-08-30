@@ -8,11 +8,23 @@ const year = new Date().getFullYear();
 <footer class="footer">
   <div class="footer__inner">
     <div class="footer__col">
-      <img class="footer__logo" src="/assets/logo/Di-CoCo_WBM_V_W.svg" alt="Di-CoCo – Visibility Drives Business" width="140" height="101" />
+      <a href="/" class="footer__logo-lockup">
+        <span class="footer__logo-row">
+          <img class="footer__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="40" height="40" />
+          <img class="footer__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="150" height="45" />
+        </span>
+        <span class="footer__tagline">Visibility Drives Business</span>
+      </a>
+      <div class="footer__rating" aria-label="ProvenExpert-Bewertung: 4,93 von 5, sehr gut, 9 Bewertungen">
+        <p class="footer__rating-score">4,93 von 5</p>
+        <p class="footer__rating-stars" aria-hidden="true">★★★★★</p>
+        <p class="footer__rating-label">SEHR GUT</p>
+        <p class="footer__rating-count">9 Bewertungen</p>
+      </div>
     </div>
 
     <div class="footer__col">
-      <h3>Leistungen</h3>
+      <h3 class="sr-only">Leistungen</h3>
       <ul>
         {services.map((service) => (
           <li><a href={`/${service.data.slug}/`}>{service.data.navLabel}</a></li>
@@ -21,7 +33,7 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer__col">
-      <h3>Unternehmen</h3>
+      <h3 class="sr-only">Unternehmen</h3>
       <ul>
         <li><a href="/#ueber-uns">Über uns</a></li>
         <li><a href="/#referenzen">Referenzen</a></li>
@@ -32,11 +44,19 @@ const year = new Date().getFullYear();
     </div>
 
     <div class="footer__col">
-      <h3>Kontakt</h3>
+      <h3 class="sr-only">Kontakt</h3>
       <ul>
+        <li>
+          <a class="footer__social" href="https://www.linkedin.com/in/biancaschiffgens" target="_blank" rel="noopener">
+            <img src="/assets/logo/linkedin-icon-white.svg" alt="" aria-hidden="true" width="18" height="18" /> Bianca Schiffgens
+          </a>
+        </li>
+        <li>
+          <a class="footer__social" href="https://www.linkedin.com/company/di-coco" target="_blank" rel="noopener">
+            <img src="/assets/logo/linkedin-icon-white.svg" alt="" aria-hidden="true" width="18" height="18" /> Di-CoCo
+          </a>
+        </li>
         <li><a href="mailto:hello@di-coco.com">hello@di-coco.com</a></li>
-        <li><a href="https://www.linkedin.com/company/di-coco" target="_blank" rel="noopener">Di-CoCo auf LinkedIn</a></li>
-        <li><a href="https://www.linkedin.com/in/biancaschiffgens" target="_blank" rel="noopener">Bianca Schiffgens auf LinkedIn</a></li>
       </ul>
     </div>
   </div>
@@ -66,19 +86,79 @@ const year = new Date().getFullYear();
     gap: 2rem;
   }
 
-  .footer__logo {
-    height: 92px;
-    width: auto;
-    margin: 0 0 0.75rem;
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
   }
 
-  .footer h3 {
-    font-size: 0.9rem;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    opacity: 0.6;
-    margin: 0 0 1rem;
+  .footer__logo-lockup {
+    display: block;
+    opacity: 1;
+    margin: 0 0 1.5rem;
+  }
+
+  .footer__logo-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+
+  .footer__logo-mark {
+    height: 40px;
+    width: auto;
+  }
+
+  .footer__logo-word {
+    height: 30px;
+    width: auto;
+  }
+
+  .footer__tagline {
+    display: block;
+    margin-top: 0.4rem;
+    font-size: 1.05rem;
+    opacity: 0.85;
+  }
+
+  .footer__rating {
+    background: var(--color-white);
+    color: var(--color-black);
+    border-radius: 0.5rem;
+    padding: 1rem 1.25rem;
+    width: fit-content;
+  }
+
+  .footer__rating p {
+    margin: 0;
+  }
+
+  .footer__rating-score {
+    color: #c9b274;
+    font-size: 0.8rem;
     font-weight: var(--font-weight-semibold);
+  }
+
+  .footer__rating-stars {
+    color: #c9b274;
+    letter-spacing: 0.1em;
+    font-size: 1.1rem;
+    margin: 0.15rem 0 !important;
+  }
+
+  .footer__rating-label {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .footer__rating-count {
+    font-size: 0.8rem;
+    opacity: 0.6;
   }
 
   .footer ul {
@@ -98,6 +178,12 @@ const year = new Date().getFullYear();
 
   .footer a:hover {
     opacity: 1;
+  }
+
+  .footer__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
   }
 
   .footer__bottom {
