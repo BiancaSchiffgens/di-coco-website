@@ -8,8 +8,7 @@ const currentPath = Astro.url.pathname;
 <header class="nav">
   <div class="nav__inner">
     <a href="/" class="nav__logo">
-      <img class="nav__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="34" height="34" />
-      <img class="nav__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="118" height="35" />
+      <img src="/assets/logo/Di-CoCo_WBM_H_W_Gr_no_underline.svg" alt="Di-CoCo" width="150" height="36" />
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav__toggle-input" />
@@ -58,17 +57,11 @@ const currentPath = Astro.url.pathname;
   .nav__logo {
     display: flex;
     align-items: center;
-    gap: 0.6rem;
     text-decoration: none;
   }
 
-  .nav__logo-mark {
-    height: 30px;
-    width: auto;
-  }
-
-  .nav__logo-word {
-    height: 22px;
+  .nav__logo img {
+    height: 36px;
     width: auto;
   }
 
@@ -127,6 +120,7 @@ const currentPath = Astro.url.pathname;
 
   .nav__dropdown summary::after {
     content: " ▾";
+    color: var(--color-violet);
   }
 
   .nav__dropdown ul {
