@@ -79,7 +79,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
   .kontakt {
     background: var(--color-orange);
     color: var(--color-white);
-    padding: 5rem 1.5rem;
+    padding: 6.5rem 1.5rem;
   }
 
   .kontakt__inner {
@@ -89,7 +89,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
   }
 
   .kontakt h2 {
-    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
     margin: 0 0 1.25rem;
   }
 
@@ -126,10 +126,18 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
   .kontakt__form input,
   .kontakt__form textarea {
     font-family: inherit;
-    padding: 0.7rem 0.85rem;
+    padding: 0.75rem 1rem;
+    min-height: 44px;
     border-radius: 0.5rem;
-    border: none;
+    border: 1px solid transparent;
     font-size: 1rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .kontakt__form input:focus,
+  .kontakt__form textarea:focus {
+    outline: none;
+    border-color: var(--color-black);
   }
 
   .kontakt__form button {
@@ -145,6 +153,11 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
     cursor: pointer;
     font-size: 1rem;
     font-family: inherit;
+    transition: opacity 0.15s ease;
+  }
+
+  .kontakt__form button:hover {
+    opacity: 0.85;
   }
 
   .kontakt__hint {

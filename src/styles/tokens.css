@@ -58,9 +58,10 @@
   --font-weight-semibold: 600;
   --font-weight-bold: 700;
 
-  /* Zeilenabstand-Regeln lt. Brand Book: Headline x1.0, Copy x1.2, Highlight x0.6 */
-  --line-height-headline: 1;
-  --line-height-copy: 1.2;
+  /* Zeilenabstand-Regeln lt. Brand Book: Headline x1.0, Copy x1.2, Highlight x0.6 —
+     Copy/Headline hier bewusst großzügiger als das Brand-Book-Minimum, siehe Design-PDF-Abgleich 2026-08-30 */
+  --line-height-headline: 1.05;
+  --line-height-copy: 1.6;
   --line-height-highlight: 0.6;
 
   --max-width: 1200px;
