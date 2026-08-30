@@ -20,12 +20,13 @@ const year = new Date().getFullYear();
         href="https://www.provenexpert.com/de-de/dein-bizz/"
         target="_blank"
         rel="noopener"
-        aria-label="ProvenExpert-Bewertung: 4,93 von 5, sehr gut, 9 Bewertungen – zum Profil"
       >
-        <p class="footer__rating-score">4,93 von 5</p>
-        <p class="footer__rating-stars" aria-hidden="true">★★★★★</p>
-        <p class="footer__rating-label">SEHR GUT</p>
-        <p class="footer__rating-count">9 Bewertungen</p>
+        <img
+          src="/assets/badges/provenexpert-siegel.webp"
+          alt="ProvenExpert-Bewertungssiegel: 4,93 von 5, sehr gut, 9 Bewertungen"
+          width="180"
+          height="216"
+        />
       </a>
     </div>
 
@@ -135,10 +136,6 @@ const year = new Date().getFullYear();
 
   .footer__rating {
     display: block;
-    background: var(--color-white);
-    color: var(--color-black);
-    border-radius: 0.5rem;
-    padding: 1rem 1.25rem;
     width: fit-content;
     opacity: 1;
     transition: opacity 0.15s ease;
@@ -148,32 +145,9 @@ const year = new Date().getFullYear();
     opacity: 0.85;
   }
 
-  .footer__rating p {
-    margin: 0;
-  }
-
-  .footer__rating-score {
-    color: #c9b274;
-    font-size: 0.8rem;
-    font-weight: var(--font-weight-semibold);
-  }
-
-  .footer__rating-stars {
-    color: #c9b274;
-    letter-spacing: 0.1em;
-    font-size: 1.1rem;
-    margin: 0.15rem 0 !important;
-  }
-
-  .footer__rating-label {
-    color: var(--color-black);
-    font-weight: var(--font-weight-bold);
-  }
-
-  .footer__rating-count {
-    color: var(--color-black);
-    font-size: 0.8rem;
-    opacity: 0.6;
+  .footer__rating img {
+    width: 140px;
+    height: auto;
   }
 
   .footer ul {
