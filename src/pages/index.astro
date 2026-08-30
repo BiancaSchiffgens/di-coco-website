@@ -21,6 +21,20 @@ const colorMap: Record<string, string> = {
   schwarz: "var(--color-black)",
 };
 
+// Homepage-Card-Copy weicht bewusst von heroSubline der Unterseite ab – exakter Text aus 2026_07_21_Di-CoCo_Webdesign.pdf
+const homepageCardCopy: Record<string, string> = {
+  "corporate-influencer-programme":
+    "Deine Mitarbeitenden sind dein stärkster Kanal. Du nutzt ihn noch nicht. Ein CI-Programm ist kein Social-Media-Projekt. Es ist ein strategischer Eingriff in die Art, wie dein Unternehmen kommuniziert – und wie es intern funktioniert. Wir entwickeln Programme, die Mitarbeitende zu sichtbaren Stimmen machen, Silos aufbrechen und echten Kulturwandel bringen.",
+  "linkedin-account-management":
+    "Sichtbarkeit entsteht nicht durch Zufallsposts. Sondern durch Strategie. Di-CoCo übernimmt das vollständige strategische Management von LinkedIn-Accounts – für Führungspersönlichkeiten und Unternehmen, die sichtbar sein wollen ohne sich täglich damit zu beschäftigen.",
+  "cxo-communication":
+    "Führungskräfte, die kommunizieren, führen anders. Wer als Führungspersönlichkeit sichtbar ist, schafft Vertrauen im Markt, Orientierung im Team und Relevanz in der Branche. Di-CoCo entwickelt Positionierung, Messaging und Content – damit deine Stimme nach dir klingt und Wirkung erzeugt.",
+  "keynotes":
+    "Themen die Entscheider bewegen. Vorträge die nachhalten. Bianca Schiffgens spricht auf Konferenzen und Events zu Sichtbarkeit als Führungsaufgabe, Corporate Influencer Programmen und LinkedIn-Strategie. Kein Theorie-Vortrag. Echte Fälle, klare Haltung, konkrete Empfehlungen.",
+  "schulungen":
+    "Das Programm läuft. Jetzt muss dein Team es tragen können. Di-CoCo schult Kommunikationsverantwortliche, HR-Teams und interne Programm-Manager, damit sie Corporate Influencer Programme eigenständig begleiten und weiterentwickeln können.",
+};
+
 const ergebnisse = [
   { zahl: "8.000+", label: "Follower in der Zielgruppe", kontext: "Corporate Influencerin aufgebaut – von Null" },
   { zahl: "220.000", label: "Impressionen in 5 Monaten", kontext: "E-Commerce-Unternehmen – von Null aufgebaut" },
@@ -93,10 +107,15 @@ const credentials = [
         <img class="hero__badge" src="/assets/badges/favikon-top10-white.webp" alt="" width="690" height="576" />
       </div>
     </div>
+    <a href="#claim" class="hero__scroll" aria-label="Nach unten scrollen">
+      <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </a>
   </section>
 
-  <section class="claim">
-    <p class="claim__text gradient-text gradient-text--script">Visibility drives business.</p>
+  <section class="claim" id="claim">
+    <p class="claim__text gradient-text gradient-text--script">Visibility Drives<br />Business.</p>
     <div class="claim__actions">
       <a href="#kontakt" class="button">Lass uns sprechen</a>
       <a href="#leistungen" class="button button--outline">Was wir tun</a>
@@ -139,7 +158,7 @@ const credentials = [
             <span class="hl">als strategisches Instrument das auf Führungsebene angesiedelt
             sein muss</span>.
           </p>
-          <p class="wirkung__label gradient-text gradient-text--script">Der interne Effekt</p>
+          <p class="wirkung__label gradient-text--script">Der<br /><span class="gradient-text">interne</span><br />Effekt</p>
         </div>
         <div class="wirkung__col">
           <div class="wirkung__divider"></div>
@@ -177,10 +196,13 @@ const credentials = [
     <h2>Kommunikation, die nach außen wirkt. Weil sie innen verankert ist.</h2>
     <div class="leistungen__grid">
       {cards.map((service) => (
-        <article class="leistung-card" style={`--accent: ${colorMap[service.data.color]}`}>
+        <article
+          class={`leistung-card ${service.data.slug === "schulungen" ? "leistung-card--light" : ""}`}
+          style={`--accent: ${colorMap[service.data.color]}`}
+        >
           <h3>{service.data.title}</h3>
           <div class="leistung-card__divider"></div>
-          <p>{service.data.heroSubline}</p>
+          <p>{homepageCardCopy[service.data.slug]}</p>
           <div class="leistung-card__actions">
             <a href="#kontakt" class="button--card">Anfragen</a>
             <a href={`/${service.data.slug}/`} class="button--card button--card-ghost">Mehr erfahren</a>
@@ -243,14 +265,21 @@ const credentials = [
 
   <section class="referenzen" id="referenzen">
     <p class="referenzen__eyebrow">Kundenstimmen</p>
-    <h2>Was sich verändert, wenn <span class="gradient-text">Di-CoCo</span> dabei ist.</h2>
-    <div class="referenzen__grid">
-      {referenzen.map((r) => (
-        <blockquote class="referenz-card">
-          <p>„{r.zitat}"</p>
-          <cite>{r.name}, {r.rolle}</cite>
-        </blockquote>
-      ))}
+    <h2>Was sich verändert, wenn <span class="referenzen__brand">Di-CoCo</span> dabei ist.</h2>
+    <div class="referenzen__carousel" data-carousel>
+      <div class="referenzen__track">
+        {referenzen.map((r, i) => (
+          <blockquote class="referenz-card" data-slide aria-hidden={i === 0 ? "false" : "true"}>
+            <p>„{r.zitat}"</p>
+            <cite>{r.name}, {r.rolle}</cite>
+          </blockquote>
+        ))}
+      </div>
+      <div class="referenzen__dots" role="tablist" aria-label="Kundenstimmen auswählen">
+        {referenzen.map((_, i) => (
+          <button type="button" class="referenzen__dot" data-dot aria-label={`Kundenstimme ${i + 1}`} aria-current={i === 0 ? "true" : "false"}></button>
+        ))}
+      </div>
     </div>
     <div class="referenzen__badges">
       {branchen.map((b) => <span class="pill">{b}</span>)}
@@ -273,11 +302,12 @@ const credentials = [
       <cite>Bianca Schiffgens, Gründerin Di-CoCo</cite>
     </blockquote>
     <div class="presse__buch">
-      <img src="/assets/badges/buch-fuehrung-im-wandel.webp" alt="Buchcover Führung im Wandel, Springer Gabler Verlag" width="262" height="367" loading="lazy" />
       <div>
-        <p class="presse__buch-label">Autorin · Führung im Wandel · Springer Gabler Verlag</p>
+        <p class="presse__buch-eyebrow">Buchpublikation</p>
+        <h3 class="presse__buch-label">Autorin · Führung im Wandel<br />Springer Gabler Verlag</h3>
         <p>Bianca Schiffgens hat einen Beitrag zu Leadership-Kommunikation und digitaler Sichtbarkeit in diesem Fachband veröffentlicht.</p>
       </div>
+      <img src="/assets/badges/buch-fuehrung-im-wandel.webp" alt="Buchcover Führung im Wandel, Springer Gabler Verlag" width="262" height="367" loading="lazy" />
     </div>
   </section>
 
@@ -310,15 +340,15 @@ const credentials = [
   .hero__visual {
     position: relative;
     height: 100%;
-    min-height: 360px;
+    min-height: 560px;
   }
 
   .hero__ribbon {
     position: absolute;
     top: 50%;
     left: 50%;
-    width: 90%;
-    max-width: 420px;
+    width: 130%;
+    max-width: 620px;
     transform: translate(-50%, -50%);
     opacity: 0.9;
     pointer-events: none;
@@ -327,8 +357,33 @@ const credentials = [
   .hero__badge {
     position: absolute;
     right: 0;
-    bottom: 0;
-    width: 120px;
+    top: 0;
+    width: 140px;
+  }
+
+  .hero__scroll {
+    position: relative;
+    display: flex;
+    width: 44px;
+    height: 44px;
+    margin: 3.5rem auto 0;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(253, 253, 253, 0.5);
+    border-radius: 50%;
+    color: var(--color-white);
+    animation: hero-scroll-bounce 2s ease-in-out infinite;
+  }
+
+  @keyframes hero-scroll-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(6px); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero__scroll {
+      animation: none;
+    }
   }
 
   .hero__eyebrow {
@@ -382,7 +437,7 @@ const credentials = [
     color: var(--color-white);
     text-decoration: none;
     padding: 0.9rem 1.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-weight: var(--font-weight-semibold);
     border: none;
     cursor: pointer;
@@ -418,9 +473,10 @@ const credentials = [
 
   .bekannt-aus__label {
     text-transform: uppercase;
+    color: var(--color-blue);
     font-size: 0.8rem;
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.06em;
-    opacity: 0.6;
     margin: 0 0 1.25rem;
   }
 
@@ -434,10 +490,8 @@ const credentials = [
   }
 
   .bekannt-aus__logos img {
-    height: 34px;
+    height: 40px;
     width: auto;
-    opacity: 0.65;
-    filter: grayscale(1);
   }
 
   .bekannt-aus__badge {
@@ -595,9 +649,10 @@ const credentials = [
 
   .leistungen__eyebrow {
     text-transform: uppercase;
+    color: var(--color-blue);
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.06em;
     font-size: 0.85rem;
-    opacity: 0.6;
     margin: 0 0 1rem;
   }
 
@@ -623,6 +678,31 @@ const credentials = [
        min-content-Breite. Lange Komposita wie "Programmverantwortliche"
        machten das Raster dadurch breiter als den Viewport. */
     min-width: 0;
+  }
+
+  .leistung-card--light {
+    background: #ffa47f;
+    color: var(--color-black);
+  }
+
+  .leistung-card--light .leistung-card__divider {
+    background: var(--color-black);
+  }
+
+  .leistung-card--light .button--card {
+    background: var(--color-black);
+    color: var(--color-white);
+  }
+
+  .leistung-card--light .button--card-ghost {
+    background: transparent;
+    color: var(--color-black);
+    border-color: rgba(17, 18, 25, 0.4);
+  }
+
+  .leistung-card--light .button--card-ghost:hover {
+    background: rgba(17, 18, 25, 0.08);
+    border-color: rgba(17, 18, 25, 0.6);
   }
 
   .leistung-card h3,
@@ -661,7 +741,7 @@ const credentials = [
     display: inline-block;
     text-decoration: none;
     padding: 0.9rem 1.75rem;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-weight: var(--font-weight-semibold);
     font-size: 1rem;
     background: var(--color-white);
@@ -731,9 +811,10 @@ const credentials = [
 
   .ueber-uns__eyebrow {
     text-transform: uppercase;
+    color: var(--color-blue);
+    font-weight: var(--font-weight-bold);
     letter-spacing: 0.06em;
     font-size: 0.85rem;
-    opacity: 0.6;
     margin: 0 0 1rem;
   }
 
@@ -795,24 +876,39 @@ const credentials = [
     font-size: clamp(2.25rem, 5vw, 3.25rem);
   }
 
-  .referenzen__grid {
-    max-width: var(--max-width);
+  .referenzen__brand {
+    color: var(--color-orange);
+  }
+
+  .referenzen__carousel {
+    max-width: 720px;
     margin: 0 auto;
+  }
+
+  .referenzen__track {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
   }
 
   .referenz-card {
+    grid-area: 1 / 1;
     margin: 0;
     background: #f5f5f5;
     color: var(--color-black);
     border-radius: 0.75rem;
-    padding: 1.75rem;
+    padding: 2.5rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease;
+  }
+
+  .referenz-card[aria-hidden="false"] {
+    opacity: 1;
+    visibility: visible;
   }
 
   .referenz-card p {
     margin: 0 0 1rem;
+    font-size: 1.15rem;
   }
 
   .referenz-card cite {
@@ -821,12 +917,34 @@ const credentials = [
     font-size: 0.9rem;
   }
 
+  .referenzen__dots {
+    display: flex;
+    justify-content: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+  }
+
+  .referenzen__dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    background: rgba(253, 253, 253, 0.3);
+    cursor: pointer;
+  }
+
+  .referenzen__dot[aria-current="true"] {
+    background: var(--color-white);
+  }
+
   .referenzen__badges {
     max-width: var(--max-width);
     margin: 2.5rem auto 0;
     display: flex;
     gap: 0.6rem;
     flex-wrap: wrap;
+    justify-content: center;
   }
 
   .pill {
@@ -847,6 +965,7 @@ const credentials = [
 
   .presse__eyebrow {
     color: var(--color-blue);
+    font-weight: var(--font-weight-bold);
     text-transform: uppercase;
     letter-spacing: 0.06em;
     font-size: 0.85rem;
@@ -901,30 +1020,40 @@ const credentials = [
     display: block;
     font-family: var(--font-family);
     font-style: normal;
+    color: var(--color-black);
     font-size: 0.9rem;
-    opacity: 0.6;
     margin-top: 2rem;
   }
 
   .presse__buch {
     background: #f5f5f5;
     border-radius: 1rem;
-    padding: 1.75rem;
+    padding: 3rem;
     display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 1.5rem;
+    grid-template-columns: 1fr auto;
+    gap: 2.5rem;
     align-items: center;
     text-align: left;
   }
 
   .presse__buch img {
-    width: 90px;
+    width: 180px;
     border-radius: 0.25rem;
   }
 
+  .presse__buch-eyebrow {
+    color: var(--color-blue);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    margin: 0 0 0.75rem;
+  }
+
   .presse__buch-label {
-    font-weight: var(--font-weight-semibold);
-    margin: 0 0 0.5rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    line-height: 1.15;
+    margin: 0 0 1rem;
   }
 
   .presse__buch p:last-child {
@@ -976,10 +1105,6 @@ const credentials = [
       max-width: 340px;
     }
 
-    .referenzen__grid {
-      grid-template-columns: 1fr;
-    }
-
     .presse__grid {
       grid-template-columns: repeat(2, 1fr);
     }
@@ -1008,3 +1133,46 @@ const credentials = [
     }
   }
 </style>
+
+<script>
+  const carousel = document.querySelector<HTMLElement>("[data-carousel]");
+  if (carousel) {
+    const slides = Array.from(carousel.querySelectorAll<HTMLElement>("[data-slide]"));
+    const dots = Array.from(carousel.querySelectorAll<HTMLButtonElement>("[data-dot]"));
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let active = 0;
+    let timer: ReturnType<typeof setInterval> | undefined;
+
+    const show = (index: number) => {
+      active = index;
+      slides.forEach((slide, i) => slide.setAttribute("aria-hidden", i === index ? "false" : "true"));
+      dots.forEach((dot, i) => dot.setAttribute("aria-current", i === index ? "true" : "false"));
+    };
+
+    const next = () => show((active + 1) % slides.length);
+
+    const start = () => {
+      if (reduceMotion) return;
+      stop();
+      timer = setInterval(next, 5000);
+    };
+
+    const stop = () => {
+      if (timer) clearInterval(timer);
+    };
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener("click", () => {
+        show(i);
+        start();
+      });
+    });
+
+    carousel.addEventListener("mouseenter", stop);
+    carousel.addEventListener("mouseleave", start);
+    carousel.addEventListener("focusin", stop);
+    carousel.addEventListener("focusout", start);
+
+    start();
+  }
+</script>

@@ -8,7 +8,8 @@ const currentPath = Astro.url.pathname;
 <header class="nav">
   <div class="nav__inner">
     <a href="/" class="nav__logo">
-      <img src="/assets/logo/Di-CoCo_WBM_H_W.svg" alt="Di-CoCo" width="176" height="47" />
+      <img class="nav__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="34" height="34" />
+      <img class="nav__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="118" height="35" />
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav__toggle-input" />
@@ -57,11 +58,17 @@ const currentPath = Astro.url.pathname;
   .nav__logo {
     display: flex;
     align-items: center;
+    gap: 0.6rem;
     text-decoration: none;
   }
 
-  .nav__logo img {
-    height: 47px;
+  .nav__logo-mark {
+    height: 30px;
+    width: auto;
+  }
+
+  .nav__logo-word {
+    height: 22px;
     width: auto;
   }
 
@@ -99,7 +106,7 @@ const currentPath = Astro.url.pathname;
     background: var(--color-orange);
     color: var(--color-white) !important;
     padding: 0.6rem 1.25rem;
-    border-radius: 999px;
+    border-radius: var(--radius-button);
     font-weight: var(--font-weight-semibold);
   }
 
@@ -110,6 +117,7 @@ const currentPath = Astro.url.pathname;
   .nav__dropdown summary {
     list-style: none;
     cursor: pointer;
+    color: var(--color-white);
     font-weight: var(--font-weight-medium);
   }
 
