@@ -1,0 +1,350 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const presse = [
+  { src: "/assets/press/bild.webp", w: 306, h: 305, quelle: "BILD / BILD Online / BILD.de", kontext: "Bianca Schiffgens als Expertin zur Social-Media-Kommunikation in Insolvenzsituationen" },
+  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, quelle: "Gründermagazin", kontext: "Corporate Influencer Programme und digitale Sichtbarkeit im Mittelstand" },
+  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
+  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
+];
+
+const kompetenzen = [
+  { titel: "Corporate Influencer Programm", text: "Entwicklung und Implementierung maßgeschneiderter Markenbotschafterprogramme" },
+  { titel: "CEO-Kommunikation", text: "Strategische Positionierung von Führungskräften auf digitalen Plattformen" },
+  { titel: "Digitale Sichtbarkeit für Unternehmen", text: "Nachhaltige Strategien für B2B-Unternehmen" },
+  { titel: "Social Selling", text: "Vertriebsoptimierung durch digitale Kanäle" },
+];
+
+const interviewThemen = [
+  { titel: "Mitarbeitende als Markenbotschafter", text: "Wie Corporate-Influencer-Programme die Unternehmenskommunikation revolutionieren." },
+  { titel: "Die digitale Stimme der Führungsetage", text: "Warum CEO-Kommunikation heute entscheidend und Verstecken keine Option mehr ist." },
+  { titel: "LinkedIn als B2B-Powerhouse", text: "Strategien für mehr Sichtbarkeit und Leads." },
+  { titel: "Vom Mitarbeitenden zum Markenbotschafter", text: "So gelingt der Aufbau eines Corporate-Influencer-Programms." },
+  { titel: "Authentische Kommunikation", text: "Warum echte Menschen die beste Werbung sind." },
+  { titel: "Wer sich aufs Glatteis wagt", text: "Markenbotschafterprogramme stellen Unternehmenskultur in Frage." },
+];
+
+const zitate = [
+  "Unsichtbare Unternehmen sterben aus. Wer heute nicht digital kommuniziert, riskiert seine Wettbewerbsfähigkeit!",
+  "Corporate Influencer Programme sind keine Marketing-Maßnahme, sondern eine strategische Unternehmensentscheidung.",
+  "Die eigenen Mitarbeitenden als wertvollster Kommunikationskanal deines Unternehmens.",
+  "CEO-Kommunikation ist keine Selbstdarstellung, sondern strategische Führung. Es ist an der Zeit, die Unternehmenshöhe zurückzugewinnen.",
+];
+
+const erfolgsgeschichten = [
+  {
+    titel: "Vom No Name zur Influence Machine",
+    name: "W. Weigel",
+    rolle: "Geschäftsführer, Filoform GmbH",
+    absaetze: [
+      "Als CEO der Filoform GmbH möchte ich meine Anerkennung für die großartige Zusammenarbeit mit Bianca Schiffgens und Di-CoCo aussprechen. Seit über zwei Jahren begleitet uns Frau Schiffgens nun schon auf unserem Weg zu einer stärkeren Präsenz auf LinkedIn, und die Ergebnisse übertreffen alle unsere Erwartungen.",
+      "Das von Di-CoCo entwickelte Corporate Influencer Programm hat unsere Markenbekanntheit in der Branche und darüber hinaus deutlich gesteigert. Frau Schiffgens' Expertise hat unsere Markenbotschafter befähigt, die Meinungen und Produkte unserer Firma, insbesondere den Kabelschacht Ultima Connect und das Multiduct, authentisch und wirkungsvoll zu präsentieren. Auf Messen und Partnertagen werden wir als Branchenexperten wahrgenommen und unsere Meinung zu Themen wie Glasfaserausbau, kritische Infrastruktur & Cybersicherheit sowie Ladeinfrastrukturlösungen ist gefragt!",
+      "Besonders beeindruckt hat uns die Umsetzung des Social Selling Prinzips, das sich für unser Unternehmen als äußerst effektiv erwiesen hat. Auch unser Employer Branding hat durch Frau Schiffgens' strategischen Ansatz einen enormen Aufschwung erfahren.",
+      "Was die Zusammenarbeit mit Di-CoCo so wertvoll macht, ist die kontinuierliche Unterstützung: Neben den anfänglichen Schulungen und der Begeisterung für die LinkedIn-Plattform steht Frau Schiffgens in regelmäßigem Austausch mit uns über Plattform-Neuerungen. Ihr kreativer Input und motivierender Ansatz sorgen dafür, dass alle weiterhin engagiert und inspiriert bleiben.",
+      "Die professionelle Begleitung durch Frau Schiffgens und Di-CoCo hat nicht nur unsere Online-Präsenz optimiert, sondern auch intern eine neue Dynamik geschaffen, so ist selbst Video-Content keine Fremdsprache mehr. Wir sind äußerst dankbar für diese fruchtbare Partnerschaft und können Bianca Schiffgens und Di-CoCo jedem Unternehmen empfehlen, das seine digitale Sichtbarkeit und Arbeitgebermarke nachhaltig stärken möchte.",
+    ],
+  },
+  {
+    titel: "Von der Skeptikerin zur überzeugten LinkedIn-Nutzerin",
+    name: "H. Henkel",
+    rolle: "Olympiasiegerin, Keynote-Speakerin und Autorin",
+    absaetze: [
+      "Dank der professionellen Unterstützung durch Di-CoCo, unter der Leitung von Bianca Schiffgens, konnte ich meinen LinkedIn-Auftritt auf ein ganz anderes, neues Level bringen. Die Einführung in die Plattform sowie das gezielte Copywriting für meine Beiträge haben maßgeblich dazu beigetragen, meine Sichtbarkeit zu steigern – insbesondere im Hinblick auf mein aktuelles Buch „Absprung im richtigen Moment“ sowie meine Tätigkeit als Keynote-Speakerin und Coach im B2B-Bereich.",
+      "Die Zusammenarbeit war geprägt von Kreativität, Präzision und einem tiefen Verständnis für meine Marke und Botschaft. Bianca und ihr Team haben es geschafft, meine Werte und Ziele authentisch in den Beiträgen zu transportieren und eine nachhaltige Verbindung zu meiner Zielgruppe aufzubauen.",
+      "Ich empfehle daher Bianca Schiffgens und Di-CoCo kontinuierlich weiter – für alle, die ihre digitale Präsenz strategisch aufbauen und gleichzeitig ihre persönliche Note bewahren möchten.",
+    ],
+  },
+  {
+    titel: "Nach Trial-and-Error endlich Struktur",
+    name: "Jessica Mina-Knopp",
+    rolle: "Geschäftsführerin, Mariposa GmbH",
+    absaetze: [
+      "Biancas Expertise hat maßgeblich dazu beigetragen, dass die Mariposa Company endlich eine konkrete LinkedIn-Strategie entwickeln konnte. Die Ausgangslage waren 1,5 Jahre LinkedIn-Nutzung im Trial-and-Error-Modus ohne konkreten Fahrplan oder Struktur.",
+      "Biancas Begleitung, Coaching und Beratung haben an den Wissensstand gesetzt, wo wir uns zu dem Zeitpunkt befunden haben. Die gemeinsame Reise mit uns startete bei technischem LinkedIn-Know-how und Profiloptimierung, ging weiter mit Positionierung über Wording und mündete in einer für uns maßgeschneiderten Strategie, die Social Selling und Contentplanung beinhaltet.",
+      "Uns hat die Zusammenarbeit nicht nur unglaublich dabei geholfen, einen konkreten Fahrplan zu entwickeln und diesen auch zu „fahren“ – es hat auch wahnsinnig viel Spaß gemacht: Biancas lockere und mitreißende Art gibt dem sehr professionellen Rahmen die besondere Note.",
+      "Vielen Dank für die Zusammenarbeit – das war definitiv eines unserer Highlights im Jahr 2024.",
+    ],
+  },
+];
+
+const breadcrumb = [
+  { name: "Startseite", url: "/" },
+  { name: "Presse", url: "/presse" },
+];
+---
+
+<Layout
+  title="Presse | Di-CoCo"
+  description="Informationen für Journalisten und Redaktionen: Bio, Kompetenzen, Interview-Themen, Zitate und Erfolgsgeschichten zu Bianca Schiffgens und Di-CoCo."
+  breadcrumb={breadcrumb}
+>
+  <section class="presse-page">
+    <div class="presse-page__inner">
+      <p class="presse-page__eyebrow">Presse</p>
+      <h1>Informationen für Journalisten und Redaktionen</h1>
+
+      <div class="presse-page__block">
+        <h2>Über Bianca Schiffgens</h2>
+        <p>
+          Bianca Schiffgens ist Expertin für digitale Kommunikation. Laut Favikon gehört sie zu den Top 10
+          Communications Experts Germany 2025 &amp; 2026. Corporate-Influencer-Programme, digitale Sichtbarkeit
+          und CEO-Kommunikation sind dabei ihre Schwerpunkte. Als Gründerin von Di-CoCo unterstützt sie
+          Unternehmen dabei, ihre Mitarbeitenden zu überzeugenden Markenbotschaftern zu entwickeln und eine
+          nachhaltige digitale Präsenz aufzubauen. Als Autorin und von LinkedIn zertifizierte
+          Marketing-Insiderin mit über 24.000 Followern auf LinkedIn zählt sie zu den einflussreichen Stimmen
+          im Bereich strategischer Unternehmenskommunikation.
+        </p>
+      </div>
+
+      <div class="presse-page__block">
+        <h2>Kompetenz &amp; Themen</h2>
+        <dl class="kompetenz-list">
+          {kompetenzen.map((k) => (
+            <div class="kompetenz-list__item">
+              <dt>{k.titel}</dt>
+              <dd>{k.text}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div class="presse-page__block">
+        <h2>Di-CoCo in den Medien</h2>
+        <div class="presse-grid">
+          {presse.map((p) => (
+            <div class="presse-grid__item">
+              <img src={p.src} alt={p.quelle} width={p.w} height={p.h} loading="lazy" />
+              <p>{p.kontext}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div class="presse-page__block">
+        <h2>Interview-Themen</h2>
+        <ul class="themen-list">
+          {interviewThemen.map((t) => (
+            <li><strong>{t.titel}:</strong> {t.text}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="presse-page__block">
+        <h2>Zitate von Bianca Schiffgens</h2>
+        <div class="zitate-grid">
+          {zitate.map((z) => (
+            <blockquote class="zitat-card">„{z}“</blockquote>
+          ))}
+        </div>
+      </div>
+
+      <div class="presse-page__block">
+        <h2>Erfolgsgeschichten</h2>
+        <div class="erfolge">
+          {erfolgsgeschichten.map((e) => (
+            <article class="erfolg">
+              <h3 class="gradient-text">{e.titel}</h3>
+              {e.absaetze.map((a) => <p>{a}</p>)}
+              <cite>{e.name}, {e.rolle}</cite>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <div class="presse-page__block presse-page__kontakt">
+        <h2>Kontakt für Medienanfragen</h2>
+        <p class="kontakt-name">Bianca Schiffgens</p>
+        <p><a href="mailto:hello@di-coco.com">hello@di-coco.com</a></p>
+        <p><a href="https://www.linkedin.com/in/bianca-schiffgens-corporate-influencer-programme/" target="_blank" rel="noopener">LinkedIn-Profil</a></p>
+        <p class="kontakt-note">
+          Für Interviews, Statements oder Hintergrundinformationen stehe ich gerne zur Verfügung.
+          Hochauflösendes Bildmaterial sende ich auf Anfrage zu.
+        </p>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .presse-page {
+    padding: 6.5rem 1.5rem;
+  }
+
+  .presse-page__inner {
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .presse-page__eyebrow {
+    color: var(--color-blue);
+    font-weight: var(--font-weight-bold);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-size: 0.85rem;
+    margin: 0 0 1rem;
+  }
+
+  .presse-page h1 {
+    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    margin: 0 0 4.5rem;
+    max-width: 640px;
+  }
+
+  .presse-page__block {
+    margin: 0 0 4rem;
+  }
+
+  .presse-page__block h2 {
+    font-size: clamp(1.35rem, 3vw, 1.75rem);
+    margin: 0 0 1.5rem;
+  }
+
+  .presse-page__block > p {
+    line-height: var(--line-height-copy);
+    opacity: 0.9;
+  }
+
+  .kompetenz-list {
+    margin: 0;
+    display: grid;
+    gap: 1.5rem;
+  }
+
+  .kompetenz-list__item dt {
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 0.3rem;
+  }
+
+  .kompetenz-list__item dd {
+    margin: 0;
+    opacity: 0.8;
+  }
+
+  .presse-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
+
+  .presse-grid__item {
+    min-width: 0;
+    text-align: center;
+  }
+
+  .presse-grid__item img {
+    height: 40px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    margin: 0 auto 0.85rem;
+  }
+
+  .presse-grid__item p {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin: 0;
+    hyphens: auto;
+    overflow-wrap: break-word;
+  }
+
+  .themen-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 1.1rem;
+  }
+
+  .themen-list li {
+    line-height: var(--line-height-copy);
+    opacity: 0.9;
+    padding-left: 1.1rem;
+    border-left: 2px solid var(--color-orange);
+  }
+
+  .themen-list strong {
+    opacity: 1;
+  }
+
+  .zitate-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .zitat-card {
+    margin: 0;
+    background: #f5f5f5;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.4;
+  }
+
+  .erfolge {
+    display: grid;
+    gap: 3rem;
+  }
+
+  .erfolg {
+    border-top: 1px solid rgba(17, 18, 25, 0.12);
+    padding-top: 2rem;
+  }
+
+  .erfolg h3 {
+    font-size: 1.4rem;
+    margin: 0 0 1.25rem;
+  }
+
+  .erfolg p {
+    line-height: var(--line-height-copy);
+    opacity: 0.9;
+    margin: 0 0 1rem;
+  }
+
+  .erfolg cite {
+    display: block;
+    font-style: normal;
+    font-weight: var(--font-weight-semibold);
+    opacity: 0.7;
+    margin-top: 1.25rem;
+  }
+
+  .presse-page__kontakt {
+    background: #f5f5f5;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    margin-bottom: 0;
+  }
+
+  .kontakt-name {
+    font-weight: var(--font-weight-semibold);
+    margin: 0 0 0.5rem;
+  }
+
+  .presse-page__kontakt p {
+    margin: 0 0 0.5rem;
+  }
+
+  .presse-page__kontakt a {
+    color: var(--color-blue);
+    text-decoration: underline;
+  }
+
+  .kontakt-note {
+    margin-top: 1.25rem;
+    opacity: 0.75;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 700px) {
+    .presse-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .zitate-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

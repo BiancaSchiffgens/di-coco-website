@@ -63,13 +63,6 @@ const referenzen = [
 
 const branchen = ["Industrie", "Technologie", "Beratung", "Finanzdienstleistung", "Energie", "Spitzensport", "E-Commerce"];
 
-const presse = [
-  { src: "/assets/press/bild.webp", w: 306, h: 305, quelle: "BILD / BILD Online / BILD.de", kontext: "Bianca Schiffgens als Expertin zur Social-Media-Kommunikation in Insolvenzsituationen" },
-  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, quelle: "Gründermagazin", kontext: "Corporate Influencer Programme und digitale Sichtbarkeit im Mittelstand" },
-  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, quelle: "Rheinzeiger", kontext: "Top-10-Kommunikationsexpertin Deutschland 2025" },
-  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, quelle: "DJV NRW Journal", kontext: "Strategische Unternehmenskommunikation und LinkedIn im B2B" },
-];
-
 const bekanntAusLogos = [
   { src: "/assets/press/bild.webp", w: 306, h: 305, alt: "BILD" },
   { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, alt: "Gründermagazin" },
@@ -283,17 +276,7 @@ const credentials = [
     </div>
   </section>
 
-  <section class="presse" id="presse">
-    <p class="presse__eyebrow">Presse</p>
-    <h2>Di-CoCo in den Medien.</h2>
-    <div class="presse__grid">
-      {presse.map((p) => (
-        <div class="presse__item">
-          <img src={p.src} alt={p.quelle} width={p.w} height={p.h} loading="lazy" />
-          <p>{p.kontext}</p>
-        </div>
-      ))}
-    </div>
+  <section class="presse">
     <blockquote class="presse__pullquote gradient-text gradient-text--script">
       „Wer nicht mitmacht, macht den Weg frei für Mitbewerber.“
       <cite>Bianca Schiffgens, Gründerin Di-CoCo</cite>
@@ -963,53 +946,6 @@ const credentials = [
     text-align: center;
   }
 
-  .presse__eyebrow {
-    color: var(--color-blue);
-    font-weight: var(--font-weight-bold);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
-    margin: 0 0 1rem;
-  }
-
-  .presse h2 {
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
-    margin: 0 0 3rem;
-  }
-
-  .presse__grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 2rem;
-    margin: 0 0 4rem;
-  }
-
-  .presse__item {
-    min-width: 0;
-  }
-
-  /* lange Komposita ("Social-Media-Kommunikation") sprengen sonst die schmale
-     Spalte auf dem Handy */
-  .presse__item p {
-    hyphens: auto;
-    overflow-wrap: break-word;
-  }
-
-  .presse__item img {
-    height: 44px;
-    width: auto;
-    /* breite Logos dürfen ihre Spalte nicht sprengen */
-    max-width: 100%;
-    object-fit: contain;
-    margin: 0 auto 1rem;
-  }
-
-  .presse__item p {
-    font-size: 0.9rem;
-    opacity: 0.7;
-    margin: 0;
-  }
-
   .presse__pullquote {
     font-size: clamp(2.25rem, 7vw, 5rem);
     margin: 0 0 3rem;
@@ -1108,10 +1044,6 @@ const credentials = [
 
     .ueber-uns__photo {
       max-width: 340px;
-    }
-
-    .presse__grid {
-      grid-template-columns: repeat(2, 1fr);
     }
 
     .presse__buch {
