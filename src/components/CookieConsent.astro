@@ -1,0 +1,196 @@
+---
+import { GA_MEASUREMENT_ID } from "../config";
+---
+
+{GA_MEASUREMENT_ID && (
+  <>
+    <div
+      class="consent"
+      id="consent-banner"
+      role="dialog"
+      aria-modal="false"
+      aria-labelledby="consent-title"
+      aria-describedby="consent-text"
+      hidden
+    >
+      <div class="consent__inner">
+        <div class="consent__copy">
+          <p class="consent__title" id="consent-title">Cookies &amp; Statistik</p>
+          <p class="consent__text" id="consent-text">
+            Wir nutzen Google Analytics, um zu verstehen, wie diese Website genutzt wird.
+            Das passiert nur mit Ihrer Einwilligung. Details in der
+            <a href="/datenschutz/">Datenschutzerklärung</a>.
+          </p>
+        </div>
+        <div class="consent__actions">
+          <button type="button" class="consent__btn" data-consent-decline>Ablehnen</button>
+          <button type="button" class="consent__btn" data-consent-accept>Akzeptieren</button>
+        </div>
+      </div>
+    </div>
+
+    {/* is:inline, damit Consent Mode "denied" gesetzt ist, bevor irgendein
+        Google-Script laufen könnte – ein gebündeltes Astro-Script wäre deferred. */}
+    <script is:inline define:vars={{ gaId: GA_MEASUREMENT_ID }}>
+      (function () {
+        var STORAGE_KEY = "dicoco-consent";
+        var banner = document.getElementById("consent-banner");
+        var gaLoaded = false;
+
+        window.dataLayer = window.dataLayer || [];
+        function gtag() {
+          window.dataLayer.push(arguments);
+        }
+
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          ad_user_data: "denied",
+          ad_personalization: "denied",
+          analytics_storage: "denied",
+        });
+
+        function readChoice() {
+          try {
+            return localStorage.getItem(STORAGE_KEY);
+          } catch (e) {
+            return null;
+          }
+        }
+
+        function storeChoice(value) {
+          try {
+            localStorage.setItem(STORAGE_KEY, value);
+          } catch (e) {
+            /* Privatmodus o. Ä. – Entscheidung gilt dann nur für diesen Aufruf */
+          }
+        }
+
+        function loadAnalytics() {
+          if (gaLoaded) return;
+          gaLoaded = true;
+          var s = document.createElement("script");
+          s.async = true;
+          s.src = "https://www.googletagmanager.com/gtag/js?id=" + gaId;
+          document.head.appendChild(s);
+          gtag("js", new Date());
+          gtag("config", gaId, { anonymize_ip: true });
+        }
+
+        function showBanner() {
+          if (banner) banner.hidden = false;
+        }
+
+        function hideBanner() {
+          if (banner) banner.hidden = true;
+        }
+
+        function accept() {
+          storeChoice("granted");
+          gtag("consent", "update", { analytics_storage: "granted" });
+          loadAnalytics();
+          hideBanner();
+        }
+
+        function decline() {
+          storeChoice("denied");
+          gtag("consent", "update", { analytics_storage: "denied" });
+          hideBanner();
+        }
+
+        document.addEventListener("click", function (event) {
+          var target = event.target;
+          if (!(target instanceof Element)) return;
+          if (target.closest("[data-consent-accept]")) accept();
+          else if (target.closest("[data-consent-decline]")) decline();
+          else if (target.closest("[data-consent-open]")) {
+            event.preventDefault();
+            showBanner();
+          }
+        });
+
+        var choice = readChoice();
+        if (choice === "granted") loadAnalytics();
+        else if (choice !== "denied") showBanner();
+      })();
+    </script>
+  </>
+)}
+
+<style>
+  .consent {
+    position: fixed;
+    inset: auto 0 0 0;
+    z-index: 100;
+    background: var(--color-black);
+    color: var(--color-white);
+    border-top: 2px solid transparent;
+    border-image: var(--gradient-blue-orange) 1;
+  }
+
+  .consent__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+  }
+
+  .consent__copy {
+    max-width: 60ch;
+  }
+
+  .consent__title {
+    margin: 0 0 0.25rem;
+    font-weight: var(--font-weight-semibold);
+  }
+
+  .consent__text {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
+  }
+
+  .consent__text a {
+    color: var(--color-white);
+    text-decoration: underline;
+  }
+
+  .consent__actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-shrink: 0;
+  }
+
+  /* Beide Buttons bewusst gleich prominent – ungleich gewichtete
+     Zustimmung/Ablehnung ist rechtlich angreifbar. */
+  .consent__btn {
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-semibold);
+    padding: 0.65rem 1.5rem;
+    border-radius: var(--radius-button);
+    border: 1px solid var(--color-white);
+    background: transparent;
+    color: var(--color-white);
+    cursor: pointer;
+  }
+
+  .consent__btn:hover {
+    background: var(--color-white);
+    color: var(--color-black);
+  }
+
+  @media (max-width: 700px) {
+    .consent__inner {
+      flex-direction: column;
+      align-items: stretch;
+      gap: 1rem;
+    }
+
+    .consent__actions .consent__btn {
+      flex: 1;
+    }
+  }
+</style>
