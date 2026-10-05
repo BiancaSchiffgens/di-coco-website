@@ -1,0 +1,116 @@
+---
+// Endlos durchlaufende "Bekannt aus"-Logoleiste.
+const logos = [
+  { src: "/assets/press/bild.webp", w: 306, h: 305, alt: "BILD" },
+  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, alt: "Gründermagazin" },
+  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, alt: "Rheinzeiger" },
+  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, alt: "DJV NRW Journal" },
+  { src: "/assets/press/springer-gabler.webp", w: 584, h: 135, alt: "Springer Gabler" },
+  { src: "/assets/press/favikon-top10.svg", w: 512, h: 512, alt: "Favikon Top 10 Communications Experts Germany 2025" },
+];
+
+// Eine Gruppe enthält die Logos zweimal, damit sie auch auf sehr breiten Screens
+// breiter als der Viewport ist und am rechten Rand keine Lücke entsteht.
+const gruppe = [...logos, ...logos];
+---
+
+<div class="logo-marquee" style={`--logo-anzahl: ${gruppe.length}`}>
+  <div class="logo-marquee__track">
+    {[0, 1].map((kopie) => (
+      <ul class="logo-marquee__gruppe" aria-hidden={kopie === 1 ? "true" : undefined}>
+        {gruppe.map((logo, i) => (
+          <li class="logo-marquee__item" aria-hidden={kopie === 0 && i >= logos.length ? "true" : undefined}>
+            <img src={logo.src} alt={logo.alt} width={logo.w} height={logo.h} decoding="async" />
+          </li>
+        ))}
+      </ul>
+    ))}
+  </div>
+</div>
+
+<style>
+  .logo-marquee {
+    /* Geschwindigkeit: Zeit pro Logo. Höher = langsamer. */
+    --logo-dauer-pro-logo: 4s;
+
+    width: 100%;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+  }
+
+  .logo-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: logo-marquee-lauf calc(var(--logo-dauer-pro-logo) * var(--logo-anzahl)) linear infinite;
+  }
+
+  .logo-marquee:hover .logo-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .logo-marquee__gruppe {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  /* Abstand als Padding statt gap, damit beide Gruppen exakt gleich breit sind */
+  .logo-marquee__item {
+    flex-shrink: 0;
+    padding: 0 2.75rem;
+  }
+
+  .logo-marquee__item img {
+    height: 64px;
+    width: auto;
+  }
+
+  @keyframes logo-marquee-lauf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @media (max-width: 600px) {
+    .logo-marquee__item {
+      padding: 0 1.75rem;
+    }
+
+    .logo-marquee__item img {
+      height: 48px;
+    }
+  }
+
+  /* Reduzierte Bewegung: stehende, umbrechende Reihe ohne Duplikate */
+  @media (prefers-reduced-motion: reduce) {
+    .logo-marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .logo-marquee__track {
+      animation: none;
+      width: auto;
+    }
+
+    .logo-marquee__gruppe {
+      flex-shrink: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 2rem;
+      width: 100%;
+    }
+
+    .logo-marquee__gruppe[aria-hidden="true"],
+    .logo-marquee__item[aria-hidden="true"] {
+      display: none;
+    }
+  }
+</style>

@@ -44,6 +44,9 @@
 :root {
   /* Farben */
   --color-black: #111219;
+  /* Dunkle Flächen in reinem Schwarz wie im Webdesign-PDF: auf dem leicht bläulichen
+     #111219 "schwimmt" orange Schrift (Rot-Blau-Kontrast lässt sie optisch doppelt wirken) */
+  --color-bg-dark: #000000;
   --color-white: #fdfdfd;
   --color-blue: #0032ff;
   --color-violet: #8f23f7;
@@ -86,6 +89,10 @@ body {
   font-family: var(--font-family);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-copy);
+  /* Graustufen-Kantenglättung: verhindert, dass helle/orange Schrift auf Schwarz
+     verschwommen und wie doppelt wirkt */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 h1,

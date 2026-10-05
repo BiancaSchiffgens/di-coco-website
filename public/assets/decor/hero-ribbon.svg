@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="535.9 188.4 544.1 555.6" width="544.1" height="555.6">
+  <!-- Aus 2026_07_21_Di-CoCo_Webdesign.pdf extrahiert: Clip-Pfade + Verlaufsfarben der Hero-Grafik -->
+  <defs>
+    <linearGradient id="band" gradientUnits="userSpaceOnUse" x1="535" y1="0" x2="890" y2="0">
+      <stop offset="0.000" stop-color="#fe4a00"/>
+      <stop offset="0.125" stop-color="#f4490a"/>
+      <stop offset="0.250" stop-color="#e2481c"/>
+      <stop offset="0.375" stop-color="#c94535"/>
+      <stop offset="0.500" stop-color="#ab4253"/>
+      <stop offset="0.625" stop-color="#873f77"/>
+      <stop offset="0.750" stop-color="#5e3ba0"/>
+      <stop offset="0.875" stop-color="#3136cd"/>
+      <stop offset="1.000" stop-color="#0031ff"/>
+    </linearGradient>
+    <linearGradient id="bogen" gradientUnits="userSpaceOnUse" x1="931" y1="0" x2="1080" y2="0">
+      <stop offset="0.000" stop-color="#ff4b00"/>
+      <stop offset="0.250" stop-color="#fc4a02"/>
+      <stop offset="0.500" stop-color="#f84a06"/>
+      <stop offset="0.750" stop-color="#f2490c"/>
+      <stop offset="1.000" stop-color="#ea4914"/>
+    </linearGradient>
+  </defs>
+  <g transform="matrix(1,0,0,-1,0,6520)">
+    <path fill="url(#band)" d="M704.282 6290.464C724.278 6173.383 810.324 6096.781 810.324 6096.781 630.899 6007.203 560.632 5881.754 535.931 5776H651.044C733.009 5954.468 872.918 6040.887 872.918 6040.887 782.391 6132.036 766.659 6233.468 766.659 6233.468L889.101 6273.183 829.348 6331.539Z"/>
+    <path fill="url(#bogen)" d="M1080.001 6073.86V6130.768C1020.876 6131.982 968.068 6149.498 931.476 6172.813 931.476 6172.813 980.752 6100.206 1080.001 6073.86Z"/>
+  </g>
+</svg>

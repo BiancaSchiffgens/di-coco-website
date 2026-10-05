@@ -8,7 +8,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
     <p>
       Di-CoCo begleitet Unternehmen und Führungskräfte im deutschsprachigen Raum, die
       verstanden haben, dass Kommunikation kein Nice-to-have ist. Wenn du für dein
-      Unternehmen oder dich selbst mehr Sichtbarkeit und Wirkung willst – schreib uns. Das
+      Unternehmen oder dich selbst mehr Sichtbarkeit und Wirkung willst, schreib uns. Das
       erste Gespräch ist kostenlos, unverbindlich und ohne Pitch.
     </p>
 
@@ -61,7 +61,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
 
       if (response.ok) {
         form.reset();
-        statusEl.textContent = "Danke! Deine Nachricht ist angekommen – wir melden uns innerhalb von 24 Stunden.";
+        statusEl.textContent = "Danke! Deine Nachricht ist angekommen. Wir melden uns innerhalb von 24 Stunden.";
         statusEl.classList.add("kontakt__status--success");
       } else {
         throw new Error("submit failed");

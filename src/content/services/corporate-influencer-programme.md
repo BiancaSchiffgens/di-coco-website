@@ -15,22 +15,22 @@ referenz:
   name: "W. Weigel"
   rolle: "Geschäftsführer, Filoform GmbH"
 ctaHeadline: "Bereit, den nächsten Schritt zu gehen?"
-ctaText: "Lass uns besprechen ob und wie ein Corporate Influencer Programm zu deinem Unternehmen passt. Kein Pitch, kein Druck – einfach ein Gespräch."
+ctaText: "Lass uns besprechen, ob und wie ein Corporate Influencer Programm zu deinem Unternehmen passt. Kein Pitch, kein Druck, einfach ein Gespräch."
 ---
 
 ## Was ein Corporate Influencer Programm wirklich ist
 
 **Kein Social-Media-Projekt. Ein strategischer Eingriff.**
 
-Viele Unternehmen verwechseln Corporate Influencer Programme mit Social-Media-Projekten. Der Unterschied ist fundamental. Ein Programm das wirklich funktioniert, verändert nicht nur die Außenwirkung – es verändert, wie Menschen im Unternehmen miteinander kommunizieren, voneinander lernen und sich gegenseitig wahrnehmen.
+Viele Unternehmen verwechseln Corporate Influencer Programme mit Social-Media-Projekten. Der Unterschied ist grundlegend. Ein Programm, das wirklich funktioniert, verändert nicht nur die Außenwirkung. Es verändert, wie Menschen im Unternehmen miteinander kommunizieren, voneinander lernen und sich gegenseitig wahrnehmen.
 
-Wenn Mitarbeitende anfangen, öffentlich über ihre Arbeit zu sprechen, passiert etwas Unerwartetes: Silos brechen auf. Abteilungen die vorher nicht miteinander gesprochen haben, entdecken Gemeinsamkeiten. Interne Netzwerke entstehen neu. Menschen fühlen sich gesehen und wertgeschätzt, weil ihre Expertise plötzlich zählt. Was als Kommunikationsprojekt beginnt, wird zu echtem Kulturwandel.
+Wenn Mitarbeitende anfangen, öffentlich über ihre Arbeit zu sprechen, passiert etwas Unerwartetes: Silos brechen auf. Abteilungen, die vorher nicht miteinander gesprochen haben, entdecken Gemeinsamkeiten. Interne Netzwerke entstehen neu. Menschen fühlen sich gesehen und wertgeschätzt, weil ihre Expertise plötzlich zählt. Was als Kommunikationsprojekt beginnt, wird zu echtem Kulturwandel.
 
 > Die größte ungenutzte Ressource eines Unternehmens sind seine eigenen Menschen.
 
 ## Das Di-CoCo Prinzip
 
-**Nur wenn die Führung mitmacht – und vorangeht.**
+**Nur wenn die Führung mitmacht und vorangeht.**
 
 Das ist kein Disclaimer. Das ist Qualitätssicherung. Di-CoCo installiert Corporate Influencer Programme ausschließlich in Unternehmen, in denen die Führungsebene aktiv teilnimmt und sichtbar vorangeht. Nicht als symbolische Geste, sondern als echte Überzeugung. Erst dann entsteht die Wirkung, für die es sich lohnt.
 
@@ -50,11 +50,11 @@ Der Grund ist einfach: Mitarbeitende orientieren sich an der Führung. Wenn die 
 
 ## Für wen
 
-**Unternehmen die bereit sind, es wirklich zu tun.**
+**Unternehmen, die bereit sind, es wirklich zu tun.**
 
-Di-CoCo arbeitet mit Unternehmen aus Industrie, Technologie, Finanzdienstleistung, Beratung, Energie und weiteren Branchen – branchenübergreifend, aber immer mit derselben Voraussetzung: Die Führungsebene ist dabei.
+Di-CoCo arbeitet mit Unternehmen aus Industrie, Technologie, Finanzdienstleistung, Beratung, Energie und weiteren Branchen. Branchenübergreifend, aber immer mit derselben Voraussetzung: Die Führungsebene ist dabei.
 
-Die Unternehmen die am meisten vom Programm profitieren sind die, die vorher noch nie systematisch über Corporate Influencer nachgedacht haben. Der Aufbau dauert, die Wirkung hält.
+Die Unternehmen, die am meisten vom Programm profitieren, sind die, die vorher noch nie systematisch über Corporate Influencer nachgedacht haben. Der Aufbau dauert, die Wirkung hält.
 
 ## Häufig gestellte Fragen
 
@@ -62,6 +62,6 @@ Antworten auf die häufigsten Fragen zu Dauer, Kosten, Aufwand und Voraussetzung
 
 ## Verwandte Themen
 
-Führungskräfte die selbst sichtbar sind, verstärken die Wirkung eines Programms zusätzlich → [CXO Communication](/cxo-communication)
+Führungskräfte, die selbst sichtbar sind, verstärken die Wirkung eines Programms zusätzlich → [CXO Communication](/cxo-communication)
 
 Damit dein Team das Programm eigenständig tragen kann → [Schulungen für Programmverantwortliche](/schulungen)

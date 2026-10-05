@@ -1,0 +1,80 @@
+---
+// Kennzahlen als statische Reihe. Reihenfolge ist bewusst so gewählt – nicht umsortieren.
+// Jede Beschreibung ist fest in zwei Zeilen geteilt, damit alle Elemente überall gleich aufgebaut sind.
+const stats = [
+  { zahl: "220.000", zeilen: ["Impressionen", "in 5 Monaten"] },
+  { zahl: "5 Jahre", zeilen: ["längste aktive", "Kundenbeziehung"] },
+  { zahl: "10.000+", zeilen: ["Follower", "in 5 Monaten"] },
+  { zahl: "1.000+", zeilen: ["Zuhörer", "bei Keynotes"] },
+  { zahl: "8.000+", zeilen: ["Follower in", "der Zielgruppe"] },
+];
+---
+
+<ul class="kennzahlen">
+  {stats.map((s) => (
+    <li class="kennzahlen__item">
+      <span class="kennzahlen__zahl">{s.zahl}</span>
+      <span class="kennzahlen__text">
+        {s.zeilen.map((zeile) => <span class="kennzahlen__zeile">{zeile}</span>)}
+      </span>
+    </li>
+  ))}
+</ul>
+
+<style>
+  /* Flex-Wrap statt festem Grid: auf breiten Screens fünf nebeneinander,
+     darunter brechen die Elemente zentriert in weitere Reihen um. */
+  .kennzahlen {
+    max-width: var(--max-width, 1200px);
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem 1.5rem;
+  }
+
+  .kennzahlen__item {
+    flex: 0 1 12.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    text-align: center;
+  }
+
+  .kennzahlen__zahl {
+    font-size: clamp(2rem, 4.2vw, 3.25rem);
+    font-weight: var(--font-weight-bold, 700);
+    line-height: 1.1;
+    white-space: nowrap;
+    background: linear-gradient(90deg, var(--color-blue, #0032ff), var(--color-orange, #ff4b00));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .kennzahlen__text {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #4a4b55;
+  }
+
+  /* Zeilen brechen nie selbst um – so bleibt es bei genau zwei Zeilen */
+  .kennzahlen__zeile {
+    white-space: nowrap;
+  }
+
+  @media (max-width: 600px) {
+    .kennzahlen {
+      gap: 2.5rem 1rem;
+    }
+
+    .kennzahlen__item {
+      flex-basis: calc(50% - 0.5rem);
+    }
+  }
+</style>

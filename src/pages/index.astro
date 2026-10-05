@@ -2,6 +2,8 @@
 import { getCollection } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import ContactSection from "../components/ContactSection.astro";
+import Kennzahlen from "../components/Kennzahlen.astro";
+import LogoMarquee from "../components/LogoMarquee.astro";
 
 const services = await getCollection("services");
 
@@ -18,30 +20,38 @@ const colorMap: Record<string, string> = {
   orange: "var(--color-orange)",
   blau: "var(--color-blue)",
   violett: "var(--color-violet)",
-  schwarz: "var(--color-black)",
+  schwarz: "var(--color-bg-dark)",
 };
 
-// Homepage-Card-Copy weicht bewusst von heroSubline der Unterseite ab – exakter Text aus 2026_07_21_Di-CoCo_Webdesign.pdf
-const homepageCardCopy: Record<string, string> = {
-  "corporate-influencer-programme":
-    "Deine Mitarbeitenden sind dein stärkster Kanal. Du nutzt ihn noch nicht. Ein CI-Programm ist kein Social-Media-Projekt. Es ist ein strategischer Eingriff in die Art, wie dein Unternehmen kommuniziert – und wie es intern funktioniert. Wir entwickeln Programme, die Mitarbeitende zu sichtbaren Stimmen machen, Silos aufbrechen und echten Kulturwandel bringen.",
-  "linkedin-account-management":
-    "Sichtbarkeit entsteht nicht durch Zufallsposts. Sondern durch Strategie. Di-CoCo übernimmt das vollständige strategische Management von LinkedIn-Accounts – für Führungspersönlichkeiten und Unternehmen, die sichtbar sein wollen ohne sich täglich damit zu beschäftigen.",
-  "cxo-communication":
-    "Führungskräfte, die kommunizieren, führen anders. Wer als Führungspersönlichkeit sichtbar ist, schafft Vertrauen im Markt, Orientierung im Team und Relevanz in der Branche. Di-CoCo entwickelt Positionierung, Messaging und Content – damit deine Stimme nach dir klingt und Wirkung erzeugt.",
-  "keynotes":
-    "Themen die Entscheider bewegen. Vorträge die nachhalten. Bianca Schiffgens spricht auf Konferenzen und Events zu Sichtbarkeit als Führungsaufgabe, Corporate Influencer Programmen und LinkedIn-Strategie. Kein Theorie-Vortrag. Echte Fälle, klare Haltung, konkrete Empfehlungen.",
-  "schulungen":
-    "Das Programm läuft. Jetzt muss dein Team es tragen können. Di-CoCo schult Kommunikationsverantwortliche, HR-Teams und interne Programm-Manager, damit sie Corporate Influencer Programme eigenständig begleiten und weiterentwickeln können.",
+// Homepage-Card-Copy weicht bewusst von heroSubline der Unterseite ab, Text aus 2026_07_21_Di-CoCo_Webdesign.pdf.
+// "lead" steht im Design fett in eigener Zeile über dem Fließtext.
+const homepageCardCopy: Record<string, { lead: string; text: string }> = {
+  "corporate-influencer-programme": {
+    lead: "Deine Mitarbeitenden sind dein stärkster Kanal. Du nutzt ihn noch nicht.",
+    text:
+      "Ein CI-Programm ist kein Social-Media-Projekt. Es ist ein strategischer Eingriff in die Art, wie dein Unternehmen kommuniziert und wie es intern funktioniert. Wir entwickeln Programme, die Mitarbeitende zu sichtbaren Stimmen machen, Silos aufbrechen und echten Kulturwandel bringen.",
+  },
+  "linkedin-account-management": {
+    lead: "Sichtbarkeit entsteht nicht durch Zufallsposts. Sondern durch Strategie.",
+    text:
+      "Di-CoCo übernimmt das vollständige strategische Management von LinkedIn-Accounts. Für Führungspersönlichkeiten und Unternehmen, die sichtbar sein wollen, ohne sich täglich damit zu beschäftigen.",
+  },
+  "cxo-communication": {
+    lead: "Führungskräfte, die kommunizieren, führen anders.",
+    text:
+      "Wer als Führungspersönlichkeit sichtbar ist, schafft Vertrauen im Markt, Orientierung im Team und Relevanz in der Branche. Di-CoCo entwickelt Positionierung, Messaging und Content, damit deine Stimme nach dir klingt und Wirkung erzeugt.",
+  },
+  "keynotes": {
+    lead: "Themen, die Entscheider bewegen. Vorträge, die nachhalten.",
+    text:
+      "Bianca Schiffgens spricht auf Konferenzen und Events zu Sichtbarkeit als Führungsaufgabe, Corporate Influencer Programmen und LinkedIn-Strategie. Kein Theorie-Vortrag. Echte Fälle, klare Haltung, konkrete Empfehlungen.",
+  },
+  "schulungen": {
+    lead: "Das Programm läuft. Jetzt muss dein Team es tragen können.",
+    text:
+      "Di-CoCo schult Kommunikationsverantwortliche, HR-Teams und interne Programm-Manager, damit sie Corporate Influencer Programme eigenständig begleiten und weiterentwickeln können.",
+  },
 };
-
-const ergebnisse = [
-  { zahl: "8.000+", label: "Follower in der Zielgruppe", kontext: "Corporate Influencerin aufgebaut – von Null" },
-  { zahl: "220.000", label: "Impressionen in 5 Monaten", kontext: "E-Commerce-Unternehmen – von Null aufgebaut" },
-  { zahl: "10.000+", label: "Follower", kontext: "E-Commerce-Unternehmen nach 5 Monaten Begleitung" },
-  { zahl: "5 Jahre", label: "Längste aktive Kundenbeziehung", kontext: "im laufenden Account Management" },
-  { zahl: "1.000+", label: "Zuhörer", kontext: "Keynote zu Corporate Communication und digitaler Sichtbarkeit" },
-];
 
 const referenzen = [
   {
@@ -63,19 +73,12 @@ const referenzen = [
 
 const branchen = ["Industrie", "Technologie", "Beratung", "Finanzdienstleistung", "Energie", "Spitzensport", "E-Commerce"];
 
-const bekanntAusLogos = [
-  { src: "/assets/press/bild.webp", w: 306, h: 305, alt: "BILD" },
-  { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, alt: "Gründermagazin" },
-  { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, alt: "Rheinzeiger" },
-  { src: "/assets/press/djv-nrw-journal.webp", w: 737, h: 131, alt: "DJV NRW Journal" },
-  { src: "/assets/press/springer-gabler.webp", w: 584, h: 135, alt: "Springer Gabler" },
-];
-
+// Beschriftung bewusst immer zweizeilig, damit alle Einträge gleich hoch sind
 const credentials = [
-  { img: "/assets/badges/certified-linkedin-insider.webp", w: 459, h: 359, label: "Certified LinkedIn Marketing Insider" },
-  { img: "/assets/badges/favikon-top10-black.webp", w: 369, h: 365, label: "Favikon Top 10 Communications Experts Germany 2025" },
-  { img: "/assets/badges/buch-fuehrung-im-wandel.webp", w: 262, h: 367, label: "Autorin Springer Gabler Verlag" },
-  { img: "/assets/badges/icon-linkedin.webp", w: 340, h: 346, label: "ca. 24.000 LinkedIn-Follower" },
+  { img: "/assets/badges/certified-linkedin-insider.webp", w: 459, h: 359, zeilen: ["Certified LinkedIn", "Marketing Insider"] },
+  { img: "/assets/press/favikon-top10.svg", w: 512, h: 512, zeilen: ["Favikon Top 10 Communications", "Experts Germany"] },
+  { img: "/assets/badges/buch-fuehrung-im-wandel.webp", w: 262, h: 367, zeilen: ["Autorin Springer", "Gabler Verlag"] },
+  { img: "/assets/badges/icon-linkedin.webp", w: 340, h: 346, zeilen: ["25.000+", "LinkedIn-Follower"] },
 ];
 ---
 
@@ -84,19 +87,17 @@ const credentials = [
   description="Di-CoCo entwickelt Corporate Influencer Programme und LinkedIn-Strategien für Führungskräfte im deutschsprachigen Raum. Strategisch. Messbar. Mit echtem Kulturwandel."
 >
   <section class="hero">
+    <img class="hero__ribbon" src="/assets/decor/hero-ribbon.svg" alt="" width="544" height="556" aria-hidden="true" />
     <div class="hero__inner">
       <div class="hero__content">
         <p class="hero__eyebrow">Corporate Visibility Strategist</p>
         <h1><span class="hero__white">Sichtbar werden.</span><br /><span class="hero__orange">Etwas bewegen.</span></h1>
         <p class="hero__subline">
-          Di-CoCo begleitet Führungspersönlichkeiten <br class="hero__subline-break" />und Unternehmen im deutschsprachigen Raum, <br class="hero__subline-break" />die wissen, dass Kommunikation mehr kann <br class="hero__subline-break" />als Reichweite zu erzeugen. <span class="hero__orange">Mit der richtigen <br class="hero__subline-break" />Strategie verändert Sichtbarkeit nicht nur, wie <br class="hero__subline-break" />ein Unternehmen wahrgenommen wird – sie <br class="hero__subline-break" />verändert, wie es sich selbst versteht.</span>
+          Di-CoCo begleitet Führungspersönlichkeiten <br class="hero__subline-break" />und Unternehmen im deutschsprachigen Raum, <br class="hero__subline-break" />die wissen, dass Kommunikation mehr kann <br class="hero__subline-break" />als Reichweite zu erzeugen. <span class="hero__orange">Mit der richtigen <br class="hero__subline-break" />Strategie verändert Sichtbarkeit nicht nur, wie <br class="hero__subline-break" />ein Unternehmen wahrgenommen wird. Sie <br class="hero__subline-break" />verändert, wie es sich selbst versteht.</span>
         </p>
       </div>
-      <div class="hero__visual" aria-hidden="true">
-        <img class="hero__ribbon" src="/assets/decor/hero-ribbon.webp" alt="" width="1390" height="1150" />
-        <img class="hero__badge" src="/assets/badges/favikon-top10-white.svg" alt="" width="512" height="512" />
-      </div>
     </div>
+    <img class="hero__badge" src="/assets/badges/favikon-top10-white.svg" alt="" width="512" height="512" aria-hidden="true" />
     <a href="#claim" class="hero__scroll" aria-label="Nach unten scrollen">
       <svg width="16" height="9" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M1 1L8 8L15 1" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -105,7 +106,7 @@ const credentials = [
   </section>
 
   <section class="claim" id="claim">
-    <p class="claim__text gradient-text gradient-text--script">Visibility Drives<br />Business.</p>
+    <p class="claim__text gradient-text gradient-text--script">Visibility drives<br />business.</p>
     <div class="claim__actions">
       <a href="#kontakt" class="button">Lass uns sprechen</a>
       <a href="#leistungen" class="button button--outline">Was wir tun</a>
@@ -114,25 +115,12 @@ const credentials = [
 
   <section class="bekannt-aus">
     <p class="bekannt-aus__label">Bekannt aus</p>
-    <div class="bekannt-aus__logos">
-      {bekanntAusLogos.map((logo) => (
-        <img src={logo.src} alt={logo.alt} width={logo.w} height={logo.h} loading="lazy" />
-      ))}
-    </div>
-    <p class="bekannt-aus__badge">Favikon Top 10 Communications Experts Germany 2025</p>
+    <LogoMarquee />
   </section>
 
   <section class="ergebnisse">
-    <p class="ergebnisse__label">Was wir für unsere Kunden erreichen</p>
-    <div class="ergebnisse__grid">
-      {ergebnisse.map((e) => (
-        <div class="ergebnisse__item">
-          <p class="ergebnisse__zahl gradient-text">{e.zahl}</p>
-          <p class="ergebnisse__item-label">{e.label}</p>
-          <p class="ergebnisse__kontext">{e.kontext}</p>
-        </div>
-      ))}
-    </div>
+    <p class="ergebnisse__label">Was wir mit und für unsere Kunden erreichen</p>
+    <Kennzahlen />
   </section>
 
   <section class="wirkung">
@@ -143,41 +131,48 @@ const credentials = [
         <div class="wirkung__col">
           <div class="wirkung__divider"></div>
           <p>
-            Nicht weil sie es nicht wissen wollen. Sondern weil Kommunikation in vielen
-            Organisationen noch immer als Aufgabe einer Abteilung gilt – und nicht
-            <span class="hl">als strategisches Instrument das auf Führungsebene angesiedelt
-            sein muss</span>.
+            Nicht weil sie es nicht wissen wollen, sondern weil Kommunikation in vielen
+            Organisationen noch immer als Aufgabe einer Abteilung gilt und nicht{" "}
+            <span class="hl">als strategisches Instrument, das auf Führungsebene angesiedelt
+            sein muss.</span>
           </p>
-          <p class="wirkung__label gradient-text--script">Der<br /><span class="gradient-text">interne</span><br />Effekt</p>
+          <div class="wirkung__label-wrap">
+            <p class="wirkung__label gradient-text--script">Der<br /><span class="gradient-text">interne</span><br />Effekt</p>
+          </div>
         </div>
         <div class="wirkung__col">
           <div class="wirkung__divider"></div>
           <p>
-            Menschen vertrauen heute nicht mehr Logos. Sie vertrauen Menschen.
+            Das sehen wir seit 20 Jahren: Einem Menschen hört man eher zu als einem Logo.{" "}
             <span class="hl">Wenn Führungskräfte und Mitarbeitende eine echte Stimme
-            entwickeln, verändert sich mehr als die Außenwirkung</span>. Es entsteht Vertrauen
-            – im Markt, im Netzwerk und in der Organisation selbst.
+            entwickeln, verändert sich mehr als die Außenwirkung.</span>{" "}
+            Es entsteht Vertrauen im Markt, im Netzwerk und in der Organisation selbst.
           </p>
           <p>
             Und hier passiert etwas, das wir immer wieder erleben und das unsere Kunden
-            regelmäßig überrascht: <span class="hl">Wenn ein Corporate Influencer Programm gut
-            angelegt ist, bricht es Silos auf</span>. Menschen aus verschiedenen Abteilungen
-            lernen voneinander. Interne Netzwerke entstehen neu. Mitarbeitende fühlen sich
-            gesehen, weil ihre Expertise plötzlich nach außen zählt.
+            regelmäßig überrascht:{" "}
+            <span class="hl">Wenn ein Corporate Influencer Programm gut angelegt ist, bricht
+            es Silos auf.</span>{" "}
+            Menschen aus verschiedenen Abteilungen lernen voneinander. Interne Netzwerke
+            entstehen neu. Mitarbeitende fühlen sich gesehen, weil ihre Expertise plötzlich
+            nach außen zählt.{" "}
             <span class="hl">Was als Kommunikationsprojekt beginnt, wird zu echtem
-            Kulturwandel</span>.
+            Kulturwandel.</span>
           </p>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="quote-band">
+  <section class="quote-band quote-band--bildmarke">
     <p>„Die größte ungenutzte Ressource eines Unternehmens sind seine eigenen Menschen.“</p>
   </section>
 
   <section class="wirkung-cta">
-    <p>Di-CoCo begleitet diesen Prozess.<br />Strategisch, persönlich und mit dem Wissen, was funktioniert – und was nicht.</p>
+    <p>
+      <strong>Di-CoCo begleitet diesen Prozess.</strong><br />
+      Strategisch, persönlich und mit dem Wissen,<br />was funktioniert und was nicht.
+    </p>
     <a href="#leistungen" class="button">Was wir konkret tun</a>
   </section>
 
@@ -192,7 +187,10 @@ const credentials = [
         >
           <h3>{service.data.title}</h3>
           <div class="leistung-card__divider"></div>
-          <p>{homepageCardCopy[service.data.slug]}</p>
+          <p>
+            <strong class="leistung-card__lead">{homepageCardCopy[service.data.slug].lead}</strong>
+            {homepageCardCopy[service.data.slug].text}
+          </p>
           <div class="leistung-card__actions">
             <a href="#kontakt" class="button--card">Anfragen</a>
             <a href={`/${service.data.slug}/`} class="button--card button--card-ghost">Mehr erfahren</a>
@@ -200,9 +198,10 @@ const credentials = [
         </article>
       ))}
       <div class="leistung-statement">
-        <p class="gradient-text">
-          Di-CoCo begleitet Unternehmen dabei, ihre Kommunikation neu zu denken und in die
-          digitale Sichtbarkeit zu führen.
+        <!-- Zeilenumbrüche exakt wie im Webdesign-PDF -->
+        <p>
+          Di-CoCo begleitet<br />Unternehmen<br />dabei, ihre<br />Kommunikation<br />neu zu denken<br />und
+          in die digitale<br />Sichtbarkeit zu<br />führen.
         </p>
         <img src="/assets/logo/Di-CoCo_Bildmarke_3D_B_Gr.svg" alt="" aria-hidden="true" width="670" height="672" />
       </div>
@@ -210,13 +209,17 @@ const credentials = [
   </section>
 
   <section class="ueber-uns" id="ueber-uns">
+    <div class="ueber-uns__head">
+      <p class="ueber-uns__eyebrow">Wer hinter Di-CoCo steckt</p>
+      <h2>Mehr als zwanzig Jahre Kommunikation. Kein einziger Tag davon war langweilig.</h2>
+    </div>
     <div class="ueber-uns__inner">
-      <img class="ueber-uns__photo" src="/assets/photos/bianca-schiffgens.webp" alt="Bianca Schiffgens, Gründerin von Di-CoCo" width="1200" height="1200" loading="lazy" />
+      <div class="ueber-uns__photo-wrap">
+        <img class="ueber-uns__photo" src="/assets/photos/bianca-schiffgens-portrait.webp" alt="Bianca Schiffgens, Gründerin von Di-CoCo" width="1024" height="1024" loading="lazy" />
+      </div>
       <div class="ueber-uns__text">
-        <p class="ueber-uns__eyebrow">Wer hinter Di-CoCo steckt</p>
-        <h2>Mehr als zwanzig Jahre Kommunikation. Kein einziger Tag davon war langweilig.</h2>
         <p>
-          Bianca Schiffgens hat Kommunikation von Grund auf gelernt – in der TV-Produktion in
+          Bianca Schiffgens hat Kommunikation von Grund auf gelernt: in der TV-Produktion in
           Köln, wo jede Geschichte in Sekunden überzeugen muss. In der Agentur im Bereich
           Corporate Communication, wo sie verstanden hat, wie Unternehmen innen ticken und
           wie wenig das oft nach außen sichtbar wird. Als zertifizierter Business-Coach und
@@ -225,31 +228,31 @@ const credentials = [
         <p>
           Schon lange bevor Corporate Influencing in aller Munde war, hat Bianca mit
           Führungspersönlichkeiten und Teams daran gearbeitet, sichtbar zu werden. Nicht mit
-          Hochglanz sondern durch echte Kommunikation. Di-CoCo arbeitet so, wie gute
+          Hochglanz, sondern durch echte Kommunikation. Di-CoCo arbeitet so, wie gute
           Kommunikation funktioniert: direkt, mit Haltung und immer mit dem Verständnis, dass
           Sichtbarkeit mehr verändert als Reichweite.
         </p>
         <p>
-          Di-CoCo begleitet Unternehmen im deutschsprachigen Raum branchenübergreifend – von
+          Di-CoCo begleitet Unternehmen im deutschsprachigen Raum branchenübergreifend, von
           Glasfaser-Infrastruktur über E-Commerce bis Spitzensport. Was alle verbindet: der
-          Wunsch nach einer Kommunikation die wirkt, weil sie echt ist.
+          Wunsch nach einer Kommunikation, die wirkt, weil sie echt ist.
         </p>
-        <div class="ueber-uns__credentials">
-          {credentials.map((c) => (
-            <div class="credential">
-              <img src={c.img} alt="" aria-hidden="true" width={c.w} height={c.h} />
-              <span>{c.label}</span>
-            </div>
-          ))}
-        </div>
       </div>
+    </div>
+    <div class="ueber-uns__credentials">
+      {credentials.map((c) => (
+        <div class="credential">
+          <img src={c.img} alt="" aria-hidden="true" width={c.w} height={c.h} />
+          <span>{c.zeilen[0]}<br />{c.zeilen[1]}</span>
+        </div>
+      ))}
     </div>
   </section>
 
-  <section class="quote-band">
+  <section class="quote-band quote-band--bildmarke-2">
     <p>
       „Corporate Influencer Programme installieren wir nur, wenn die Führung mitmacht und
-      vorangeht. Nicht weil wir das so wollen. Sondern weil so am besten funktioniert.“
+      vorangeht. Nicht weil wir das so wollen, sondern weil es so am besten funktioniert.“
     </p>
   </section>
 
@@ -285,7 +288,7 @@ const credentials = [
       <div>
         <p class="presse__buch-eyebrow">Buchpublikation</p>
         <h3 class="presse__buch-label">Autorin · Führung im Wandel<br />Springer Gabler Verlag</h3>
-        <p>„Führung im Wandel“ – das neue Fachbuch von Springer Gabler mit Beiträgen von führenden Kommunikationsexperten. Bianca Schiffgens zeigt, wie Sichtbarkeit zur Führungsaufgabe wird.</p>
+        <p>„Führung im Wandel“ ist das neue Fachbuch von Springer Gabler mit Beiträgen von führenden Kommunikationsexperten. Bianca Schiffgens zeigt, wie Sichtbarkeit zur Führungsaufgabe wird.</p>
       </div>
       <a href="https://amzn.to/3SH3g7L" target="_blank" rel="noopener sponsored">
         <img src="/assets/badges/buch-fuehrung-im-wandel.webp" alt="Buchcover Führung im Wandel, Springer Gabler Verlag" width="262" height="367" loading="lazy" />
@@ -297,11 +300,17 @@ const credentials = [
 </Layout>
 
 <style>
+  /* Proportionen nach 2026_07_21_Di-CoCo_Webdesign.pdf (1080 pt breit):
+     Band nimmt rechts 50,4 % der Breite ein und endet unten exakt an der schwarzen Kante. */
   .hero {
+    --ribbon-breite: min(50.4%, 780px);
+
     position: relative;
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
-    padding: 6.5rem 1.5rem;
+    /* Höhe so, dass das ganze Band (Seitenverhältnis 544:556) Platz hat */
+    min-height: min(54vw, 840px);
+    padding: 6.5rem 1.5rem 9rem;
     overflow: hidden;
   }
 
@@ -309,47 +318,36 @@ const credentials = [
     position: relative;
     max-width: var(--max-width);
     margin: 0 auto;
-    display: grid;
-    grid-template-columns: minmax(0, 680px) 1fr;
-    align-items: end;
-    gap: 2rem;
   }
 
   .hero__content {
+    max-width: 680px;
     text-align: left;
-  }
-
-  .hero__visual {
-    position: relative;
-    height: 100%;
-    min-height: 560px;
-    margin-bottom: -6.5rem;
   }
 
   .hero__ribbon {
     position: absolute;
+    right: 0;
     bottom: 0;
-    left: 50%;
-    width: 140%;
-    max-width: 680px;
-    transform: translateX(-50%);
-    opacity: 0.9;
+    width: var(--ribbon-breite);
+    height: auto;
     pointer-events: none;
   }
 
   .hero__badge {
     position: absolute;
-    right: 0;
-    bottom: 0;
-    width: 170px;
+    right: max(1.5rem, calc((100% - var(--max-width)) / 2));
+    bottom: clamp(1.5rem, 3.7vw, 2.75rem);
+    width: clamp(110px, 13.3vw, 170px);
   }
 
   .hero__scroll {
-    position: relative;
+    position: absolute;
+    left: calc(50% - 22px);
+    bottom: 2rem;
     display: flex;
     width: 44px;
     height: 44px;
-    margin: 3.5rem auto 0;
     align-items: center;
     justify-content: center;
     border: 1px solid rgba(253, 253, 253, 0.5);
@@ -387,24 +385,37 @@ const credentials = [
     color: var(--color-orange);
   }
 
+  /* Dünne orange Schrift flimmert auf Schwarz (gesättigtes Orange "überstrahlt").
+     Medium-Schnitt gibt den Strichen genug Fläche, damit sie ruhig und scharf stehen. */
+  .hero__subline .hero__orange,
+  .wirkung .hl,
+  .wirkung__eyebrow,
+  .referenzen__eyebrow {
+    font-weight: var(--font-weight-medium);
+  }
+
+  /* Gedimmt über die Textfarbe statt opacity – opacity würde die orangen Passagen mit abdunkeln */
   .hero__subline {
     font-size: 1.15rem;
-    opacity: 0.85;
+    color: rgba(253, 253, 253, 0.85);
     max-width: 560px;
     margin: 0;
   }
 
   .claim {
     background: var(--color-white);
-    padding: 5.5rem 1.5rem 6.5rem;
+    padding: 4.5rem 1.5rem 6rem;
     text-align: center;
   }
 
+  /* Größe nach Webdesign-PDF: der Schriftzug nimmt rund 77 % der Seitenbreite ein.
+     Padding gibt den überstehenden Pinselstrichen Raum – bei background-clip: text
+     würde alles außerhalb der Box sonst unsichtbar. */
   .claim__text {
-    font-size: clamp(3rem, 11vw, 9rem);
-    line-height: 0.95;
-    max-width: 1080px;
-    margin: 0 0 3rem;
+    font-size: clamp(4rem, 18.7vw, 17.5rem);
+    line-height: 0.68;
+    padding: 0.18em 0.08em 0.2em;
+    margin: 0 0 2.25rem;
   }
 
   .claim__actions {
@@ -450,102 +461,40 @@ const credentials = [
 
   .bekannt-aus {
     background: #f5f5f5;
-    padding: 3rem 1.5rem;
+    /* Kein seitliches Padding: die Logoleiste läuft über die volle Breite */
+    padding: 3.5rem 0;
     text-align: center;
   }
 
   .bekannt-aus__label {
     text-transform: uppercase;
     color: var(--color-blue);
-    font-size: 0.8rem;
+    font-size: 1.15rem;
     font-weight: var(--font-weight-bold);
     letter-spacing: 0.06em;
-    margin: 0 0 1.25rem;
-  }
-
-  .bekannt-aus__logos {
-    display: flex;
-    align-items: center;
-    gap: 3rem;
-    justify-content: center;
-    flex-wrap: wrap;
-    margin: 0 0 1.25rem;
-  }
-
-  .bekannt-aus__logos img {
-    height: 40px;
-    width: auto;
-  }
-
-  .bekannt-aus__badge {
-    font-size: 0.85rem;
-    opacity: 0.7;
-    margin: 0;
+    padding-inline: 1.5rem;
+    margin: 0 0 2rem;
   }
 
   .ergebnisse {
     background: #fff;
     color: var(--color-black);
-    padding: 6rem 1.5rem 7rem;
+    padding: 6rem 0 7rem;
   }
 
   .ergebnisse__label {
+    padding-inline: 1.5rem;
     text-align: center;
     color: var(--color-orange);
-    font-size: 1.05rem;
+    font-size: 1.15rem;
     font-weight: var(--font-weight-bold);
     margin: 0 0 3.5rem;
   }
 
-  /* 6 Spalten, damit Reihe 1 drei Items (je 2 Spalten) trägt und Reihe 2
-     zwei Items mittig sitzen (Versatz um eine Spalte). */
-  .ergebnisse__grid {
-    max-width: var(--max-width);
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 3.5rem 2rem;
-    text-align: center;
-  }
-
-  .ergebnisse__item {
-    grid-column: span 2;
-  }
-
-  .ergebnisse__item:nth-child(4) {
-    grid-column: 2 / span 2;
-  }
-
-  .ergebnisse__zahl {
-    font-size: clamp(2.75rem, 8vw, 5rem);
-    font-weight: var(--font-weight-bold);
-    line-height: var(--line-height-headline);
-    margin: 0 0 2rem;
-  }
-
-  /* Textmaß schmaler als die Spalte, damit die Zeilen wie im Design umbrechen */
-  .ergebnisse__item-label,
-  .ergebnisse__kontext {
-    max-width: 21rem;
-    margin-inline: auto;
-    font-size: 1.25rem;
-    line-height: var(--line-height-copy);
-    text-wrap: balance;
-  }
-
-  .ergebnisse__item-label {
-    font-weight: var(--font-weight-bold);
-    margin-block: 0;
-  }
-
-  .ergebnisse__kontext {
-    margin-block: 0;
-  }
-
   .wirkung {
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
-    padding: 6.5rem 1.5rem 4rem;
+    padding: 6.5rem 1.5rem 3rem;
   }
 
   .wirkung__inner {
@@ -580,25 +529,74 @@ const credentials = [
     background: linear-gradient(90deg, var(--color-orange), var(--color-violet), var(--color-blue));
   }
 
+  /* Fließtext wie im Webdesign-PDF (20 pt) */
+  .wirkung__col > p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
   .wirkung p {
-    opacity: 0.9;
     margin: 0 0 1.25rem;
+  }
+
+  .wirkung p:not(.wirkung__eyebrow) {
+    color: rgba(253, 253, 253, 0.9);
   }
 
   .wirkung .hl {
     color: var(--color-orange);
-    opacity: 1;
   }
 
+  .wirkung__col {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .wirkung__col > p:last-child {
+    margin-bottom: 0;
+  }
+
+  /* Der Schriftzug füllt genau den Raum zwischen dem Text links und dem Ende der rechten Spalte.
+     Die rechte Spalte bestimmt die Zeilenhöhe; der Wrapper ist ein Size-Container, damit die
+     Schriftgröße sich an seiner Höhe (cqh) und Breite (cqw) ausrichtet und nie darüber hinausläuft.
+     Soge-Tinte ist ca. 1,9 em hoch und 2 em breit. */
+  .wirkung__label-wrap {
+    flex: 1;
+    min-height: 0;
+    container-type: size;
+    display: flex;
+    justify-content: center;
+    padding-top: 1.25rem;
+  }
+
+  /* Tinte reicht ca. 2,1 em ab Oberkante der Box -> 49cqh hält das Wort "Effekt" über dem Spaltenende */
   .wirkung__label {
-    font-size: clamp(3rem, 7vw, 5.5rem);
-    line-height: 0.85;
-    margin-top: 3rem;
+    font-size: min(11rem, 46cqw, 49cqh);
+    line-height: 0.6;
+    text-align: center;
+    margin: 0;
+    padding-top: 0.12em;
+  }
+
+  /* background-clip: text zeigt nur, was in der Box liegt – Padding fängt die überstehenden Pinselstriche auf */
+  .wirkung__label .gradient-text {
+    padding: 0.2em 0.08em;
+    margin: -0.2em -0.08em;
   }
 
   .quote-band {
     background: var(--color-blue);
     padding: 6rem 1.5rem;
+  }
+
+  /* Hinterlegte Bildmarke wie im Webdesign-PDF (Formen 1:1 aus dem PDF extrahiert).
+     cover + center: die Formen bleiben am Band angeschnitten, egal wie breit das Fenster ist. */
+  .quote-band--bildmarke {
+    background: var(--color-blue) url("/assets/decor/quote-band.svg") center / cover no-repeat;
+  }
+
+  .quote-band--bildmarke-2 {
+    background: var(--color-blue) url("/assets/decor/quote-band-2.svg") center / cover no-repeat;
   }
 
   .quote-band p {
@@ -611,17 +609,27 @@ const credentials = [
     line-height: 1.15;
   }
 
+  /* Nach Webdesign-PDF: 20 pt, erste Zeile fett, Zeilenabstand x1,2, volles Weiß; Button 16 pt fett */
   .wirkung-cta {
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
     text-align: center;
-    padding: 4rem 1.5rem 6.5rem;
+    padding: 4rem 1.5rem 4.25rem;
   }
 
   .wirkung-cta p {
-    opacity: 0.85;
-    max-width: 480px;
-    margin: 0 auto 1.75rem;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0 auto 2rem;
+  }
+
+  .wirkung-cta strong {
+    font-weight: var(--font-weight-bold);
+  }
+
+  .wirkung-cta .button {
+    font-weight: var(--font-weight-bold);
+    padding: 0.7rem 1.1rem;
   }
 
   .leistungen {
@@ -651,10 +659,14 @@ const credentials = [
     gap: 1.5rem;
   }
 
+  /* Maße nach Webdesign-PDF (Kachel 457 pt breit, Titel 35 pt, Text 20 pt, Buttons 169 x 40 pt).
+     Größen in cqi der Kachelbreite, damit sie im selben Verhältnis wachsen wie die Statement-Kachel;
+     clamp() hält sie auf kleinen und sehr großen Screens lesbar. */
   .leistung-card {
+    container-type: inline-size;
     background: var(--accent);
     color: var(--color-white);
-    padding: 2.5rem;
+    padding: 4.4%;
     display: flex;
     flex-direction: column;
     /* Grid-Items haben min-width:auto, d.h. sie schrumpfen nicht unter ihre
@@ -674,18 +686,17 @@ const credentials = [
 
   .leistung-card--light .button--card {
     background: var(--color-black);
-    color: var(--color-white);
+    color: #ffa47f;
   }
 
   .leistung-card--light .button--card-ghost {
     background: transparent;
     color: var(--color-black);
-    border-color: rgba(17, 18, 25, 0.4);
+    border-color: var(--color-black);
   }
 
   .leistung-card--light .button--card-ghost:hover {
     background: rgba(17, 18, 25, 0.08);
-    border-color: rgba(17, 18, 25, 0.6);
   }
 
   .leistung-card h3,
@@ -696,37 +707,47 @@ const credentials = [
   }
 
   .leistung-card h3 {
-    font-size: 1.75rem;
+    font-size: clamp(1.6rem, 7.7cqi, 2.75rem);
+    line-height: 1;
     margin: 0;
   }
 
   .leistung-card__divider {
-    height: 2px;
-    width: 48px;
+    height: 3px;
+    width: 18.4cqi;
     background: var(--color-white);
-    margin: 1.25rem 0;
+    margin: clamp(0.9rem, 3.9cqi, 1.5rem) 0 clamp(1.1rem, 5.7cqi, 2rem);
   }
 
   .leistung-card p {
-    opacity: 0.95;
-    margin: 0 0 1.75rem;
+    font-size: clamp(1rem, 4.4cqi, 1.5rem);
+    line-height: 1.2;
+    margin: 0 0 clamp(1.25rem, 5.7cqi, 2rem);
     flex-grow: 1;
+  }
+
+  .leistung-card__lead {
+    display: block;
+    font-weight: var(--font-weight-bold);
   }
 
   .leistung-card__actions {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: clamp(0.5rem, 2.6cqi, 1rem);
     flex-wrap: wrap;
   }
 
   .button--card {
     display: inline-block;
+    box-sizing: border-box;
+    width: clamp(8.5rem, 37cqi, 13rem);
+    text-align: center;
     text-decoration: none;
-    padding: 0.9rem 1.75rem;
+    padding: clamp(0.65rem, 2.3cqi, 0.95rem) 0.75rem;
     border-radius: var(--radius-button);
-    font-weight: var(--font-weight-semibold);
-    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    font-size: clamp(0.9rem, 3.5cqi, 1.15rem);
     background: var(--color-white);
     color: var(--accent);
     border: 1px solid transparent;
@@ -740,7 +761,7 @@ const credentials = [
   .button--card-ghost {
     background: transparent;
     color: var(--color-white);
-    border: 1px solid rgba(253, 253, 253, 0.6);
+    border: 1px solid var(--color-white);
   }
 
   .button--card-ghost:hover {
@@ -749,26 +770,38 @@ const credentials = [
     opacity: 1;
   }
 
+  /* Maße nach Webdesign-PDF (Kachel 457 pt breit): alles in Prozent bzw. cqi der Kachelbreite,
+     damit Umbruch (8 Zeilen), Schriftgröße und Icon in jeder Breite wie im Design sitzen. */
   .leistung-statement {
+    position: relative;
+    container-type: inline-size;
     background: var(--color-white);
-    border: 1px solid rgba(17, 18, 25, 0.15);
-    padding: 2.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    border: 1px solid var(--color-black);
+    padding: 4.6%;
     min-width: 0;
   }
 
+  /* 45 pt Bold, Zeilenabstand x1,0. Verlauf Orange -> Blau mit Mitte bei 66 % (Brand Book) */
   .leistung-statement p {
-    font-size: 1.5rem;
+    /* Deckel für die einspaltige Ansicht, in der die Kachel sehr breit wird */
+    font-size: min(10.8cqi, 3.5rem);
+    white-space: nowrap;
     font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-    margin: 0;
+    line-height: 1;
+    hyphens: manual;
+    margin: 0 0 min(7cqi, 2.5rem);
+    background: linear-gradient(90deg, var(--color-orange), 66%, var(--color-blue));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
   }
 
   .leistung-statement img {
-    width: 60px;
-    margin: 1.5rem 0 0 auto;
+    position: absolute;
+    right: 3.6cqi;
+    bottom: 5.8cqi;
+    width: min(18.3cqi, 6rem);
+    height: auto;
   }
 
   .ueber-uns {
@@ -776,20 +809,54 @@ const credentials = [
     padding: 6.5rem 1.5rem;
   }
 
+  /* Aufbau nach Webdesign-PDF: Überschrift zentriert darüber, darunter Foto | Text,
+     Credentials als eigene Reihe über die volle Breite. */
+  .ueber-uns__head {
+    max-width: var(--max-width);
+    margin: 0 auto 3rem;
+    text-align: center;
+  }
+
   .ueber-uns__inner {
     max-width: var(--max-width);
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 340px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 3rem;
-    align-items: start;
+    align-items: stretch;
   }
 
+  /* Das Foto ist so hoch wie die Textspalte: Oberkante bündig mit der ersten Zeile,
+     linke Unterecke bündig mit der letzten. Die Unterkante ist um 18° angeschnitten
+     (Diagonale aus dem Brand Book); tan(18°) = 0,3249 -> Höhenversatz 32,49 % der Breite. */
+  .ueber-uns__photo-wrap {
+    container-type: inline-size;
+    position: relative;
+    min-height: 24rem;
+  }
+
+  /* Kein zusätzlicher Zoom: so viel vom Foto wie der Rahmen zulässt. Unten verankert,
+     damit bei breiten Rahmen oben (nicht unten) abgeschnitten wird. */
   .ueber-uns__photo {
+    position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
-    aspect-ratio: 1 / 1;
+    height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    object-position: 50% 100%;
+    /* Muss am Bild sitzen, nicht am Wrapper: cqi bezieht sich auf den umgebenden Container,
+       also auf die Fotobreite. So bleibt der Winkel bei jeder Fensterbreite exakt 18°. */
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 32.49cqi), 0 100%);
+  }
+
+  .ueber-uns__text p {
+    font-size: 1.25rem;
+    line-height: 1.35;
+  }
+
+  .ueber-uns__text p:last-child {
+    margin-bottom: 0;
   }
 
   .ueber-uns__eyebrow {
@@ -811,35 +878,68 @@ const credentials = [
   }
 
   .ueber-uns__credentials {
+    max-width: var(--max-width);
+    margin: 4.5rem auto 0;
     display: flex;
     flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 2rem;
+    justify-content: space-around;
+    gap: 2rem 1.5rem;
   }
 
+  /* Nach Webdesign-PDF: Icons ca. 118 pt hoch, alle in derselben Box, Beschriftung 14 pt zweizeilig */
   .credential {
+    flex: 1 1 0;
+    min-width: 10rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
-    width: 130px;
-    gap: 0.6rem;
+    gap: 1rem;
   }
 
   .credential img {
-    height: 56px;
-    width: auto;
-    max-width: 100%;
+    height: 7.5rem;
+    width: 100%;
+    max-width: 10rem;
     object-fit: contain;
   }
 
   .credential span {
-    font-size: 0.8rem;
-    opacity: 0.75;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    white-space: nowrap;
+  }
+
+  /* Unter 1000px reicht die Breite nicht für vier Spalten mit der langen Favikon-Zeile */
+  @media (max-width: 1000px) {
+    .ueber-uns__credentials {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  @media (max-width: 520px) {
+    .ueber-uns__credentials {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .credential {
+      min-width: 0;
+    }
+
+    .credential img {
+      height: 5.5rem;
+    }
+
+    .credential span {
+      font-size: 0.8rem;
+    }
   }
 
   .referenzen {
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
     padding: 6.5rem 1.5rem;
   }
@@ -998,14 +1098,11 @@ const credentials = [
   }
 
   @media (max-width: 900px) {
-    .hero__inner {
-      grid-template-columns: 1fr;
-    }
-
-    .hero__visual {
-      min-height: 220px;
-      margin-bottom: 0;
-      opacity: 0.6;
+    /* Einspaltig: das Band sitzt unter dem Text und läuft weiter bis zur Kante */
+    .hero {
+      --ribbon-breite: 64%;
+      min-height: 0;
+      padding-bottom: 62vw;
     }
 
     .hero__badge {
@@ -1016,22 +1113,17 @@ const credentials = [
       display: none;
     }
 
-    .ergebnisse__grid {
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem 1.5rem;
-    }
-
-    .ergebnisse__item,
-    .ergebnisse__item:nth-child(4) {
-      grid-column: auto;
-    }
-
-    .ergebnisse__item:last-child {
-      grid-column: 1 / -1;
-    }
-
     .wirkung__grid {
       grid-template-columns: 1fr;
+    }
+
+    .wirkung__label-wrap {
+      container-type: normal;
+      padding-top: 2.5rem;
+    }
+
+    .wirkung__label {
+      font-size: clamp(4.5rem, 22vw, 8rem);
     }
 
     .leistungen__grid {
@@ -1042,8 +1134,12 @@ const credentials = [
       grid-template-columns: 1fr;
     }
 
-    .ueber-uns__photo {
-      max-width: 340px;
+    .ueber-uns__photo-wrap {
+      width: 100%;
+      max-width: 420px;
+      aspect-ratio: 4 / 5;
+      min-height: 0;
+      margin: 0 auto;
     }
 
     .presse__buch {
@@ -1053,20 +1149,6 @@ const credentials = [
 
     .presse__buch img {
       margin: 0 auto;
-    }
-  }
-  /* Auf schmalen Screens einspaltig: die Zahlen sind inline-block und können
-     nicht umbrechen, zwei Spalten würden das Grid breiter als den Viewport machen. */
-  @media (max-width: 600px) {
-    .ergebnisse__grid {
-      grid-template-columns: 1fr;
-      gap: 2.5rem;
-    }
-
-    .ergebnisse__item,
-    .ergebnisse__item:nth-child(4),
-    .ergebnisse__item:last-child {
-      grid-column: auto;
     }
   }
 </style>

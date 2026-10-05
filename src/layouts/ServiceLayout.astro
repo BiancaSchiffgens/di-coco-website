@@ -10,7 +10,7 @@ const colorMap: Record<string, string> = {
   orange: "var(--color-orange)",
   blau: "var(--color-blue)",
   violett: "var(--color-violet)",
-  schwarz: "var(--color-black)",
+  schwarz: "var(--color-bg-dark)",
 };
 const accent = colorMap[data.color];
 
@@ -69,7 +69,7 @@ const breadcrumb = [
 
 <style>
   .hero {
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
     padding: 6rem 1.5rem 4rem;
   }
@@ -160,7 +160,7 @@ const breadcrumb = [
   }
 
   .quote {
-    background: var(--color-black);
+    background: var(--color-bg-dark);
     color: var(--color-white);
     padding: 4rem 1.5rem;
   }
@@ -176,8 +176,10 @@ const breadcrumb = [
     font-weight: var(--font-weight-medium);
   }
 
+  /* Medium statt Regular: dünne Akzentfarbe flimmert sonst auf dem dunklen Grund */
   .quote__attribution {
     color: var(--accent);
+    font-weight: var(--font-weight-medium);
     margin: 0;
   }
 
