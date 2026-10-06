@@ -198,7 +198,7 @@ const credentials = [
 
   <section class="leistungen" id="leistungen">
     <p class="leistungen__eyebrow">Was Di-CoCo macht</p>
-    <h2>Kommunikation, die nach außen wirkt. Weil sie innen verankert ist.</h2>
+    <h2>Kommunikation, die nach außen wirkt.<br class="leistungen__h2-break" /> Weil sie innen verankert ist.</h2>
     <div class="leistungen__grid">
       {cards.map((service) => (
         <article
@@ -665,19 +665,20 @@ const credentials = [
     margin: 0 auto;
   }
 
+  /* Wie im Webdesign-PDF: Eyebrow 16px fett, Überschrift 45px, beides zentriert */
   .leistungen__eyebrow {
-    text-transform: uppercase;
     color: var(--color-blue);
     font-weight: var(--font-weight-bold);
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
-    margin: 0 0 1rem;
+    font-size: 1rem;
+    text-align: center;
+    margin: 0 0 1.25rem;
   }
 
   .leistungen h2 {
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
-    margin: 0 0 2.5rem;
-    max-width: 640px;
+    font-size: clamp(2rem, 4.2vw, 2.8rem);
+    line-height: 1;
+    text-align: center;
+    margin: 0 0 2.4rem;
   }
 
   .leistungen__grid {
@@ -1271,7 +1272,8 @@ const credentials = [
     }
 
     .presse__pullquote-break,
-    .wirkung__h2-break {
+    .wirkung__h2-break,
+    .leistungen__h2-break {
       display: none;
     }
   }
