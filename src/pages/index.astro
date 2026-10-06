@@ -1274,7 +1274,7 @@ const credentials = [
   }
 
   /* Buch-Block: Cover bleibt rechts neben dem Text wie im PDF, bis es zu eng wird.
-     Auf dem Handy steht das Cover unter dem Button, alles linksbündig. */
+     Auf dem Handy alles zentriert untereinander, Cover unter dem Button. */
   @media (max-width: 900px) {
     .presse__buch {
       gap: 1.5rem;
@@ -1294,10 +1294,16 @@ const credentials = [
     .presse__buch {
       grid-template-columns: 1fr;
       padding: 1.75rem;
+      text-align: center;
+    }
+
+    .presse__buch-text {
+      align-items: center;
     }
 
     .presse__buch img {
       width: 160px;
+      justify-self: center;
     }
   }
 </style>
