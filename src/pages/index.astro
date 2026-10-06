@@ -307,7 +307,7 @@ const credentials = [
 
   <section class="presse">
     <blockquote class="presse__pullquote gradient-text gradient-text--script">
-      „Wer nicht mitmacht, macht den Weg frei für Mitbewerber.“
+      <p>&gt;Wer nicht mitmacht, macht den<br class="presse__pullquote-break" /> Weg frei für Mitbewerber.&lt;</p>
       <cite>Bianca Schiffgens, Gründerin Di-CoCo</cite>
     </blockquote>
     <div class="presse__buch">
@@ -1142,19 +1142,25 @@ const credentials = [
     text-align: center;
   }
 
+  /* Maße aus dem Webdesign-PDF (1080er Rahmen): Soge 100px, Zeilenabstand 80px, Quelle 14px */
   .presse__pullquote {
-    font-size: clamp(2.25rem, 7vw, 5rem);
-    margin: 0 0 3rem;
-    line-height: 1;
+    font-size: clamp(2.25rem, 9.25vw, 6.25rem);
+    margin: 0 0 5.25rem;
+    line-height: 0.8;
+  }
+
+  .presse__pullquote p {
+    margin: 0;
   }
 
   .presse__pullquote cite {
     display: block;
     font-family: var(--font-family);
     font-style: normal;
+    line-height: 1.3;
     color: var(--color-black);
-    font-size: 0.9rem;
-    margin-top: 2rem;
+    font-size: 0.875rem;
+    margin-top: 1rem;
   }
 
   .presse__buch {
@@ -1236,6 +1242,10 @@ const credentials = [
       aspect-ratio: 4 / 5;
       min-height: 0;
       margin: 0 auto;
+    }
+
+    .presse__pullquote-break {
+      display: none;
     }
 
     .presse__buch {
