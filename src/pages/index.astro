@@ -278,7 +278,7 @@ const credentials = [
 
   <section class="referenzen" id="referenzen">
     <p class="referenzen__eyebrow">Kundenstimmen</p>
-    <h2>Was sich verändert, wenn <span class="referenzen__brand">Di-CoCo</span> dabei ist.</h2>
+    <h2>Was sich verändert,<br /> wenn <span class="referenzen__brand">Di-CoCo</span> dabei ist.</h2>
     <div class="referenzen__carousel" data-carousel>
       <div class="referenzen__track">
         {referenzen.map((r, i) => (
@@ -294,8 +294,14 @@ const credentials = [
         ))}
       </div>
     </div>
-    <div class="referenzen__badges">
-      {branchen.map((b) => <span class="pill">{b}</span>)}
+    <div class="branchen-marquee" style={`--branchen-anzahl: ${branchen.length}`}>
+      <div class="branchen-marquee__track">
+        {[0, 1].map((kopie) => (
+          <ul class="branchen-marquee__gruppe" aria-hidden={kopie === 1 ? "true" : undefined}>
+            {branchen.map((b) => <li class="pill">{b}</li>)}
+          </ul>
+        ))}
+      </div>
     </div>
   </section>
 
@@ -968,15 +974,16 @@ const credentials = [
     max-width: var(--max-width);
     margin: 0 auto;
     color: var(--color-orange);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
+    font-size: 1.05rem;
+    text-align: center;
   }
 
   .referenzen h2 {
     max-width: var(--max-width);
-    margin: 1rem auto 2.5rem;
-    font-size: clamp(2.25rem, 5vw, 3.25rem);
+    margin: 1rem auto 3rem;
+    font-size: clamp(2.25rem, 6vw, 4rem);
+    line-height: 1.05;
+    text-align: center;
   }
 
   .referenzen__brand {
@@ -1044,22 +1051,80 @@ const credentials = [
     background: var(--color-white);
   }
 
-  .referenzen__badges {
+  /* Branchen laufen endlos von rechts nach links – gleiche Technik wie LogoMarquee */
+  .branchen-marquee {
+    /* Geschwindigkeit: Zeit pro Branche. Höher = langsamer. */
+    --branchen-dauer-pro-pill: 3s;
+
     max-width: var(--max-width);
-    margin: 2.5rem auto 0;
-    display: flex;
-    gap: 0.6rem;
-    flex-wrap: wrap;
-    justify-content: center;
+    margin: 3rem auto 0;
+    overflow: hidden;
+    -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+    mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
   }
 
+  .branchen-marquee__track {
+    display: flex;
+    width: max-content;
+    animation: branchen-lauf calc(var(--branchen-dauer-pro-pill) * var(--branchen-anzahl)) linear infinite;
+  }
+
+  .branchen-marquee:hover .branchen-marquee__track {
+    animation-play-state: paused;
+  }
+
+  .branchen-marquee__gruppe {
+    display: flex;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  @keyframes branchen-lauf {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  /* Abstand als margin statt gap, damit beide Gruppen exakt gleich breit sind */
   .pill {
+    flex-shrink: 0;
+    margin-right: 0.75rem;
     background: var(--color-white);
     color: var(--color-black);
     border-radius: 999px;
-    padding: 0.5rem 1.1rem;
-    font-size: 0.85rem;
-    font-weight: var(--font-weight-medium);
+    padding: 0.6rem 1.4rem;
+    font-size: 1.05rem;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .branchen-marquee {
+      -webkit-mask-image: none;
+      mask-image: none;
+    }
+
+    .branchen-marquee__track {
+      animation: none;
+      width: auto;
+    }
+
+    .branchen-marquee__gruppe {
+      flex-shrink: 1;
+      flex-wrap: wrap;
+      justify-content: center;
+      row-gap: 0.75rem;
+      width: 100%;
+    }
+
+    .branchen-marquee__gruppe[aria-hidden="true"] {
+      display: none;
+    }
   }
 
   .presse {
