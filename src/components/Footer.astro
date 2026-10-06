@@ -9,11 +9,7 @@ const year = new Date().getFullYear();
   <div class="footer__inner">
     <div class="footer__col">
       <a href="/" class="footer__logo-lockup">
-        <img class="footer__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="670" height="672" />
-        <span class="footer__logo-text">
-          <img class="footer__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="982" height="294" />
-          <span class="footer__tagline">Visibility Drives Business</span>
-        </span>
+        <img class="footer__logo" src="/assets/logo/Di-CoCo_WBM_H_W_tight.svg" alt="Di-CoCo – Visibility Drives Business" width="1248" height="300" />
       </a>
     </div>
 
@@ -93,42 +89,18 @@ const year = new Date().getFullYear();
     border: 0;
   }
 
-  /* Maße aus dem Webdesign-PDF: Bildmarke 54px hoch, Wortmarke 154px breit,
-     Claim so breit wie die Wortmarke. Die SVGs haben Leerraum um die Tinte –
-     die negativen Margins schneiden ihn weg, damit die sichtbaren Kanten stimmen. */
+  /* Wort-Bild-Marke aus dem Design-Ordner (_Logo/_Web/svg/Wort-Bild-Marke/Di-CoCo_WBM_H_W.svg),
+     viewBox auf die Tinte zugeschnitten. Breite wie im Webdesign-PDF: 228px. */
   .footer__logo-lockup {
-    display: inline-flex;
-    align-items: flex-start;
-    gap: 11px;
+    display: block;
     opacity: 1;
   }
 
-  .footer__logo-mark {
-    width: 71px;
-    max-width: none;
-    height: auto;
-    margin: -9px -8px;
-  }
-
-  .footer__logo-text {
-    display: flex;
-    flex-direction: column;
-    padding-top: 3px;
-  }
-
-  .footer__logo-word {
-    width: 181px;
-    max-width: none;
-    height: auto;
-    margin: -12px -13px -12px -14px;
-  }
-
-  .footer__tagline {
+  .footer__logo {
     display: block;
-    margin-top: 5px;
-    font-size: 13.7px;
-    line-height: 1;
-    white-space: nowrap;
+    width: 228px;
+    max-width: 100%;
+    height: auto;
   }
 
   .footer ul {
