@@ -198,7 +198,7 @@ const credentials = [
 
   <section class="leistungen" id="leistungen">
     <p class="leistungen__eyebrow">Was Di-CoCo macht</p>
-    <h2>Kommunikation, die nach außen wirkt.<br class="leistungen__h2-break" /> Weil sie innen verankert ist.</h2>
+    <h2>Kommunikation, die nach außen wirkt,<br class="leistungen__h2-break" /> weil sie innen verankert ist.</h2>
     <div class="leistungen__grid">
       {cards.map((service) => (
         <article
@@ -680,14 +680,17 @@ const credentials = [
     margin: 0 0 2.4rem;
   }
 
+  /* Maße aus dem Webdesign-PDF: Raster 928px, Kacheln 458px, Abstand 12px */
   .leistungen__grid {
+    max-width: 928px;
+    margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    gap: 12px;
   }
 
   /* Maße nach Webdesign-PDF (Kachel 457 pt breit, Titel 35 pt, Text 20 pt, Buttons 169 x 40 pt).
-     Größen in cqi der Kachelbreite, damit sie im selben Verhältnis wachsen wie die Statement-Kachel;
+     Größen in cqi der Kachel-Innenbreite (418 pt), damit sie im selben Verhältnis wachsen wie die Statement-Kachel;
      clamp() hält sie auf kleinen und sehr großen Screens lesbar. */
   .leistung-card {
     container-type: inline-size;
@@ -726,15 +729,16 @@ const credentials = [
     background: rgba(17, 18, 25, 0.08);
   }
 
+  /* Keine automatische Silbentrennung: je nach Fensterbreite stünden sonst Trennstriche
+     an wechselnden Stellen. overflow-wrap nur als Notbremse für sehr lange Komposita. */
   .leistung-card h3,
   .leistung-card p,
   .leistung-statement p {
-    hyphens: auto;
     overflow-wrap: break-word;
   }
 
   .leistung-card h3 {
-    font-size: clamp(1.6rem, 7.7cqi, 2.75rem);
+    font-size: clamp(1.6rem, 8.4cqi, 2.75rem);
     line-height: 1;
     margin: 0;
   }
@@ -747,7 +751,7 @@ const credentials = [
   }
 
   .leistung-card p {
-    font-size: clamp(1rem, 4.4cqi, 1.5rem);
+    font-size: clamp(1rem, 4.8cqi, 1.5rem);
     line-height: 1.2;
     margin: 0 0 clamp(1.25rem, 5.7cqi, 2rem);
     flex-grow: 1;
@@ -768,13 +772,14 @@ const credentials = [
   .button--card {
     display: inline-block;
     box-sizing: border-box;
-    width: clamp(8.5rem, 37cqi, 13rem);
+    width: clamp(8.5rem, 40.7cqi, 13rem);
     text-align: center;
     text-decoration: none;
-    padding: clamp(0.65rem, 2.3cqi, 0.95rem) 0.75rem;
+    padding: clamp(0.65rem, 2.5cqi, 0.95rem) 0.75rem;
+    line-height: 1.2;
     border-radius: var(--radius-button);
     font-weight: var(--font-weight-bold);
-    font-size: clamp(0.9rem, 3.5cqi, 1.15rem);
+    font-size: clamp(0.9rem, 3.85cqi, 1.15rem);
     background: var(--color-white);
     color: var(--accent);
     border: 1px solid transparent;
