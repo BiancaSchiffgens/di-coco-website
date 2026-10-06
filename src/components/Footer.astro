@@ -9,11 +9,11 @@ const year = new Date().getFullYear();
   <div class="footer__inner">
     <div class="footer__col">
       <a href="/" class="footer__logo-lockup">
-        <span class="footer__logo-row">
-          <img class="footer__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="40" height="40" />
-          <img class="footer__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="150" height="45" />
+        <img class="footer__logo-mark" src="/assets/logo/Di-CoCo_Bildmarke_2D_W.svg" alt="" aria-hidden="true" width="670" height="672" />
+        <span class="footer__logo-text">
+          <img class="footer__logo-word" src="/assets/logo/Di-CoCo_Wortmarke_White.svg" alt="Di-CoCo" width="982" height="294" />
+          <span class="footer__tagline">Visibility Drives Business</span>
         </span>
-        <span class="footer__tagline">Visibility Drives Business</span>
       </a>
     </div>
 
@@ -93,33 +93,42 @@ const year = new Date().getFullYear();
     border: 0;
   }
 
+  /* Maße aus dem Webdesign-PDF: Bildmarke 54px hoch, Wortmarke 154px breit,
+     Claim so breit wie die Wortmarke. Die SVGs haben Leerraum um die Tinte –
+     die negativen Margins schneiden ihn weg, damit die sichtbaren Kanten stimmen. */
   .footer__logo-lockup {
-    display: block;
+    display: inline-flex;
+    align-items: flex-start;
+    gap: 11px;
     opacity: 1;
   }
 
-  .footer__logo-row {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .footer__logo-mark {
+    width: 71px;
+    max-width: none;
+    height: auto;
+    margin: -9px -8px;
   }
 
-  .footer__logo-mark {
-    height: 100px;
-    width: auto;
+  .footer__logo-text {
+    display: flex;
+    flex-direction: column;
+    padding-top: 3px;
   }
 
   .footer__logo-word {
-    height: 74px;
-    width: auto;
+    width: 181px;
+    max-width: none;
+    height: auto;
+    margin: -12px -13px -12px -14px;
   }
 
   .footer__tagline {
     display: block;
-    margin-top: 1.25rem;
-    font-size: 2rem;
-    line-height: 1.3;
-    opacity: 0.85;
+    margin-top: 5px;
+    font-size: 13.7px;
+    line-height: 1;
+    white-space: nowrap;
   }
 
   .footer ul {
