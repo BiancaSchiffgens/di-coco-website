@@ -313,7 +313,7 @@ const credentials = [
     <div class="presse__buch">
       <div class="presse__buch-text">
         <p class="presse__buch-eyebrow">Buchpublikation</p>
-        <h3 class="presse__buch-label">Autorin · Führung im Wandel<br />Springer Gabler Verlag</h3>
+        <h3 class="presse__buch-label">Autorin · Führung im Wandel<span class="presse__buch-verlag">Springer Gabler Verlag</span></h3>
         <p>„Führung im Wandel“ ist das neue Fachbuch von Springer Gabler mit Beiträgen von führenden Leadership-Experten. Bianca Schiffgens zeigt, wie wichtig Kommunikation und Vertrauen im Unternehmenskontext sind und warum Sichtbarkeit eine Führungsaufgabe ist.</p>
         <a class="button presse__buch-button" href="https://amzn.to/3SH3g7L" target="_blank" rel="noopener sponsored">Buch kaufen</a>
       </div>
@@ -1186,7 +1186,7 @@ const credentials = [
 
   .presse__buch img {
     width: 197px;
-    align-self: start;
+    align-self: center;
   }
 
   .presse__buch-eyebrow {
@@ -1200,6 +1200,13 @@ const credentials = [
     font-size: clamp(1.6rem, 3.25vw, 2.2rem);
     line-height: 1;
     margin: 0 0 1.2rem;
+  }
+
+  .presse__buch-verlag {
+    display: block;
+    margin-top: 0.5rem;
+    font-size: 0.6em;
+    line-height: 1.2;
   }
 
   .presse__buch-text p:not(.presse__buch-eyebrow) {
