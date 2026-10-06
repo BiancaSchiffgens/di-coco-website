@@ -146,7 +146,7 @@ const credentials = [
   <section class="wirkung">
     <div class="wirkung__inner">
       <p class="wirkung__eyebrow">Was wirklich passiert, wenn Kommunikation funktioniert</p>
-      <h2>Die meisten Unternehmen unterschätzen, was Sichtbarkeit auslösen kann.</h2>
+      <h2>Die meisten Unternehmen unterschätzen,<br class="wirkung__h2-break" /> was Sichtbarkeit auslösen kann.</h2>
       <div class="wirkung__grid">
         <div class="wirkung__col">
           <div class="wirkung__divider"></div>
@@ -527,18 +527,20 @@ const credentials = [
     margin: 0 auto;
   }
 
+  /* Wie im Webdesign-PDF: Eyebrow 16px fett, Überschrift 45px, beides zentriert */
   .wirkung__eyebrow {
     color: var(--color-orange);
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
-    margin: 0 0 1rem;
+    font-size: 1rem;
+    font-weight: var(--font-weight-bold);
+    text-align: center;
+    margin: 0 0 1.25rem;
   }
 
   .wirkung h2 {
-    font-size: clamp(2.25rem, 5vw, 3.5rem);
-    margin: 0 0 3rem;
-    max-width: 780px;
+    font-size: clamp(2rem, 4.2vw, 2.8rem);
+    line-height: 1;
+    text-align: center;
+    margin: 0 0 2.25rem;
   }
 
   .wirkung__grid {
@@ -1268,7 +1270,8 @@ const credentials = [
       margin: 0 auto;
     }
 
-    .presse__pullquote-break {
+    .presse__pullquote-break,
+    .wirkung__h2-break {
       display: none;
     }
   }
