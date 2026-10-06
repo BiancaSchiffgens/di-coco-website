@@ -65,3 +65,5 @@ Antworten auf die häufigsten Fragen zu Dauer, Kosten, Aufwand und Voraussetzung
 Führungskräfte, die selbst sichtbar sind, verstärken die Wirkung eines Programms zusätzlich → [CXO Communication](/cxo-communication)
 
 Damit dein Team das Programm eigenständig tragen kann → [Schulungen für Programmverantwortliche](/schulungen)
+
+Wenn dein Vertrieb LinkedIn als Kanal nutzen soll → [Social Selling](/social-selling/)
