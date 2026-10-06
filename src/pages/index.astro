@@ -855,13 +855,14 @@ const credentials = [
     align-items: stretch;
   }
 
-  /* Das Foto ist so hoch wie die Textspalte: Oberkante bündig mit der ersten Zeile,
-     linke Unterecke bündig mit der letzten. Die Unterkante ist um 18° angeschnitten
-     (Diagonale aus dem Brand Book); tan(18°) = 0,3249 -> Höhenversatz 32,49 % der Breite. */
+  /* Festes Format wie im Webdesign-PDF (460 x 640), unabhängig von der Textlänge.
+     Die Unterkante ist um 18° angeschnitten (Diagonale aus dem Brand Book);
+     tan(18°) = 0,3249 -> Höhenversatz 32,49 % der Breite. */
   .ueber-uns__photo-wrap {
     container-type: inline-size;
     position: relative;
-    min-height: 24rem;
+    align-self: start;
+    aspect-ratio: 460 / 640;
   }
 
   /* Kein zusätzlicher Zoom: so viel vom Foto wie der Rahmen zulässt. Unten verankert,
@@ -883,7 +884,6 @@ const credentials = [
     font-size: 1.25rem;
     line-height: 1.2;
     margin: 0 0 1.2em;
-    hyphens: auto;
   }
 
   .ueber-uns__text p:last-child {
