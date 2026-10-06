@@ -231,7 +231,7 @@ const credentials = [
   <section class="ueber-uns" id="ueber-uns">
     <div class="ueber-uns__head">
       <p class="ueber-uns__eyebrow">Wer hinter Di-CoCo steckt</p>
-      <h2>Mehr als zwanzig Jahre Kommunikation. Kein einziger Tag davon war langweilig.</h2>
+      <h2>Mehr als zwanzig Jahre Kommunikation.<br class="ueber-uns__h2-break" /> Kein einziger Tag davon war langweilig.</h2>
     </div>
     <div class="ueber-uns__inner">
       <div class="ueber-uns__photo-wrap">
@@ -841,16 +841,17 @@ const credentials = [
      Credentials als eigene Reihe über die volle Breite. */
   .ueber-uns__head {
     max-width: var(--max-width);
-    margin: 0 auto 3rem;
+    margin: 0 auto 2.5rem;
     text-align: center;
   }
 
+  /* Maße aus dem Webdesign-PDF: 928px breit, Foto 460px | Abstand 44px | Text 427px */
   .ueber-uns__inner {
-    max-width: var(--max-width);
+    max-width: 928px;
     margin: 0 auto;
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 3rem;
+    grid-template-columns: 460fr 427fr;
+    gap: 2.75rem;
     align-items: stretch;
   }
 
@@ -880,29 +881,27 @@ const credentials = [
 
   .ueber-uns__text p {
     font-size: 1.25rem;
-    line-height: 1.35;
+    line-height: 1.2;
+    margin: 0 0 1.2em;
+    hyphens: auto;
   }
 
   .ueber-uns__text p:last-child {
     margin-bottom: 0;
   }
 
+  /* Wie im Webdesign-PDF: Eyebrow 16px fett, Überschrift 45px zweizeilig, beides zentriert */
   .ueber-uns__eyebrow {
-    text-transform: uppercase;
     color: var(--color-blue);
     font-weight: var(--font-weight-bold);
-    letter-spacing: 0.06em;
-    font-size: 0.85rem;
-    margin: 0 0 1rem;
+    font-size: 1rem;
+    margin: 0 0 1.25rem;
   }
 
   .ueber-uns h2 {
-    font-size: clamp(2.25rem, 5vw, 2.9rem);
-    margin: 0 0 1.5rem;
-  }
-
-  .ueber-uns p {
-    margin: 0 0 1.1rem;
+    font-size: clamp(2rem, 4.2vw, 2.8rem);
+    line-height: 1;
+    margin: 0;
   }
 
   .ueber-uns__credentials {
@@ -1273,7 +1272,8 @@ const credentials = [
 
     .presse__pullquote-break,
     .wirkung__h2-break,
-    .leistungen__h2-break {
+    .leistungen__h2-break,
+    .ueber-uns__h2-break {
       display: none;
     }
   }
