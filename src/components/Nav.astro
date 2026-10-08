@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
       <span class="nav__logo-r" aria-hidden="true">®</span>
     </a>
 
-    <input type="checkbox" id="nav-toggle" class="nav__toggle-input" />
+    <input type="checkbox" id="nav-toggle" class="nav__toggle-input" autocomplete="off" />
     <label for="nav-toggle" class="nav__toggle" aria-label="Menü öffnen">
       <span></span><span></span><span></span>
     </label>
@@ -36,6 +36,24 @@ const currentPath = Astro.url.pathname;
     </nav>
   </div>
 </header>
+
+<script>
+  // Das Menü öffnet per Checkbox. Ohne Seitenwechsel (Sprungmarken wie
+  // /#ueber-uns) bliebe es offen und verdeckt den Inhalt; Safari/Firefox
+  // stellen den Haken außerdem beim Zurück-Navigieren wieder her.
+  const toggle = document.getElementById("nav-toggle") as HTMLInputElement | null;
+  const menu = document.querySelector(".nav__menu");
+  const close = () => {
+    if (toggle) toggle.checked = false;
+  };
+  menu?.addEventListener("click", (event) => {
+    if ((event.target as HTMLElement).closest("a")) close();
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape") close();
+  });
+  window.addEventListener("pageshow", close);
+</script>
 
 <style>
   .nav {
