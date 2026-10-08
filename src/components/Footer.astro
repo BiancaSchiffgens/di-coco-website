@@ -10,6 +10,7 @@ const year = new Date().getFullYear();
     <div class="footer__col">
       <a href="/" class="footer__logo-lockup">
         <img class="footer__logo" src="/assets/logo/Di-CoCo_WBM_H_W_tight.svg" alt="Di-CoCo – Visibility Drives Business" width="1248" height="300" />
+        <span class="footer__logo-r" aria-hidden="true">®</span>
       </a>
     </div>
 
@@ -92,8 +93,17 @@ const year = new Date().getFullYear();
   /* Wort-Bild-Marke aus dem Design-Ordner (_Logo/_Web/svg/Wort-Bild-Marke/Di-CoCo_WBM_H_W.svg),
      viewBox auf die Tinte zugeschnitten. Breite wie im Webdesign-PDF: 228px. */
   .footer__logo-lockup {
-    display: block;
+    display: inline-flex;
+    align-items: flex-start;
     opacity: 1;
+  }
+
+  /* Eingetragene Marke: ® rechts oben an der Wortmarke */
+  .footer__logo-r {
+    margin-left: 2px;
+    font-size: 13px;
+    line-height: 1;
+    color: var(--color-white);
   }
 
   .footer__logo {

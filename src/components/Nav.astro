@@ -9,6 +9,7 @@ const currentPath = Astro.url.pathname;
   <div class="nav__inner">
     <a href="/" class="nav__logo">
       <img src="/assets/logo/Di-CoCo_WBM_H_W_Gr_no_underline.svg" alt="Di-CoCo" width="150" height="36" />
+      <span class="nav__logo-r" aria-hidden="true">®</span>
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav__toggle-input" />
@@ -63,6 +64,15 @@ const currentPath = Astro.url.pathname;
   .nav__logo img {
     height: 36px;
     width: auto;
+  }
+
+  /* Eingetragene Marke: ® rechts oben an der Wortmarke (Versalhöhe beginnt bei ~6px) */
+  .nav__logo-r {
+    align-self: flex-start;
+    margin: 3px 0 0 2px;
+    font-size: 10px;
+    line-height: 1;
+    color: var(--color-white);
   }
 
   .nav__toggle-input {
