@@ -34,3 +34,20 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  # Meldet alle URLs aus der Sitemap per IndexNow an Bing & Co.
+  indexnow:
+    needs: deploy
+    runs-on: ubuntu-latest
+    env:
+      SITE: https://di-coco.com
+      KEY: 4ae01d42afb288de950404582ed14e40
+    steps:
+      - name: Ping IndexNow
+        continue-on-error: true
+        run: |
+          sleep 30
+          urls=$(curl -sf "$SITE/sitemap-0.xml" | grep -o '<loc>[^<]*' | sed 's/<loc>//' | jq -R . | jq -sc .)
+          curl -s -o /dev/null -w "IndexNow: HTTP %{http_code}\n" -X POST https://api.indexnow.org/indexnow \
+            -H "Content-Type: application/json; charset=utf-8" \
+            -d "{\"host\":\"di-coco.com\",\"key\":\"$KEY\",\"keyLocation\":\"$SITE/$KEY.txt\",\"urlList\":$urls}"
