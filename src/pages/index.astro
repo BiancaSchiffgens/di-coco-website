@@ -706,6 +706,24 @@ const credentials = [
        min-content-Breite. Lange Komposita wie "Programmverantwortliche"
        machten das Raster dadurch breiter als den Viewport. */
     min-width: 0;
+    transition: transform 0.35s cubic-bezier(0.2, 0.7, 0.2, 1), box-shadow 0.35s ease;
+  }
+
+  /* Nur mit Maus: Kachel hebt sich, die Trennlinie wird länger */
+  /* Während des Einblendens gilt dessen Übergang, nicht der Hover-Übergang */
+  .leistung-card:global(.reveal) {
+    transition: opacity 0.7s ease var(--reveal-delay, 0s), transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) var(--reveal-delay, 0s);
+  }
+
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    .leistung-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 40px -18px rgba(17, 18, 25, 0.45);
+    }
+
+    .leistung-card:hover .leistung-card__divider {
+      width: 30cqi;
+    }
   }
 
   .leistung-card--light {
@@ -751,6 +769,7 @@ const credentials = [
     width: 18.4cqi;
     background: var(--color-white);
     margin: clamp(0.9rem, 3.9cqi, 1.5rem) 0 clamp(1.1rem, 5.7cqi, 2rem);
+    transition: width 0.4s cubic-bezier(0.2, 0.7, 0.2, 1);
   }
 
   .leistung-card p {
@@ -1021,12 +1040,21 @@ const credentials = [
     padding: 2.5rem;
     opacity: 0;
     visibility: hidden;
-    transition: opacity 0.4s ease;
+    /* Alte Karte blendet aus, erst danach wird sie unsichtbar geschaltet (sonst verschwindet sie schlagartig) */
+    transition: opacity 0.5s ease, visibility 0s linear 0.5s;
   }
 
+  /* Neue Karte blendet leicht verzögert ein und gleitet dabei ein Stück hoch */
   .referenz-card[aria-hidden="false"] {
     opacity: 1;
     visibility: visible;
+    transition: opacity 0.6s ease 0.15s, visibility 0s;
+    animation: referenz-rein 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) 0.1s both;
+  }
+
+  @keyframes referenz-rein {
+    from { transform: translateY(18px); }
+    to { transform: translateY(0); }
   }
 
   .referenz-card p {
@@ -1061,9 +1089,13 @@ const credentials = [
     padding: 0;
     background: rgba(253, 253, 253, 0.3);
     cursor: pointer;
+    transition: width 0.4s ease, border-radius 0.4s ease, background-color 0.4s ease;
   }
 
+  /* Aktiver Punkt zieht sich zur Pille auseinander */
   .referenzen__dot[aria-current="true"] {
+    width: 26px;
+    border-radius: 5px;
     background: var(--color-white);
   }
 
@@ -1319,7 +1351,91 @@ const credentials = [
       justify-self: center;
     }
   }
+  /* Weiches Einblenden beim Scrollen. Die Klasse setzt das Skript unten,
+     nur für Elemente unterhalb des ersten Bildschirms. Ohne JS bleibt alles sichtbar. */
+  :global(.reveal) {
+    transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+    transition-delay: var(--reveal-delay, 0s);
+  }
+
+  :global(.reveal.reveal--wartet) {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .referenz-card,
+    .referenz-card[aria-hidden="false"],
+    .referenzen__dot {
+      animation: none;
+      transition: none;
+    }
+  }
 </style>
+
+<script>
+  // Weiches Einblenden beim Scrollen
+  const revealAuswahl = [
+    ".ergebnisse__label", ".kennzahlen__item",
+    ".wirkung__eyebrow", ".wirkung h2", ".wirkung__col",
+    ".quote-band p", ".wirkung-cta",
+    ".leistungen__eyebrow", ".leistungen h2", ".leistung-card", ".leistung-statement",
+    ".ueber-uns__head", ".ueber-uns__photo-wrap", ".ueber-uns__text", ".credential",
+    ".referenzen__eyebrow", ".referenzen h2", ".referenzen__carousel",
+    ".presse__pullquote", ".presse__buch",
+  ];
+  const revealOhneBewegung = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!revealOhneBewegung && "IntersectionObserver" in window) {
+    const beobachter = new IntersectionObserver((eintraege) => {
+      for (const e of eintraege) {
+        if (e.isIntersecting) {
+          const el = e.target as HTMLElement;
+          el.classList.remove("reveal--wartet");
+          beobachter.unobserve(el);
+          // Danach aufräumen, damit eigene Übergänge (z. B. Hover der Kacheln) wieder greifen
+          setTimeout(() => {
+            el.classList.remove("reveal");
+            el.style.removeProperty("--reveal-delay");
+          }, 1300);
+        }
+      }
+    }, { threshold: 0.12, rootMargin: "0px 0px -40px 0px" });
+
+    // Absicherung: Wer schnell scrollt oder per Sprungmarke springt, überspringt Elemente.
+    // Alles, was schon oberhalb des unteren Bildrands liegt, wird dann direkt gezeigt.
+    let pruefungGeplant = false;
+    const nachziehen = () => {
+      pruefungGeplant = false;
+      for (const el of document.querySelectorAll<HTMLElement>(".reveal--wartet")) {
+        if (el.getBoundingClientRect().top < window.innerHeight) {
+          el.classList.remove("reveal--wartet");
+          beobachter.unobserve(el);
+          setTimeout(() => {
+            el.classList.remove("reveal");
+            el.style.removeProperty("--reveal-delay");
+          }, 1300);
+        }
+      }
+    };
+    window.addEventListener("scroll", () => {
+      if (!pruefungGeplant) {
+        pruefungGeplant = true;
+        setTimeout(nachziehen, 80);
+      }
+    }, { passive: true });
+
+    for (const el of document.querySelectorAll<HTMLElement>(revealAuswahl.join(","))) {
+      // Was beim Laden schon sichtbar ist, bleibt einfach stehen
+      if (el.getBoundingClientRect().top < window.innerHeight) continue;
+      // Geschwister nacheinander einblenden (z. B. Kacheln, Kennzahlen), höchstens 4 Stufen
+      const geschwister = el.parentElement ? Array.from(el.parentElement.children).filter((k) => k.matches(revealAuswahl.join(","))) : [];
+      const stufe = Math.min(Math.max(geschwister.indexOf(el), 0), 3);
+      el.style.setProperty("--reveal-delay", `${stufe * 0.09}s`);
+      el.classList.add("reveal", "reveal--wartet");
+      beobachter.observe(el);
+    }
+  }
+</script>
 
 <script>
   const carousel = document.querySelector<HTMLElement>("[data-carousel]");
