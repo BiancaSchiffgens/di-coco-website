@@ -380,18 +380,7 @@ const credentials = [
     border: 1px solid rgba(253, 253, 253, 0.5);
     border-radius: 50%;
     color: var(--color-white);
-    animation: hero-scroll-bounce 2s ease-in-out infinite;
-  }
-
-  @keyframes hero-scroll-bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(6px); }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .hero__scroll {
-      animation: none;
-    }
+    /* Steht bewusst still: oben bewegt sich schon der "Wir sind"-Wort-Wechsel */
   }
 
   .hero__eyebrow {
