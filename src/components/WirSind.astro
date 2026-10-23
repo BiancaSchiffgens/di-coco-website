@@ -1,18 +1,27 @@
 ---
-// "Wir sind …": Begriffe rollen nacheinander von unten ins Bild, am Ende bleibt "Di-CoCo." stehen.
+// "Wir sind …": Begriffe rollen nacheinander von unten ins Bild, am Ende bleibt die Wortmarke stehen.
 // Echter Text statt Video, damit Google und Screenreader ihn lesen können.
+// Sitzt im schwarzen Hero, deshalb helle Schrift.
+import wortmarke from "../../public/assets/logo/Di-CoCo_Wortmarke_Orange_R.svg?raw";
+
 const begriffe = ["Kommunikationsprofis", "LinkedIn-Insider", "Kulturbegleiter", "Klartext", "Rückenwind"];
-const schluss = "Di-CoCo.";
+
+// Original-Wortmarke mit ® (CI), nur der leere Rand der Zeichenfläche wird weggeschnitten:
+// Buchstaben + ® liegen in x 75–963, y 64–230 (Grundlinie bei 228).
+const logo = wortmarke
+  .replace(/<\?xml[^>]*\?>\s*/, "")
+  .replace(/viewBox="[^"]*"/, 'viewBox="75 64 888 166"')
+  .replace("<svg ", '<svg class="wir-sind__logo" aria-hidden="true" focusable="false" ');
 ---
 
 <div class="wir-sind" data-wir-sind>
-  <p class="visually-hidden">Wir sind {begriffe.join(", ")}. Wir sind {schluss}</p>
+  <p class="visually-hidden">Wir sind {begriffe.join(", ")}. Wir sind Di-CoCo.</p>
   <div aria-hidden="true">
     <p class="wir-sind__intro">Wir sind</p>
     <div class="wir-sind__fenster">
       <ul class="wir-sind__liste">
-        {begriffe.map((wort) => <li><span>{wort}</span></li>)}
-        <li class="wir-sind__schluss"><span>{schluss}</span></li>
+        {begriffe.map((wort) => <li><span class="wir-sind__wort">{wort}</span></li>)}
+        <li><Fragment set:html={logo} /></li>
       </ul>
     </div>
   </div>
@@ -20,18 +29,19 @@ const schluss = "Di-CoCo.";
 
 <style>
   .wir-sind {
-    /* Größe richtet sich nach dem längsten Begriff, damit er auf dem Handy in eine Zeile passt */
-    --wort-groesse: clamp(1.375rem, 7.4vw, 4.5rem);
+    /* Größe richtet sich nach dem längsten Begriff (10,8 em breit), damit er auf dem Handy in eine Zeile passt */
+    --wort-groesse: clamp(1.375rem, 7.4vw, 3.5rem);
     --zeile: 1.3em;
 
-    margin: 0 auto 3.5rem;
-    text-align: center;
+    margin: 0.5rem 0 2.25rem;
+    color: var(--color-white);
   }
 
   .wir-sind__intro {
-    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-size: clamp(1.1rem, 2.2vw, 1.5rem);
     font-weight: var(--font-weight-medium);
-    margin: 0 0 0.25rem;
+    color: rgba(253, 253, 253, 0.85);
+    margin: 0 0 0.15rem;
   }
 
   .wir-sind__fenster {
@@ -63,13 +73,13 @@ const schluss = "Di-CoCo.";
     white-space: nowrap;
   }
 
-  .wir-sind__liste span {
+  .wir-sind__wort {
     position: relative;
     display: inline-block;
   }
 
-  /* Unterstreichung im Markenverlauf */
-  .wir-sind__liste span::after {
+  /* Unterstreichung im Markenverlauf, nicht am Logo */
+  .wir-sind__wort::after {
     content: "";
     position: absolute;
     left: 0;
@@ -80,8 +90,13 @@ const schluss = "Di-CoCo.";
     background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-violet) 50%, var(--color-orange) 100%);
   }
 
-  .wir-sind__schluss {
-    color: var(--color-orange);
+  /* Wortmarke als Schlusspunkt größer als die Begriffe: füllt die Zeile fast ganz aus.
+     Unterkante = Grundlinie der Wortmarke, ragt wie die Begriffe nicht aus dem Fenster */
+  .wir-sind__liste :global(.wir-sind__logo) {
+    display: block;
+    height: 1.12em;
+    width: auto;
+    margin-top: 0.06em;
   }
 
   .visually-hidden {
@@ -93,7 +108,7 @@ const schluss = "Di-CoCo.";
     white-space: nowrap;
   }
 
-  /* Ohne Bewegung: gleich "Di-CoCo." zeigen */
+  /* Ohne Bewegung: gleich die Wortmarke zeigen */
   @media (prefers-reduced-motion: reduce) {
     .wir-sind__liste {
       transition: none;
@@ -104,7 +119,7 @@ const schluss = "Di-CoCo.";
 
 <script>
   const STANDZEIT = 1500; // ms pro Begriff
-  const SCHLUSS_STANDZEIT = 3500; // ms für "Di-CoCo."
+  const SCHLUSS_STANDZEIT = 3500; // ms für die Wortmarke
   const reduziert = matchMedia("(prefers-reduced-motion: reduce)");
 
   for (const box of document.querySelectorAll<HTMLElement>("[data-wir-sind]")) {
