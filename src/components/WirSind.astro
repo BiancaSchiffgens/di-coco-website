@@ -9,18 +9,18 @@ const begriffe = ["Kommunikationsprofis", "LinkedIn-Insider", "Kulturbegleiter",
 // Original-Wortmarke mit ® (CI), nur der leere Rand der Zeichenfläche wird weggeschnitten:
 // Buchstaben + ® liegen in x 75–963, y 64–230 (Grundlinie bei 228).
 // Füllung: Di-CoCo Orange-Blue aus dem Brandbook (Verlaufsmitte bei 66 %), auf Wunsch von Bianca.
-// Die Klasse wird umbenannt, weil <style> im SVG sonst seitenweit für alle .cls-1 gelten würde.
+// Den <style>-Block im SVG ersetzen wir durch fill-Attribute: sonst stünde CSS-Text im Dokument,
+// den Google mitliest, und .cls-1 würde seitenweit gelten.
 const verlauf =
   '<defs><linearGradient id="wir-sind-verlauf" gradientUnits="userSpaceOnUse" x1="75" y1="0" x2="963" y2="0">' +
   '<stop offset="0" stop-color="#ff4b00"/><stop offset="0.66" stop-color="#803e80"/><stop offset="1" stop-color="#0032ff"/>' +
   "</linearGradient></defs>";
 const logo = wortmarke
   .replace(/<\?xml[^>]*\?>\s*/, "")
+  .replace(/<defs>[\s\S]*?<\/defs>/, verlauf)
   .replace(/viewBox="[^"]*"/, 'viewBox="75 64 888 166"')
   .replace("<svg ", '<svg class="wir-sind__logo" aria-hidden="true" focusable="false" ')
-  .replaceAll("cls-1", "wir-sind-logo-flaeche")
-  .replace(/fill:\s*#ff4b00;?/, "fill: url(#wir-sind-verlauf);")
-  .replace("<defs>", verlauf.replace("</defs>", ""));
+  .replaceAll('class="cls-1"', 'fill="url(#wir-sind-verlauf)"');
 ---
 
 <div class="wir-sind" data-wir-sind>

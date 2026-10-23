@@ -1,0 +1,43 @@
+---
+// Original-Wortmarke mit ® zum Einsetzen mitten in eine Zeile (CI: "Di-CoCo" prominent = immer Wortmarke).
+// Das D ist so hoch wie die Großbuchstaben der umgebenden Miranda Sans und steht auf derselben Grundlinie.
+// Google und Screenreader lesen den Text "Di-CoCo", die Grafik selbst ist für sie ausgeblendet.
+import orange from "../../public/assets/logo/Di-CoCo_Wortmarke_Orange_R.svg?raw";
+
+// Nur der leere Rand der Zeichenfläche wird weggeschnitten: Buchstaben + ® liegen in x 75–963, y 64–230.
+// Den <style>-Block im SVG ersetzen wir durch fill-Attribute: sonst würde Google den CSS-Text
+// als Teil der Überschrift lesen, und .cls-1 würde seitenweit gelten.
+const svg = orange
+  .replace(/<\?xml[^>]*\?>\s*/, "")
+  .replace(/<defs>[\s\S]*?<\/defs>\s*/, "")
+  .replace(/viewBox="[^"]*"/, 'viewBox="75 64 888 166"')
+  .replace("<svg ", '<svg class="wortmarke__bild" aria-hidden="true" focusable="false" ')
+  .replaceAll('class="cls-1"', 'fill="#ff4b00"');
+---
+
+<span class="wortmarke"><span class="wortmarke__text">Di-CoCo</span><Fragment set:html={svg} /></span>
+
+<style>
+  .wortmarke {
+    display: inline-block;
+    white-space: nowrap;
+  }
+
+  /* Text bleibt für Google und Screenreader im Dokument, ist aber nicht zu sehen */
+  .wortmarke__text {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* Versalhöhe Miranda Sans = 0,72 em; die Zeichenfläche ist 166 hoch, das D davon 162 */
+  .wortmarke :global(.wortmarke__bild) {
+    display: inline-block;
+    height: 0.738em;
+    width: auto;
+    vertical-align: -0.009em;
+  }
+</style>

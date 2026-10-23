@@ -5,6 +5,7 @@ import ContactSection from "../components/ContactSection.astro";
 import Kennzahlen from "../components/Kennzahlen.astro";
 import LogoMarquee from "../components/LogoMarquee.astro";
 import WirSind from "../components/WirSind.astro";
+import Wortmarke from "../components/Wortmarke.astro";
 
 const services = await getCollection("services");
 
@@ -279,7 +280,7 @@ const credentials = [
 
   <section class="referenzen" id="referenzen">
     <p class="referenzen__eyebrow">Kundenstimmen</p>
-    <h2>Was sich verändert,<br /> wenn <span class="referenzen__brand">Di-CoCo</span> dabei ist.</h2>
+    <h2>Was sich verändert,<br /> wenn <Wortmarke /> dabei&nbsp;ist.</h2>
     <div class="referenzen__carousel" data-carousel>
       <div class="referenzen__track">
         {referenzen.map((r, i) => (
@@ -1013,10 +1014,6 @@ const credentials = [
     font-size: clamp(2rem, 5.5vw, 3.75rem);
     line-height: 1;
     text-align: center;
-  }
-
-  .referenzen__brand {
-    color: var(--color-orange);
   }
 
   .referenzen__carousel {
