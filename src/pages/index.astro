@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import ContactSection from "../components/ContactSection.astro";
 import Kennzahlen from "../components/Kennzahlen.astro";
 import LogoMarquee from "../components/LogoMarquee.astro";
+import WirSind from "../components/WirSind.astro";
 
 const services = await getCollection("services");
 
@@ -126,6 +127,7 @@ const credentials = [
   </section>
 
   <section class="claim" id="claim">
+    <WirSind />
     <p class="claim__text gradient-text gradient-text--script">Visibility drives<br />business.</p>
     <div class="claim__actions">
       <a href="#kontakt" class="button">Lass uns sprechen</a>

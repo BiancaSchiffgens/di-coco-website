@@ -1,0 +1,155 @@
+---
+// "Wir sind …": Begriffe rollen nacheinander von unten ins Bild, am Ende bleibt "Di-CoCo." stehen.
+// Echter Text statt Video, damit Google und Screenreader ihn lesen können.
+const begriffe = ["Kommunikationsprofis", "LinkedIn-Insider", "Kulturbegleiter", "Klartext", "Rückenwind"];
+const schluss = "Di-CoCo.";
+---
+
+<div class="wir-sind" data-wir-sind>
+  <p class="visually-hidden">Wir sind {begriffe.join(", ")}. Wir sind {schluss}</p>
+  <div aria-hidden="true">
+    <p class="wir-sind__intro">Wir sind</p>
+    <div class="wir-sind__fenster">
+      <ul class="wir-sind__liste">
+        {begriffe.map((wort) => <li><span>{wort}</span></li>)}
+        <li class="wir-sind__schluss"><span>{schluss}</span></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .wir-sind {
+    /* Größe richtet sich nach dem längsten Begriff, damit er auf dem Handy in eine Zeile passt */
+    --wort-groesse: clamp(1.375rem, 7.4vw, 4.5rem);
+    --zeile: 1.3em;
+
+    margin: 0 auto 3.5rem;
+    text-align: center;
+  }
+
+  .wir-sind__intro {
+    font-size: clamp(1.25rem, 3vw, 2rem);
+    font-weight: var(--font-weight-medium);
+    margin: 0 0 0.25rem;
+  }
+
+  .wir-sind__fenster {
+    font-size: var(--wort-groesse);
+    height: var(--zeile);
+    overflow: hidden;
+    transition: opacity 0.4s ease;
+  }
+
+  .wir-sind__fenster.ist-weg {
+    opacity: 0;
+  }
+
+  .wir-sind__liste {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: transform 0.55s cubic-bezier(0.65, 0, 0.35, 1);
+  }
+
+  .wir-sind__liste.ohne-uebergang {
+    transition: none;
+  }
+
+  .wir-sind__liste li {
+    height: var(--zeile);
+    line-height: 1.1;
+    font-weight: var(--font-weight-bold);
+    white-space: nowrap;
+  }
+
+  .wir-sind__liste span {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Unterstreichung im Markenverlauf */
+  .wir-sind__liste span::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -0.06em;
+    height: 0.07em;
+    border-radius: 1em;
+    background: linear-gradient(90deg, var(--color-blue) 0%, var(--color-violet) 50%, var(--color-orange) 100%);
+  }
+
+  .wir-sind__schluss {
+    color: var(--color-orange);
+  }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+
+  /* Ohne Bewegung: gleich "Di-CoCo." zeigen */
+  @media (prefers-reduced-motion: reduce) {
+    .wir-sind__liste {
+      transition: none;
+      transform: translateY(calc(var(--zeile) * -5));
+    }
+  }
+</style>
+
+<script>
+  const STANDZEIT = 1500; // ms pro Begriff
+  const SCHLUSS_STANDZEIT = 3500; // ms für "Di-CoCo."
+  const reduziert = matchMedia("(prefers-reduced-motion: reduce)");
+
+  for (const box of document.querySelectorAll<HTMLElement>("[data-wir-sind]")) {
+    const fenster = box.querySelector<HTMLElement>(".wir-sind__fenster")!;
+    const liste = box.querySelector<HTMLElement>(".wir-sind__liste")!;
+    const anzahl = liste.children.length;
+    let index = 0;
+    let gestartet = false;
+
+    const zeige = (i: number) => {
+      liste.style.transform = `translateY(calc(var(--zeile) * ${-i}))`;
+    };
+
+    const weiter = () => {
+      if (reduziert.matches) {
+        zeige(anzahl - 1);
+        return;
+      }
+      if (index < anzahl - 1) {
+        index++;
+        zeige(index);
+        setTimeout(weiter, index === anzahl - 1 ? SCHLUSS_STANDZEIT : STANDZEIT);
+      } else {
+        // Ausblenden, unsichtbar zurück zum ersten Begriff, wieder einblenden
+        fenster.classList.add("ist-weg");
+        setTimeout(() => {
+          liste.classList.add("ohne-uebergang");
+          index = 0;
+          zeige(0);
+          liste.offsetHeight; // Neuberechnung erzwingen, bevor der Übergang zurückkommt
+          liste.classList.remove("ohne-uebergang");
+          fenster.classList.remove("ist-weg");
+          setTimeout(weiter, STANDZEIT);
+        }, 450);
+      }
+    };
+
+    // Erst starten, wenn der Block sichtbar ist, damit man den Anfang mitbekommt
+    const beobachter = new IntersectionObserver((eintraege) => {
+      if (eintraege.some((e) => e.isIntersecting) && !gestartet) {
+        gestartet = true;
+        beobachter.disconnect();
+        setTimeout(weiter, STANDZEIT);
+      }
+    }, { threshold: 0.6 });
+    beobachter.observe(box);
+  }
+</script>
