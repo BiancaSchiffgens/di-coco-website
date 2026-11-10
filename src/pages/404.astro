@@ -25,6 +25,14 @@ import Layout from "../layouts/Layout.astro";
   </section>
 </Layout>
 
+<script>
+  // Alte Links von dein-bizz.de, die nicht exakt in der Liste stehen, hier noch umleiten
+  import { neuesZiel } from "../data/alte-links.mjs";
+
+  const ziel = neuesZiel(window.location.pathname);
+  if (ziel) window.location.replace(ziel);
+</script>
+
 <style>
   .notfound {
     min-height: 60vh;

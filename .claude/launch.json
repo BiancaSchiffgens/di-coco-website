@@ -4,8 +4,20 @@
     {
       "name": "di-coco-dev",
       "runtimeExecutable": "/bin/bash",
-      "runtimeArgs": ["-c", "PATH=/opt/homebrew/bin:$PATH npm run dev -- --port 4321"],
+      "runtimeArgs": [
+        "-c",
+        "PATH=/opt/homebrew/bin:$PATH npm run dev -- --port 4321"
+      ],
       "port": 4321
+    },
+    {
+      "name": "di-coco-preview",
+      "runtimeExecutable": "/bin/bash",
+      "runtimeArgs": [
+        "-c",
+        "PATH=/opt/homebrew/bin:$PATH npx astro preview --port 4322"
+      ],
+      "port": 4322
     }
   ]
 }
