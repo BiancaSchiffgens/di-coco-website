@@ -1,6 +1,11 @@
 ---
-// Endlos durchlaufende "Bekannt aus"-Logoleiste.
-const logos = [
+// Endlos durchlaufende Logoleiste ("Bekannt aus", Partner).
+// Logo ohne src = Name als Text (Platzhalter, bis das Logo da ist).
+// Logo mit href = verlinkt (Backlink zum Partner).
+// hoehe = eigene Darstellungshöhe in px (Standard 64), z. B. für hochformatige Logos mit kleiner Schrift.
+type Logo = { src?: string; w?: number; h?: number; alt: string; href?: string; hoehe?: number };
+
+const pressLogos: Logo[] = [
   { src: "/assets/press/bild.webp", w: 306, h: 305, alt: "BILD" },
   { src: "/assets/press/gruendermagazin.webp", w: 590, h: 143, alt: "Gründermagazin" },
   { src: "/assets/press/rheinzeiger.webp", w: 257, h: 287, alt: "Rheinzeiger" },
@@ -8,6 +13,8 @@ const logos = [
   { src: "/assets/press/springer-gabler.webp", w: 584, h: 135, alt: "Springer Gabler" },
   { src: "/assets/press/favikon-top10.svg", w: 512, h: 512, alt: "Favikon Top 10 Communications Experts Germany 2025" },
 ];
+
+const { logos = pressLogos } = Astro.props as { logos?: Logo[] };
 
 // Eine Gruppe enthält die Logos zweimal, damit sie auch auf sehr breiten Screens
 // breiter als der Viewport ist und am rechten Rand keine Lücke entsteht.
@@ -20,7 +27,16 @@ const gruppe = [...logos, ...logos];
       <ul class="logo-marquee__gruppe" aria-hidden={kopie === 1 ? "true" : undefined}>
         {gruppe.map((logo, i) => (
           <li class="logo-marquee__item" aria-hidden={kopie === 0 && i >= logos.length ? "true" : undefined}>
-            <img src={logo.src} alt={logo.alt} width={logo.w} height={logo.h} decoding="async" />
+            {(() => {
+              const inhalt = logo.src
+                ? <img src={logo.src} alt={logo.alt} width={logo.w} height={logo.h} decoding="async" style={logo.hoehe ? `--logo-hoehe: ${logo.hoehe}px` : undefined} />
+                : <span class="logo-marquee__name">{logo.alt}</span>;
+              // Duplikate nicht fokussierbar, damit Tastatur/Screenreader jeden Partner nur einmal treffen
+              const duplikat = kopie === 1 || i >= logos.length;
+              return logo.href
+                ? <a href={logo.href} target="_blank" rel="noopener" tabindex={duplikat ? -1 : undefined}>{inhalt}</a>
+                : inhalt;
+            })()}
           </li>
         ))}
       </ul>
@@ -65,8 +81,27 @@ const gruppe = [...logos, ...logos];
   }
 
   .logo-marquee__item img {
-    height: 64px;
+    height: var(--logo-hoehe, 64px);
     width: auto;
+  }
+
+  .logo-marquee__item a {
+    display: block;
+    transition: opacity 0.2s ease;
+  }
+
+  .logo-marquee__item a:hover {
+    opacity: 0.7;
+  }
+
+  .logo-marquee__name {
+    display: flex;
+    align-items: center;
+    height: 64px;
+    white-space: nowrap;
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-black);
   }
 
   @keyframes logo-marquee-lauf {
@@ -84,6 +119,10 @@ const gruppe = [...logos, ...logos];
     }
 
     .logo-marquee__item img {
+      height: calc(var(--logo-hoehe, 64px) * 0.75);
+    }
+
+    .logo-marquee__name {
       height: 48px;
     }
   }

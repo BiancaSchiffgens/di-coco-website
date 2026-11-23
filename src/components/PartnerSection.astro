@@ -1,0 +1,72 @@
+---
+import LogoMarquee from "./LogoMarquee.astro";
+
+// Partner mit gegenseitiger Verlinkung.
+// Logo: Datei nach public/assets/partner/ legen, dann src, w und h (Pixelmaße der Datei) eintragen.
+// Ohne src erscheint der Name als Text. Ohne href wird nicht verlinkt.
+// Reihenfolge: die beiden Fotografen (Manuel, Vera) stehen bewusst möglichst weit auseinander.
+// Alle Logos sind einfarbig in Di-CoCo-Schwarz (#111219), damit die Leiste ruhig wirkt.
+const partner = [
+  {
+    src: "/assets/partner/manuel-thome-photography.webp",
+    w: 867,
+    h: 128,
+    alt: "Manuel Thomé Photography",
+    href: "https://www.manuelthome.de/",
+  },
+  {
+    src: "/assets/partner/advokatenkontor-terheggen.webp",
+    w: 505,
+    h: 160,
+    hoehe: 100,
+    alt: "Advokatenkontor Rechtsanwalt Terheggen",
+    href: "https://advokatenkontor.com/",
+  },
+  {
+    src: "/assets/partner/vera-drewke-photography.webp",
+    w: 215,
+    h: 240,
+    hoehe: 110,
+    alt: "Vera Drewke Photography",
+    href: "https://veradrewke.photography/",
+  },
+  {
+    src: "/assets/partner/lasse-rocks.svg",
+    w: 619,
+    h: 282,
+    alt: "Lasse.Rocks",
+    href: "https://lasse.rocks/",
+  },
+  {
+    src: "/assets/partner/marika-auenmueller.webp",
+    w: 160,
+    h: 160,
+    alt: "Marika Auenmüller",
+    href: "https://marikaauenmueller.de/",
+  },
+];
+---
+
+<section class="partner" aria-labelledby="partner-label">
+  <p class="partner__label" id="partner-label">Partner &amp; Netzwerk</p>
+  <LogoMarquee logos={partner} />
+</section>
+
+<style>
+  .partner {
+    background: #f5f5f5;
+    /* Kein seitliches Padding: die Logoleiste läuft über die volle Breite */
+    padding: 3.5rem 0;
+    text-align: center;
+  }
+
+  .partner__label {
+    text-transform: uppercase;
+    color: var(--color-blue);
+    font-size: 1.15rem;
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 0.06em;
+    padding-inline: 1.5rem;
+    margin: 0 0 2rem;
+  }
+</style>
