@@ -4,7 +4,8 @@ import LogoMarquee from "./LogoMarquee.astro";
 // Partner mit gegenseitiger Verlinkung.
 // Logo: Datei nach public/assets/partner/ legen, dann src, w und h (Pixelmaße der Datei) eintragen.
 // Ohne src erscheint der Name als Text. Ohne href wird nicht verlinkt.
-// Reihenfolge: die beiden Fotografen (Manuel, Vera) stehen bewusst möglichst weit auseinander.
+// Reihenfolge: die beiden Fotografen (Manuel, Vera) stehen sich in der Endlosschleife genau gegenüber
+// (je zwei Logos dazwischen), breite und kompakte Logos wechseln sich ab.
 // Alle Logos sind einfarbig in Di-CoCo-Schwarz (#111219), damit die Leiste ruhig wirkt.
 const partner = [
   {
@@ -13,6 +14,13 @@ const partner = [
     h: 128,
     alt: "Manuel Thomé Photography",
     href: "https://www.manuelthome.de/",
+  },
+  {
+    src: "/assets/partner/lasse-rocks.svg",
+    w: 619,
+    h: 282,
+    alt: "Lasse.Rocks",
+    href: "https://lasse.rocks/",
   },
   {
     src: "/assets/partner/advokatenkontor-terheggen.webp",
@@ -31,11 +39,11 @@ const partner = [
     href: "https://veradrewke.photography/",
   },
   {
-    src: "/assets/partner/lasse-rocks.svg",
-    w: 619,
-    h: 282,
-    alt: "Lasse.Rocks",
-    href: "https://lasse.rocks/",
+    src: "/assets/partner/neuschil-ai.webp",
+    w: 689,
+    h: 128,
+    alt: "Neuschil AI Solutions",
+    href: "https://neuschil.ai/",
   },
   {
     src: "/assets/partner/marika-auenmueller.webp",
