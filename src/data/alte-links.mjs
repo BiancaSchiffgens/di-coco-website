@@ -78,6 +78,7 @@ const ZUR_STARTSEITE = [
   "/blog-lasst-sie-ziehen", "/reflexion", "/selbstmanagement-checkliste", "/freebie-technik-set-up",
   "/6li-anmeldung-danke", "/rcu-anmeldung-danke", "/danke-dein-bizz-akademie", "/angemeldet",
   "/anmeldung-bestaetigen", "/e-mail-bestaetigung-reflexion",
+  "/feed",
 ];
 
 /** Normalisiert einen Pfad: dekodiert Umlaute, kleingeschrieben, ohne Schrägstrich am Ende. */
@@ -92,13 +93,23 @@ function normalisieren(pfad) {
   return p || "/";
 }
 
+/**
+ * Hängt den Schrägstrich an, mit dem die Seiten tatsächlich ausgeliefert werden
+ * (/faq → /faq/). Sonst schickt GitHub Pages noch eine zweite Weiterleitung hinterher.
+ * Anker-Ziele (/#kontakt) und Ziele, die schon auf / enden, bleiben, wie sie sind.
+ */
+function mitSchraegstrich(ziel) {
+  if (ziel.includes("#") || ziel.endsWith("/")) return ziel;
+  return ziel + "/";
+}
+
 /** Liefert das neue Ziel für einen alten Pfad oder null, wenn er unbekannt ist. */
 export function neuesZiel(pfad) {
   const p = normalisieren(pfad);
-  if (EXAKT[p]) return EXAKT[p];
+  if (EXAKT[p]) return mitSchraegstrich(EXAKT[p]);
   if (ZUR_STARTSEITE.includes(p)) return "/";
   for (const [anfang, ziel] of BEREICHE) {
-    if (p === anfang || p.startsWith(anfang.endsWith("/") ? anfang : anfang + "/")) return ziel;
+    if (p === anfang || p.startsWith(anfang.endsWith("/") ? anfang : anfang + "/")) return mitSchraegstrich(ziel);
   }
   return null;
 }
@@ -115,14 +126,15 @@ export const ALTE_PFADE = [
   "/erfolgistmut", "/blog-lasst-sie-ziehen", "/reflexion", "/selbstmanagement-checkliste", "/freebie-technik-set-up",
   "/6li-anmeldung-danke", "/rcu-anmeldung-danke", "/danke-dein-bizz-akademie", "/angemeldet",
   "/anmeldung-bestaetigen", "/e-mail-bestaetigung-reflexion", "/interview-jgrotenhoefer",
-  "/2018/02/01/top-netzwerkerin-der-region",
+  "/2018/02/01/top-netzwerkerin-der-region", "/2017/09/27/vor-allem-spaß",
+  "/mut-vorstellungsgespräch", "/feed",
   "/allgemeine-infos", "/allgemeine-infos/agb", "/allgemeine-infos/kontakt-anfahrt", "/allgemeine-infos/news-tipps-stellen",
   "/allgemeine-infos/partner/netzwerk/kooperation", "/allgemeine-infos/preise", "/allgemeine-infos/referenzen",
   "/allgemeine-infos/team",
   "/beratung", "/beratung/beruf/neuorientierung", "/beratung/bewerbung/training/coaching",
   "/beratung/karriere/karrierecoaching", "/beratung/liebe-eltern",
   "/aktion-schule", "/jobs-stellenangebote",
-  "/blog", "/blog/page/2", "/blog/page/3", "/blog/author/bi", "/blog/author/bi/page/2", "/blog/author/dbadmin",
+  "/blog", "/blog/page/2", "/blog/page/3", "/blog/page/4", "/blog/author/bi", "/blog/author/bi/page/2", "/blog/author/dbadmin",
   "/blog/author/marika", "/blog/category/allgemein", "/blog/category/allgemein/page/2",
   "/blog/category/allgemein/page/3", "/blog/category/leadership", "/blog/category/markenbotschafter",
   "/blog/category/podcast",
@@ -156,6 +168,8 @@ export function astroRedirects() {
   for (const pfad of ALTE_PFADE) {
     const ziel = neuesZiel(pfad);
     if (ziel) ergebnis[pfad] = ziel;
+    // Ohne Zuordnung entsteht keine Weiterleitungsseite und der alte Link endet auf 404.
+    else console.warn(`[alte-links] ${pfad} hat kein Ziel – in EXAKT, ZUR_STARTSEITE oder BEREICHE ergänzen`);
   }
   return ergebnis;
 }
