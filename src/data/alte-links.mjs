@@ -64,7 +64,6 @@ const BEREICHE = [
   ["/beratung", "/"],
   ["/aktion-schule", "/"],
   ["/jobs-stellenangebote", "/"],
-  ["/20", "/presse"], // alte Datums-Links wie /2018/02/01/…
 ];
 
 // Alte Seiten, die es nicht mehr gibt und die zur Startseite führen
@@ -108,6 +107,8 @@ export function neuesZiel(pfad) {
   const p = normalisieren(pfad);
   if (EXAKT[p]) return mitSchraegstrich(EXAKT[p]);
   if (ZUR_STARTSEITE.includes(p)) return "/";
+  // Alte Datums-Links wie /2018/02/01/titel
+  if (/^\/(19|20)\d{2}\/\d{2}\//.test(p)) return "/presse/";
   for (const [anfang, ziel] of BEREICHE) {
     if (p === anfang || p.startsWith(anfang.endsWith("/") ? anfang : anfang + "/")) return mitSchraegstrich(ziel);
   }

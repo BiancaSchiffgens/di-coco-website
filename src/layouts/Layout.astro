@@ -31,7 +31,6 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": ORG_ID,
   name: "Di-CoCo",
-  legalName: "Di-CoCo – Digital Corporate Communications",
   url: "https://di-coco.com",
   logo: "https://di-coco.com/assets/logo/Di-CoCo_Wortmarke_Black.svg",
   description:
@@ -59,7 +58,6 @@ const personSchema = {
   image: "https://di-coco.com/assets/photos/bianca-schiffgens-portrait.webp",
   url: "https://di-coco.com/#ueber-uns",
   worksFor: { "@id": ORG_ID },
-  address: adresse,
   knowsAbout: [
     "Corporate Influencer Programme",
     "CEO-Kommunikation",
@@ -72,14 +70,6 @@ const personSchema = {
   sameAs: ["https://www.linkedin.com/in/bianca-schiffgens-corporate-influencer-programme/"],
 };
 
-const bookSchema = {
-  "@context": "https://schema.org",
-  "@type": "Book",
-  name: "Führung im Wandel",
-  publisher: { "@type": "Organization", name: "Springer Gabler" },
-  // Sammelband mit Beiträgen mehrerer Leadership-Experten, Bianca ist eine davon
-  contributor: { "@id": PERSON_ID },
-};
 
 const breadcrumbSchema = breadcrumb
   ? {
@@ -122,7 +112,6 @@ const breadcrumbSchema = breadcrumb
 
     <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />
     <script type="application/ld+json" set:html={JSON.stringify(personSchema)} />
-    <script type="application/ld+json" set:html={JSON.stringify(bookSchema)} />
     {breadcrumbSchema && (
       <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />
     )}

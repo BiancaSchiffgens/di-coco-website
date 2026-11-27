@@ -109,6 +109,15 @@ const credentials = [
   title="Corporate Influencer Programme & LinkedIn-Strategie – Di-CoCo"
   description="Di-CoCo entwickelt Corporate Influencer Programme und LinkedIn-Strategien für Führungskräfte im deutschsprachigen Raum. Strategisch. Messbar. Echt."
 >
+  {/* Buch-Angabe nur hier, weil das Buch nur auf der Startseite vorgestellt wird.
+      Sammelband mit Beiträgen mehrerer Leadership-Experten, Bianca ist eine davon. */}
+  <script slot="head" type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Book",
+    name: "Führung im Wandel",
+    publisher: { "@type": "Organization", name: "Springer Gabler" },
+    contributor: { "@id": "https://di-coco.com/#bianca-schiffgens" },
+  })} />
   <section class="hero">
     <img class="hero__ribbon" src="/assets/decor/hero-ribbon.svg" alt="" width="544" height="556" aria-hidden="true" />
     <div class="hero__inner">
