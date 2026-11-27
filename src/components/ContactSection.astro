@@ -41,6 +41,26 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
 <script>
   const form = document.querySelector<HTMLFormElement>("[data-kontakt-form]");
 
+  // Meldet eine erfolgreich abgeschickte Anfrage an Google Analytics, damit sichtbar
+  // wird, ob Änderungen an der Seite mehr Anfragen bringen. Nur mit Einwilligung
+  // (gleicher Speicher-Schlüssel wie in CookieConsent.astro), ohne Formularinhalte.
+  // Ohne Einwilligung wird nichts vorgemerkt, also auch später nichts nachgesendet.
+  function zaehleAnfrage() {
+    let einwilligung: string | null = null;
+    try {
+      einwilligung = localStorage.getItem("dicoco-consent");
+    } catch {
+      return;
+    }
+    if (einwilligung !== "granted") return;
+    const w = window as unknown as { dataLayer?: unknown[] };
+    w.dataLayer = w.dataLayer || [];
+    // gtag-Form: gtag.js erwartet ein arguments-Objekt, kein Array
+    (function gtag(..._args: unknown[]) {
+      w.dataLayer!.push(arguments);
+    })("event", "generate_lead", { form_name: "kontakt" });
+  }
+
   form?.addEventListener("submit", async (event) => {
     event.preventDefault();
 
@@ -61,6 +81,7 @@ const FORMSPREE_ENDPOINT = "https://formspree.io/f/mwleglwq";
 
       if (response.ok) {
         form.reset();
+        zaehleAnfrage();
         statusEl.textContent = "Danke! Deine Nachricht ist angekommen. Wir melden uns innerhalb von 24 Stunden.";
         statusEl.classList.add("kontakt__status--success");
       } else {
