@@ -109,7 +109,12 @@ import { GA_MEASUREMENT_ID } from "../config";
         });
 
         var choice = readChoice();
-        if (choice === "granted") loadAnalytics();
+        if (choice === "granted") {
+          // Gespeicherte Einwilligung auch auf Folgeseiten an Google melden,
+          // sonst misst Analytics dort weiter im Modus "abgelehnt".
+          gtag("consent", "update", { analytics_storage: "granted" });
+          loadAnalytics();
+        }
         else if (choice !== "denied") showBanner();
       })();
     </script>
